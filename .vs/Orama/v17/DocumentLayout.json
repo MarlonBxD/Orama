@@ -1,0 +1,110 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\despacho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\despacho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\egreso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\egreso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\nomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\nomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\pagofotografo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\pagofotografo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Egreso.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Egreso.cs",
+              "RelativeDocumentMoniker": "Entity\\Egreso.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Egreso.cs",
+              "RelativeToolTip": "Entity\\Egreso.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T01:09:57.749Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Cliente.cs",
+              "RelativeDocumentMoniker": "Entity\\Cliente.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Cliente.cs",
+              "RelativeToolTip": "Entity\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T01:47:13.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Despacho.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Despacho.cs",
+              "RelativeDocumentMoniker": "Entity\\Despacho.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Despacho.cs",
+              "RelativeToolTip": "Entity\\Despacho.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T01:41:56.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PagoFotografo.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\PagoFotografo.cs",
+              "RelativeDocumentMoniker": "Entity\\PagoFotografo.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\PagoFotografo.cs",
+              "RelativeToolTip": "Entity\\PagoFotografo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T01:12:31.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Nomina.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Nomina.cs",
+              "RelativeDocumentMoniker": "Entity\\Nomina.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Nomina.cs",
+              "RelativeToolTip": "Entity\\Nomina.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T01:02:44.11Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
