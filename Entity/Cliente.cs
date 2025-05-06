@@ -10,13 +10,20 @@ namespace Entity
     {
         public string Direccion { get; set; }
 
-
-        public Cliente( string nombre, string telefono, string direccion)
+        
+        public Cliente()
         {
-            
-            Nombre = nombre;
-            Telefono = telefono;
-            Direccion = direccion;
+
+        }
+
+        public Cliente(int Id, string Nombre, string Apellido, string Telefono, string Email, string Direccion)
+        {
+            this.Id = Id;
+            this.Nombre = Nombre;
+            this.Apellido = Apellido;
+            this.Telefono = Telefono;
+            this.Email = Email;
+            this.Direccion = Direccion;
         }
 
     }

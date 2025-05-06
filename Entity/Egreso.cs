@@ -8,9 +8,11 @@ namespace Entity
 {
     public class Egreso
     {
-        public string Concepto { get; set; }
-        public double Monto { get; set; }
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Monto { get; set; }
+        public DateTime Fecha { get; set; }
 
-        
+
     }
 }

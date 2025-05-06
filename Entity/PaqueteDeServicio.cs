@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class PaqueteDeServicios
+    public class PaqueteDeServicio
     {
-        public int IdPaquete { get; set; }
+        public int Id { get; set; }
         public string NombreDePaquete { get; set; }
         public string Descripcion { get; set; }
         public double PrecioPaquete { get; set; }
         public int DuracionPaquete { get; set; }
-        
+
+        public Evento evento { get; set; }
+
     }
 
 }

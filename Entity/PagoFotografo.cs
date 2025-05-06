@@ -8,13 +8,11 @@ namespace Entity
 {
     public class PagoFotografo
     {
-        public Fotografo Fotografo { get; set; }
-        public double Monto { get; set; }
+        public int Id { get; set; }
+        public decimal Monto { get; set; }
+        public DateTime FechaPago { get; set; }
+        public string Metodo { get; set; }
 
-        public PagoFotografo(Fotografo fotografo, double monto)
-        {
-            Fotografo = fotografo;
-            Monto = monto;
-        }
+        public Fotografo Fotografo { get; set; }
     }
 }

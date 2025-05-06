@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\nomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\nomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\despachorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\despachorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\pagofotografo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\pagofotografo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\despacho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\despacho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\egreso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\egreso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\mensajero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\mensajero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\asignaciondeequipo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\asignaciondeequipo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,51 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Egreso.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Egreso.cs",
-              "RelativeDocumentMoniker": "Entity\\Egreso.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Egreso.cs",
-              "RelativeToolTip": "Entity\\Egreso.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Title": "Mensajero.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Mensajero.cs",
+              "RelativeDocumentMoniker": "Entity\\Mensajero.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Mensajero.cs",
+              "RelativeToolTip": "Entity\\Mensajero.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T01:09:57.749Z",
-              "IsPinned": true,
+              "WhenOpened": "2025-05-06T18:06:13.857Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PagoFotografo.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\PagoFotografo.cs",
-              "RelativeDocumentMoniker": "Entity\\PagoFotografo.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\PagoFotografo.cs",
-              "RelativeToolTip": "Entity\\PagoFotografo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAiAAAAAAAAAA==",
+              "Title": "Despacho.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Despacho.cs",
+              "RelativeDocumentMoniker": "Entity\\Despacho.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Despacho.cs",
+              "RelativeToolTip": "Entity\\Despacho.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T01:12:31.296Z",
+              "WhenOpened": "2025-05-06T17:30:48.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DespachoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\DespachoRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\DespachoRepository.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\DespachoRepository.cs",
+              "RelativeToolTip": "DAL\\DespachoRepository.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAowIQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T17:30:30.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Cliente.cs",
+              "RelativeDocumentMoniker": "Entity\\Cliente.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Cliente.cs",
+              "RelativeToolTip": "Entity\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T17:28:12.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AsignacionDeEquipo.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\AsignacionDeEquipo.cs",
+              "RelativeDocumentMoniker": "Entity\\AsignacionDeEquipo.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\AsignacionDeEquipo.cs",
+              "RelativeToolTip": "Entity\\AsignacionDeEquipo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T17:27:44.794Z",
               "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Nomina.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Nomina.cs",
-              "RelativeDocumentMoniker": "Entity\\Nomina.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Nomina.cs",
-              "RelativeToolTip": "Entity\\Nomina.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T01:02:44.11Z",
-              "EditorCaption": ""
             }
           ]
         }

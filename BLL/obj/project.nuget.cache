@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rE/m1gw8wkk=",
+  "dgSpecHash": "F1PFCPbr8X0=",
   "success": true,
   "projectFilePath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\BLL.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\marlo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\marlo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\marlo\\.nuget\\packages\\npgsql\\9.0.3\\npgsql.9.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

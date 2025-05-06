@@ -9,9 +9,19 @@ namespace Entity
 
     public class Despacho
     {
-        public int IdEntrega { get; set; }
+        public int Id { get; set; }
         public Cliente cliente { get; set; }
         public string Estado { get; set; }
+        public DateTime FechaDespacho { get; set; }
+        public Cliente Cliente { get; set; }
+        public Mensajero Mensajero { get; set; }
+        public List<Fotografia> Fotografias { get; set; } = new();
+        public int numero_paquetes { get; set; }
+
+        public Despacho()
+        {
+
+        }
 
     }
 }
