@@ -9,7 +9,7 @@ namespace Entity
     public class PaqueteDeServicio
     {
         public int Id { get; set; }
-        public string NombreDePaquete { get; set; }
+        public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public double PrecioPaquete { get; set; }
         public int DuracionPaquete { get; set; }

@@ -22,7 +22,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                // Solo propagar la excepción, no mostrarla
+                
                 throw new DALException("Error al crear la conexión", ex);
             }
         }
@@ -43,7 +43,6 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                // Solo propagar la excepción, no mostrarla
                 throw new DALException("Error al abrir la conexión", ex);
             }
         }
@@ -59,7 +58,6 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                // Solo propagar la excepción, no mostrarla
                 throw new DALException("Error al cerrar la conexión", ex);
             }
         }
@@ -77,7 +75,7 @@ namespace DAL
                     }
                     catch
                     {
-                        // Simplemente ignoramos las excepciones al liberar recursos
+                        
                     }
                 }
                 disposed = true;
