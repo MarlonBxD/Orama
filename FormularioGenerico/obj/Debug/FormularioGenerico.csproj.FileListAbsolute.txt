@@ -1,0 +1,10 @@
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\bin\Debug\FormularioGenerico.exe.config
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\bin\Debug\FormularioGenerico.exe
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\bin\Debug\FormularioGenerico.pdb
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\obj\Debug\FormularioGenerico.csproj.AssemblyReference.cache
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\obj\Debug\FormularioGenerico.Form1.resources
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\obj\Debug\FormularioGenerico.Properties.Resources.resources
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\obj\Debug\FormularioGenerico.csproj.GenerateResource.cache
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\obj\Debug\FormularioGenerico.csproj.CoreCompileInputs.cache
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\obj\Debug\FormularioGenerico.exe
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\FormularioGenerico\obj\Debug\FormularioGenerico.pdb

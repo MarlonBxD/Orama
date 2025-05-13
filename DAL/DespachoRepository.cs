@@ -22,7 +22,7 @@ namespace DAL
                 _conexion.OpenConnection();
                 using (var command = _conexion.GetConnection().CreateCommand())
                 {
-                    command.CommandText = "INSERT INTO despachos (id, fecha_despacho, cliente, direccion, telefono, estado, fotofrafias, numero_paquetes) VALUES (@id, @fecha_despacho, @cliente, @direccion, @telefono, @estado, @fotofrafias, @numero_paquetes)";
+                    command.CommandText = "INSERT INTO despacho (id, fecha_despacho, tipo_entrega, estado, clinete_id, numero_paquetes) VALUES (@id, @fecha_despacho, @cliente, @direccion, @telefono, @estado, @fotofrafias, @numero_paquetes)";
                     command.Parameters.AddWithValue("@id", despacho.Id);
                     command.Parameters.AddWithValue("@fecha_despacho", despacho.FechaDespacho);
                     command.Parameters.AddWithValue("@cliente", despacho.Cliente.Nombre);
@@ -50,7 +50,7 @@ namespace DAL
                 _conexion.OpenConnection();
                 using (var command = _conexion.GetConnection().CreateCommand())
                 {
-                    command.CommandText = "DELETE FROM despachos WHERE id_despacho = @id";
+                    command.CommandText = "DELETE FROM despacho WHERE id_despacho = @id";
                     command.Parameters.AddWithValue("@id", id);
                     command.ExecuteNonQuery();
                 }
@@ -71,7 +71,7 @@ namespace DAL
                 _conexion.OpenConnection();
                 using (var command = _conexion.GetConnection().CreateCommand())
                 {
-                    command.CommandText = "UPDATE despachos SET id = @id, id_equipo = @id_equipo, fecha_despacho = @fecha_despacho, fecha_devolucion = @fecha_devolucion WHERE id_despacho = @id";
+                    command.CommandText = "UPDATE despacho SET id = @id, id_equipo = @id_equipo, fecha_despacho = @fecha_despacho, fecha_devolucion = @fecha_devolucion WHERE id_despacho = @id";
                     command.Parameters.AddWithValue("@id", despacho.Id);
                     command.Parameters.AddWithValue("@fecha_despacho", despacho.FechaDespacho);
                     command.Parameters.AddWithValue("@cliente", despacho.Cliente.Nombre);
@@ -100,7 +100,7 @@ namespace DAL
                 _conexion.OpenConnection();
                 using (var command = _conexion.GetConnection().CreateCommand())
                 {
-                    command.CommandText = "SELECT * FROM despachos";
+                    command.CommandText = "SELECT * FROM despacho";
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -126,7 +126,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener los despachos", ex);
+                throw new DALException("Error al obtener los despacho", ex);
             }
             finally
             {
@@ -143,7 +143,7 @@ namespace DAL
                 _conexion.OpenConnection();
                 using (var command = _conexion.GetConnection().CreateCommand())
                 {
-                    command.CommandText = "SELECT * FROM despachos WHERE id_despacho = @id";
+                    command.CommandText = "SELECT * FROM despacho WHERE id_despacho = @id";
                     command.Parameters.AddWithValue("@id", id);
                     using (var reader = command.ExecuteReader())
                     {
