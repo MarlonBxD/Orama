@@ -27,7 +27,7 @@
       "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\despacho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -75,8 +75,7 @@
               "ViewState": "AgIAAAYAAAAAAAAAAAAkwBAAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-07T15:17:06.212Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -89,8 +88,7 @@
               "ViewState": "AgIAAAkAAAAAAAAAAADwvxAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-08T19:46:39.042Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -115,8 +113,7 @@
               "RelativeToolTip": "Entity\\Mensajero.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T23:42:44.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T23:42:44.395Z"
             },
             {
               "$type": "Document",
@@ -128,8 +125,7 @@
               "RelativeToolTip": "Entity\\FotografiaEvento.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T23:42:43.265Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T23:42:43.265Z"
             },
             {
               "$type": "Document",
@@ -141,8 +137,7 @@
               "RelativeToolTip": "Entity\\EquipoFotografico.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T23:42:41.745Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T23:42:41.745Z"
             },
             {
               "$type": "Document",
@@ -154,8 +149,7 @@
               "RelativeToolTip": "Entity\\Despacho.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T23:42:39.094Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T23:42:39.094Z"
             },
             {
               "$type": "Document",
@@ -167,8 +161,7 @@
               "RelativeToolTip": "DAL\\DespachoRepository.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAYwCwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T22:39:08.621Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T22:39:08.621Z"
             },
             {
               "$type": "Document",
@@ -180,8 +173,7 @@
               "RelativeToolTip": "GUI\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T22:39:46.652Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T22:39:46.652Z"
             },
             {
               "$type": "Document",
@@ -192,8 +184,7 @@
               "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "GUI\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T22:39:49.243Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-05-08T22:39:49.243Z"
             },
             {
               "$type": "Document",
@@ -205,8 +196,7 @@
               "RelativeToolTip": "Entity\\DTO\\EventoDto.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T21:51:46.93Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T21:51:46.93Z"
             },
             {
               "$type": "Document",
@@ -218,8 +208,7 @@
               "RelativeToolTip": "DAL\\EventoRepository.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAswBQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T19:45:17.87Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T19:45:17.87Z"
             },
             {
               "$type": "Document",
