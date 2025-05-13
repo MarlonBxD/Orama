@@ -18,7 +18,7 @@ CREATE INDEX idx_cliente_telefono ON Cliente(Telefono);
 CREATE TABLE Bebe (
     Id SERIAL PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
-    FechaNacimiento DATE NOT NULL,
+    Fecha_Nacimiento DATE NOT NULL,
     Sexo VARCHAR(10)
 );
 CREATE INDEX idx_bebe_nombre ON Bebe(Nombre);
@@ -48,38 +48,38 @@ CREATE TABLE Reserva (
     Id SERIAL PRIMARY KEY,
     Fecha DATE NOT NULL,
     Estado VARCHAR(50),
-    ClienteId INT NOT NULL,
-    EventoId INT NOT NULL,
-    PaqueteServicioId INT NOT NULL,
-    FOREIGN KEY (ClienteId) REFERENCES Cliente(Id),
+    Cliente_Id INT NOT NULL,
+    Evento_Id INT NOT NULL,
+    Paquete_ServicioId INT NOT NULL,
+    FOREIGN KEY (Cliente_Id) REFERENCES Cliente(Id),
     FOREIGN KEY (EventoId) REFERENCES Evento(Id),
-    FOREIGN KEY (PaqueteServicioId) REFERENCES PaqueteDeServicio(Id)
+    FOREIGN KEY (Paquete_ServicioId) REFERENCES PaqueteDeServicio(Id)
 );
 CREATE INDEX idx_reserva_fecha ON Reserva(Fecha);
-CREATE INDEX idx_reserva_cliente ON Reserva(ClienteId);
+CREATE INDEX idx_reserva_cliente ON Reserva(Cliente_Id);
 
 -- Tabla Fotografia
 CREATE TABLE Fotografia (
     Id SERIAL PRIMARY KEY,
     Formato VARCHAR(10),
-    TamañoMB DOUBLE PRECISION,
-    EventoId INT NOT NULL,
-    FOREIGN KEY (EventoId) REFERENCES Evento(Id)
+    Tamaño_MB DOUBLE PRECISION,
+    Evento_Id INT NOT NULL,
+    FOREIGN KEY (Evento_Id) REFERENCES Evento(Id)
 );
-CREATE INDEX idx_foto_evento ON Fotografia(EventoId);
+CREATE INDEX idx_foto_evento ON Fotografia(Evento_Id);
 
 -- Tabla Despacho
 CREATE TABLE Despacho (
     Id SERIAL PRIMARY KEY,
-    FechaDespacho DATE,
-    TipoEntrega VARCHAR(50),
+    Fecha_Despacho DATE,
+    Tipo_Entrega VARCHAR(50),
     Estado VARCHAR(50),
-    FotografiaId INT NOT NULL,
-    ClienteId INT NOT NULL,
-    FOREIGN KEY (FotografiaId) REFERENCES Fotografia(Id),
-    FOREIGN KEY (ClienteId) REFERENCES Cliente(Id)
+    Fotografia_Id INT NOT NULL,
+    Cliente_Id INT NOT NULL,
+    FOREIGN KEY (Fotografia_Id) REFERENCES Fotografia(Id),
+    FOREIGN KEY (Cliente_Id) REFERENCES Cliente(Id)
 );
-CREATE INDEX idx_despacho_fecha ON Despacho(FechaDespacho);
+CREATE INDEX idx_despacho_fecha ON Despacho(Fecha_Despacho);
 
 -- Tabla Fotografo
 CREATE TABLE Fotografo (
@@ -104,11 +104,11 @@ CREATE TABLE AsignacionDeEquipo (
     Id SERIAL PRIMARY KEY,
     Fecha_asignacion DATE NOT NULL,
     Fecha_entrega DATE NOT NULL,
-    FotografoId INT NOT NULL,
-    EquipoId INT NOT NULL,
+    Fotografo_Id INT NOT NULL,
+    Equipo_Id INT NOT NULL,
     Estado VARCHAR(100),
-    FOREIGN KEY (FotografoId) REFERENCES Fotografo(Id),
-    FOREIGN KEY (EquipoId) REFERENCES EquipoFotografico(Id)
+    FOREIGN KEY (Fotografo_Id) REFERENCES Fotografo(Id),
+    FOREIGN KEY (Equipo_Id) REFERENCES EquipoFotografico(Id)
 );
 CREATE INDEX idx_asignacion_fecha ON AsignacionDeEquipo(Fecha);
 
