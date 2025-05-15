@@ -6,25 +6,15 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Cliente: Persona
+    public class Cliente : Persona
     {
-        public string Direccion { get; set; }
+        public string Direccion { get; set; } = string.Empty; 
+        public List<Despacho> Despachos { get; set; } = new List<Despacho>(); 
+        public string NombreCompleto { get; private set; } 
 
-        
         public Cliente()
         {
-
+            NombreCompleto = $"{Nombre} {Apellido}"; 
         }
-
-        public Cliente(int Id, string Nombre, string Apellido, string Telefono, string Email, string Direccion)
-        {
-            this.Id = Id;
-            this.Nombre = Nombre;
-            this.Apellido = Apellido;
-            this.Telefono = Telefono;
-            this.Email = Email;
-            this.Direccion = Direccion;
-        }
-
     }
 }

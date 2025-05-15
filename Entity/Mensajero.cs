@@ -8,6 +8,13 @@ namespace Entity
 {
     public class Mensajero: Persona
     {
+        public string Direccion { get; set; }
         public string tipo_mensajero { get; set; }
+
+        public Mensajero()
+        {
+        }
+        public string NombreCompleto => $"{Nombre} {Apellido}";
     }
+
 }

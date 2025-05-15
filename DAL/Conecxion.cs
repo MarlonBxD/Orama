@@ -10,7 +10,7 @@ namespace DAL
 {
     public class Conexion : IDisposable
     {
-        private readonly string connectionString = "Host=localhost;Port=5432;Username=admin;Password=1234;Database=orama_db";
+        private readonly string connectionString = "Host=localhost;Port=5432;Username=marlon;Password=1234;Database=oramadb";
         private readonly NpgsqlConnection connection;
         private bool disposed = false;
 

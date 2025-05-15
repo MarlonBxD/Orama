@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Nomina(int ID_Nomina, DateTime Fecha_Pago, double Total_Pagos)
+    public class Nomina()
     {
+        public int Id { get; private set; }
+        public DateTime FechaPago { get; private set; }
         public double Total_Pagos { get; private set; }
 
         public List<Egreso> Egresos = new List<Egreso>();
         public List<PagoFotografo> PagosFotografos { get; set; } = new List<PagoFotografo>();
 
-        public Nomina(int idNomina, DateTime fechaPago) : this(idNomina, fechaPago, default)
-        {
-        }
+        
 
         private void CalcularTotal()
         {
