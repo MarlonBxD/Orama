@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\DAL.csproj": {}
+    "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\DAL\\DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\DAL.csproj": {
+    "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\DAL.csproj",
+        "projectUniqueName": "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\DAL.csproj",
-        "packagesPath": "C:\\Users\\marlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\obj\\",
+        "projectPath": "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\marlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Entity.csproj": {
-                "projectPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Entity.csproj"
+              "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\Entity\\Entity.csproj": {
+                "projectPath": "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\Entity\\Entity.csproj"
               }
             }
           }
@@ -57,6 +58,10 @@
             "Npgsql": {
               "target": "Package",
               "version": "[9.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             }
           },
           "imports": [
@@ -79,20 +84,20 @@
         }
       }
     },
-    "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Entity.csproj": {
+    "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Entity.csproj",
+        "projectUniqueName": "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Entity.csproj",
-        "packagesPath": "C:\\Users\\marlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\obj\\",
+        "projectPath": "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "D:\\personal\\carrera\\4\\programacion\\Orama\\Orama\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\marlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -101,6 +106,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
