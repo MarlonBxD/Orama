@@ -106,13 +106,7 @@ namespace GUI
             cbEstados.SelectedIndex = 0;
             numup.Value = 0;
         }
-        private void FormDespacho_Load(object sender, EventArgs e)
-        {
-
-            CargarClientes();
-            CargarMensajeros();
-        }
-
+        
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
