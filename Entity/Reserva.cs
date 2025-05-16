@@ -16,21 +16,5 @@ namespace Entity
         public string Observaciones { get; set; }
         public Cliente Cliente { get; set; }
 
-
-        public Reserva()
-        {
-
-        }
-
-        public Reserva(int idReserva, DateTime fechaReserva, DateTime fechaEvento, Evento evento, string estadoReserva, string observaciones, Cliente cliente)
-        {
-            IdReserva = idReserva;
-            FechaReserva = fechaReserva;
-            FechaEvento = fechaEvento;
-            Evento = evento;
-            EstadoReserva = estadoReserva;
-            Observaciones = observaciones;
-            Cliente = cliente;
-        }
     }
 }

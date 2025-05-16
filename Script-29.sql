@@ -1,6 +1,6 @@
 -- Eliminar tablas si existen (orden inverso por dependencias)
 DROP TABLE IF EXISTS Pago, Egreso, Nomina, PagoFotografo, AsignacionDeEquipo, EquipoFotografico,
-Fotografo, Despacho, Fotografia, Reserva, PaqueteDeServicio, Evento, Bebe, Cliente, Persona CASCADE;
+Fotografo, Despacho, Fotografia, Reserva, PaqueteDeServicio, Evento, mensajero, Bebe, Cliente, Persona CASCADE;
 
 
 -- Tabla Cliente
@@ -23,6 +23,17 @@ CREATE TABLE Bebe (
 );
 CREATE INDEX idx_bebe_nombre ON Bebe(Nombre);
 
+-- Tabla Mensajero
+CREATE TABLE Mensajero (
+    Id SERIAL PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Telefono VARCHAR(50) NOT NULL,
+    Email VARCHAR(50),
+    Tipo VARCHAR(50) NOT NULL,
+    Direccion VARCHAR(50) NOT NULL
+);
+CREATE INDEX idx_mensajero_telefono ON Mensajero(Telefono);
+
 -- Tabla Evento
 CREATE TABLE Evento (
     Id SERIAL PRIMARY KEY,
@@ -39,7 +50,7 @@ CREATE TABLE PaqueteDeServicio (
     Nombre VARCHAR(100) NOT NULL,
     Precio DECIMAL(10,2) NOT NULL,
     Descripcion TEXT,
-    Duración DATATIME
+    Duración INT NOT NULL
 );
 CREATE INDEX idx_paquete_precio ON PaqueteDeServicio(Precio);
 
@@ -52,7 +63,7 @@ CREATE TABLE Reserva (
     Evento_Id INT NOT NULL,
     Paquete_ServicioId INT NOT NULL,
     FOREIGN KEY (Cliente_Id) REFERENCES Cliente(Id),
-    FOREIGN KEY (EventoId) REFERENCES Evento(Id),
+    FOREIGN KEY (Evento_Id) REFERENCES Evento(Id),
     FOREIGN KEY (Paquete_ServicioId) REFERENCES PaqueteDeServicio(Id)
 );
 CREATE INDEX idx_reserva_fecha ON Reserva(Fecha);
@@ -72,12 +83,12 @@ CREATE INDEX idx_foto_evento ON Fotografia(Evento_Id);
 CREATE TABLE Despacho (
     Id SERIAL PRIMARY KEY,
     Fecha_Despacho DATE,
-    Tipo_Entrega VARCHAR(50),
     Estado VARCHAR(50),
-    Fotografia_Id INT NOT NULL,
     Cliente_Id INT NOT NULL,
-    FOREIGN KEY (Fotografia_Id) REFERENCES Fotografia(Id),
-    FOREIGN KEY (Cliente_Id) REFERENCES Cliente(Id)
+    Mensajero_Id INT,
+    Numero_Paquetes INT NOT NULL,
+    FOREIGN KEY (Cliente_Id) REFERENCES Cliente(Id),
+    FOREIGN KEY (Mensajero_Id) REFERENCES Mensajero(Id)
 );
 CREATE INDEX idx_despacho_fecha ON Despacho(Fecha_Despacho);
 
@@ -110,7 +121,7 @@ CREATE TABLE AsignacionDeEquipo (
     FOREIGN KEY (Fotografo_Id) REFERENCES Fotografo(Id),
     FOREIGN KEY (Equipo_Id) REFERENCES EquipoFotografico(Id)
 );
-CREATE INDEX idx_asignacion_fecha ON AsignacionDeEquipo(Fecha);
+CREATE INDEX idx_asignacion_fecha ON AsignacionDeEquipo(Fecha_asignacion);
 
 -- Tabla PagoFotografo
 CREATE TABLE PagoFotografo (
