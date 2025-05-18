@@ -13,7 +13,7 @@ namespace Entity
         public string Descripcion { get; set; }
         public double PrecioPaquete { get; set; }
         public int DuracionPaquete { get; set; }
-
+        public List<Producto> productos { get; set; }
         public Evento evento { get; set; }
 
     }
