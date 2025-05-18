@@ -11,13 +11,11 @@ namespace Entity
     {
         public int Id { get; set; }
         public DateTime FechaDespacho { get; set; }
-        public string Estado { get; set; } = string.Empty;
-        public int ClienteId { get; set; }
-        public int? Mensajeroid { get; set; }
+        public string Estado { get; set; }
         public int NumeroPaquetes { get; set; }
 
-        public Cliente Cliente { get; set; } = null!;
-        public Mensajero Mensajero { get; set; } = null!;
+        public Cliente Cliente { get; set; }
+        public Mensajero Mensajero { get; set; } 
 
     }
 

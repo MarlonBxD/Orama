@@ -12,11 +12,11 @@ namespace Entity
         public string Tipo { get; set; }
         public DateTime Fecha { get; set; }
         public string Ubicacion { get; set; }
+        public Bebe? Bebe { get; set; } 
 
-        public List<Fotografia> Fotografias { get; set; } = new();
         public List<PaqueteDeServicio> PaqueteDeServicios { get; set; } = new();
 
-        public Fotografo Fotografo { get; set; }
+        public List<Fotografo> Fotografos { get; set; }
         public Reserva Reserva { get; set; } 
     }
 

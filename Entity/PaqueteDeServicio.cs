@@ -11,7 +11,7 @@ namespace Entity
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public double PrecioPaquete { get; set; }
+        public double Precio { get; set; }
         public int DuracionPaquete { get; set; }
         public List<Producto> productos { get; set; }
         public Evento evento { get; set; }

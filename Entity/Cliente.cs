@@ -9,8 +9,9 @@ namespace Entity
     public class Cliente : Persona
     {
         public string Direccion { get; set; } = string.Empty; 
-        public List<Despacho> Despachos { get; set; } = new List<Despacho>(); 
         public string NombreCompleto { get; private set; } 
+        public List<Reserva> Reservas { get; set; }
+        public List<Despacho> Despachos { get; set; } = new List<Despacho>();
 
         public Cliente()
         {

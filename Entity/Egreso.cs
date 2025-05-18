@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Egreso
+    public class Egreso : Transaccion
     {
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
-        public decimal Monto { get; set; }
-        public DateTime Fecha { get; set; }
+        public string tipoEgreso { get; set; }
+        public Cliente? Cliente { get; set; }
+        public Fotografo? Fotografo { get; set; }
 
 
     }
+     
 }

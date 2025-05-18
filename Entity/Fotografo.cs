@@ -12,7 +12,7 @@ namespace Entity
 
         public List<AsignacionDeEquipo> AsignacionesDeEquipos { get; set; } = new();
         public List<Asignacion> AsignacionesDeEventos { get; set; } = new();
-        public List<PagoFotografo> Pagos { get; set; } = new();
+        public List<Pago> Pagos { get; set; }
         public List<Evento> Eventos { get; set; } = new();
     }
 }

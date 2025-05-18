@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class FotografiaEvento
+    public class Ingreso : Transaccion
     {
-        public Evento Evento;
-        public Fotografia Fotografia;
-
+       public List<Pago> Pagos { get; set; }
     }
 }
+
