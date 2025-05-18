@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\gui\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -82,8 +82,7 @@
               "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Principal.cs [Dise\u00F1o]",
               "RelativeToolTip": "GUI\\Principal.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T02:43:28.492Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-05-18T02:43:28.492Z"
             },
             {
               "$type": "Document",
@@ -119,7 +118,8 @@
               "RelativeToolTip": "GUI\\FormCliente.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAUwCIAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T20:40:14.331Z"
+              "WhenOpened": "2025-05-16T20:40:14.331Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -131,8 +131,7 @@
               "RelativeToolTip": "BLL\\ClienteSerive.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAEwE8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T20:33:03.339Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T20:33:03.339Z"
             },
             {
               "$type": "Document",
