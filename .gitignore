@@ -1,0 +1,72 @@
+# Carpetas generadas por Visual Studio
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos de build (compilación)
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+*.log
+
+# Archivos de configuración de dependencias
+*.nuget.*
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Archivos de paquetes NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+*.psmdcp
+
+# Archivos DLL y PDB generados
+*.dll
+*.pdb
+*.exe
+
+# Archivos de configuración temporal
+*.cache
+*.dbmdl
+*.bak
+*.tmp
+
+# Archivos de configuración de MSBuild
+*.props
+*.targets
+
+# Configuraciones específicas del usuario o IDE
+*.json
+*.env
+*.launchSettings.json
+
+# Archivos generados por Rider o ReSharper
+.ReSharper*/
+*_ReSharper*/
+*.DotSettings.user
+
+# Test result y coverage
+TestResults/
+*.coverage
+*.coveragexml
+*.trx
+
+# Configuración de VS Code
+.vscode/
+
+# Archivos generados por Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Archivos de publicación
+publish/
+*.Publish.xml
+
+# Archivos de configuración secretos o temporales
+secrets.json
