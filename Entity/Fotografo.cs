@@ -10,7 +10,8 @@ namespace Entity
     {
         public string Especialidad { get; set; }
 
-        public List<AsignacionDeEquipo> Asignaciones { get; set; } = new();
+        public List<AsignacionDeEquipo> AsignacionesDeEquipos { get; set; } = new();
+        public List<Asignacion> AsignacionesDeEventos { get; set; } = new();
         public List<PagoFotografo> Pagos { get; set; } = new();
         public List<Evento> Eventos { get; set; } = new();
     }

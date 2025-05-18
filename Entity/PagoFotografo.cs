@@ -13,6 +13,6 @@ namespace Entity
         public DateTime FechaPago { get; set; }
         public string Metodo { get; set; }
 
-        public Fotografo Fotografo { get; set; }
+        public Fotografo Fotografo { get; set; }    
     }
 }
