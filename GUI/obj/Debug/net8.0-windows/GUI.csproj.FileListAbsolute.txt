@@ -28,3 +28,6 @@ C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\GUI\obj\Debug\net8.0-windows\r
 C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\GUI\obj\Debug\net8.0-windows\GUI.gestion_despachos.resources
 C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\GUI\obj\Debug\net8.0-windows\GUI.Properties.Resources.resources
 C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\GUI\obj\Debug\net8.0-windows\GUI.Form1.resources
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\GUI\obj\Debug\net8.0-windows\GUI.FormDespacho.resources
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\GUI\obj\Debug\net8.0-windows\GUI.FormCliente.resources
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\GUI\obj\Debug\net8.0-windows\GUI.Principal.resources

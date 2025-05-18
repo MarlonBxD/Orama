@@ -93,27 +93,38 @@ namespace DAL
             conn.Open();
             using var cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT d.id, d.fecha_despacho, d.estado, c.nombre, c.direccion, c.telefono,
-                            m.nombre, d.numero_paquetes FROM Despacho d
-                            JOIN Cliente c ON d.cliente_id = c.id
-                            LEFT JOIN Mensajero m ON d.mensajero_id = m.id";
+            cmd.CommandText = @"
+                                SELECT 
+                                    d.id, 
+                                    d.fecha_despacho, 
+                                    d.estado, 
+                                    c.nombre, 
+                                    c.direccion, 
+                                    c.telefono,
+                                    m.nombre, 
+                                    d.numero_paquetes 
+                                FROM Despacho d
+                                JOIN Cliente c ON d.cliente_id = c.id
+                                LEFT JOIN Mensajero m ON d.mensajero_id = m.id";
 
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 lista.Add(new DespachoResponseDTO
                 {
+                    Id = reader.GetInt32(0),
                     FechaDespacho = reader.GetDateTime(1),
                     Estado = reader.GetString(2),
                     ClienteNombre = reader.GetString(3),
-                    CLienteTelefono = reader.GetString(4),
-                    ClienteDireccion = reader.GetString(5),
+                    ClienteDireccion = reader.GetString(4),
+                    ClienteTelefono = reader.GetString(5),
                     MensajeroNombre = reader.IsDBNull(6) ? "N/A" : reader.GetString(6),
                     NumeroPaquetes = reader.GetInt32(7)
                 });
             }
             return lista;
         }
+
 
         public DespachoResponseDTO ObtenerDespachoPorId(int id)
         {
@@ -143,7 +154,7 @@ namespace DAL
                                 FechaDespacho = reader.GetDateTime(1),
                                 Estado = reader.GetString(2),
                                 ClienteNombre = reader.GetString(3),
-                                CLienteTelefono = reader.GetString(4),
+                                ClienteTelefono = reader.GetString(4),
                                 ClienteDireccion = reader.GetString(5),
                                 MensajeroNombre = reader.IsDBNull(6) ? "N/A" : reader.GetString(6),
                                 NumeroPaquetes = reader.GetInt32(7)

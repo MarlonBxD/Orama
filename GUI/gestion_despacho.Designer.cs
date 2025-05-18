@@ -28,16 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvDespachos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Fecha = new DataGridViewTextBoxColumn();
-            Estado = new DataGridViewTextBoxColumn();
-            Cliente = new DataGridViewTextBoxColumn();
-            Telefono = new DataGridViewTextBoxColumn();
-            Direccion = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            No_Paquetes = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
+            cbEstados = new ComboBox();
             btnFiltrar = new Button();
             btnLimpiar = new Button();
             dtHasta = new DateTimePicker();
@@ -50,77 +42,10 @@
             btnNuevo = new Button();
             btnElimiar = new Button();
             btnEditar = new Button();
-            cbEstados = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dgvDespachos).BeginInit();
+            dgvDespachos = new DataGridView();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDespachos).BeginInit();
             SuspendLayout();
-            // 
-            // dgvDespachos
-            // 
-            dgvDespachos.Anchor = AnchorStyles.None;
-            dgvDespachos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDespachos.Columns.AddRange(new DataGridViewColumn[] { ID, Fecha, Estado, Cliente, Telefono, Direccion, Column1, No_Paquetes });
-            dgvDespachos.Location = new Point(9, 407);
-            dgvDespachos.Name = "dgvDespachos";
-            dgvDespachos.RowHeadersWidth = 51;
-            dgvDespachos.Size = new Size(1195, 265);
-            dgvDespachos.TabIndex = 0;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 6;
-            ID.Name = "ID";
-            ID.Width = 50;
-            // 
-            // Fecha
-            // 
-            Fecha.HeaderText = "Fecha";
-            Fecha.MinimumWidth = 6;
-            Fecha.Name = "Fecha";
-            Fecha.Width = 160;
-            // 
-            // Estado
-            // 
-            Estado.HeaderText = "Estado";
-            Estado.MinimumWidth = 6;
-            Estado.Name = "Estado";
-            Estado.Width = 125;
-            // 
-            // Cliente
-            // 
-            Cliente.HeaderText = "Cliente";
-            Cliente.MinimumWidth = 6;
-            Cliente.Name = "Cliente";
-            Cliente.Width = 160;
-            // 
-            // Telefono
-            // 
-            Telefono.HeaderText = "Telefono";
-            Telefono.MinimumWidth = 6;
-            Telefono.Name = "Telefono";
-            Telefono.Width = 150;
-            // 
-            // Direccion
-            // 
-            Direccion.HeaderText = "Direccion";
-            Direccion.MinimumWidth = 6;
-            Direccion.Name = "Direccion";
-            Direccion.Width = 210;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Mensajero";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 160;
-            // 
-            // No_Paquetes
-            // 
-            No_Paquetes.HeaderText = "No_Paquetes";
-            No_Paquetes.MinimumWidth = 6;
-            No_Paquetes.Name = "No_Paquetes";
-            No_Paquetes.Width = 125;
             // 
             // groupBox1
             // 
@@ -136,12 +61,20 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Yu Gothic UI", 10.8F, FontStyle.Bold);
-            groupBox1.Location = new Point(32, 42);
+            groupBox1.Location = new Point(104, 42);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(1161, 226);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Filtros de búsqueda";
+            // 
+            // cbEstados
+            // 
+            cbEstados.FormattingEnabled = true;
+            cbEstados.Location = new Point(307, 82);
+            cbEstados.Name = "cbEstados";
+            cbEstados.Size = new Size(265, 33);
+            cbEstados.TabIndex = 11;
             // 
             // btnFiltrar
             // 
@@ -240,18 +173,19 @@
             btnNuevo.FlatStyle = FlatStyle.Flat;
             btnNuevo.Font = new Font("Yu Gothic UI", 10.8F, FontStyle.Bold);
             btnNuevo.ForeColor = SystemColors.Control;
-            btnNuevo.Location = new Point(19, 339);
+            btnNuevo.Location = new Point(91, 339);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(137, 52);
             btnNuevo.TabIndex = 2;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = false;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // btnElimiar
             // 
             btnElimiar.Anchor = AnchorStyles.None;
             btnElimiar.Font = new Font("Yu Gothic UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnElimiar.Location = new Point(363, 339);
+            btnElimiar.Location = new Point(435, 339);
             btnElimiar.Name = "btnElimiar";
             btnElimiar.Size = new Size(137, 52);
             btnElimiar.TabIndex = 3;
@@ -262,50 +196,41 @@
             // 
             btnEditar.Anchor = AnchorStyles.None;
             btnEditar.Font = new Font("Yu Gothic UI", 10.8F, FontStyle.Bold);
-            btnEditar.Location = new Point(196, 339);
+            btnEditar.Location = new Point(268, 339);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(137, 52);
             btnEditar.TabIndex = 4;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
             // 
-            // cbEstados
+            // dgvDespachos
             // 
-            cbEstados.FormattingEnabled = true;
-            cbEstados.Location = new Point(307, 82);
-            cbEstados.Name = "cbEstados";
-            cbEstados.Size = new Size(265, 33);
-            cbEstados.TabIndex = 11;
+            dgvDespachos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDespachos.Location = new Point(21, 409);
+            dgvDespachos.Name = "dgvDespachos";
+            dgvDespachos.RowHeadersWidth = 51;
+            dgvDespachos.Size = new Size(1303, 273);
+            dgvDespachos.TabIndex = 5;
             // 
             // gestion_despachos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1209, 708);
+            ClientSize = new Size(1352, 708);
+            Controls.Add(dgvDespachos);
             Controls.Add(btnEditar);
             Controls.Add(btnElimiar);
             Controls.Add(btnNuevo);
             Controls.Add(groupBox1);
-            Controls.Add(dgvDespachos);
             Name = "gestion_despachos";
             Text = "Gestion de Despachos";
-            ((System.ComponentModel.ISupportInitialize)dgvDespachos).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDespachos).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView dgvDespachos;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Fecha;
-        private DataGridViewTextBoxColumn Estado;
-        private DataGridViewTextBoxColumn Cliente;
-        private DataGridViewTextBoxColumn Telefono;
-        private DataGridViewTextBoxColumn Direccion;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn No_Paquetes;
         private GroupBox groupBox1;
         private Label label3;
         private Label label2;
@@ -320,5 +245,6 @@
         private Button btnElimiar;
         private Button btnEditar;
         private ComboBox cbEstados;
+        private DataGridView dgvDespachos;
     }
 }

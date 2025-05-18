@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\bll\\clienteserive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|solutionrelative:bll\\clienteserive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\formcliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\formcliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\gui\\formcliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\formcliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,32 +35,16 @@
       "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
-      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\gui\\gestion_despacho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\gestion_despacho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\despachorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\despachorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\gui\\gestion_despacho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2C143CF-E6F0-4AC5-B57A-4C48BF2D91BC}|GUI\\GUI.csproj|solutionrelative:gui\\gestion_despacho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\dto\\despachoresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\dto\\despachoresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\bll\\despachoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|solutionrelative:bll\\despachoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\despachorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\despachorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,114 +58,129 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "GUI\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Form1.Designer.cs",
-              "RelativeToolTip": "GUI\\Form1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T20:48:23.115Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Resources.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Properties\\Resources.Designer.cs",
-              "RelativeDocumentMoniker": "GUI\\Properties\\Resources.Designer.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Properties\\Resources.Designer.cs",
-              "RelativeToolTip": "GUI\\Properties\\Resources.Designer.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T20:47:43.52Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Resources.resx",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Properties\\Resources.resx",
-              "RelativeDocumentMoniker": "GUI\\Properties\\Resources.resx",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Properties\\Resources.resx",
-              "RelativeToolTip": "GUI\\Properties\\Resources.resx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2025-05-15T20:47:37.531Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Program.cs",
-              "RelativeDocumentMoniker": "GUI\\Program.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Program.cs",
-              "RelativeToolTip": "GUI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T20:39:45.417Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Form1.cs",
-              "RelativeDocumentMoniker": "GUI\\Form1.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Form1.cs",
-              "RelativeToolTip": "GUI\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Title": "Principal.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Principal.cs",
+              "RelativeDocumentMoniker": "GUI\\Principal.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Principal.cs",
+              "RelativeToolTip": "GUI\\Principal.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAArwB0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T20:27:35.138Z",
+              "WhenOpened": "2025-05-18T03:27:10.195Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Principal.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Principal.cs",
+              "RelativeDocumentMoniker": "GUI\\Principal.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Principal.cs [Dise\u00F1o]",
+              "RelativeToolTip": "GUI\\Principal.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T02:43:28.492Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Form1.cs",
+              "RelativeDocumentMoniker": "GUI\\Form1.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Form1.cs",
+              "RelativeToolTip": "GUI\\Form1.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwD4AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T22:37:21.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Form1.cs",
               "RelativeDocumentMoniker": "GUI\\Form1.cs",
               "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "GUI\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T20:27:17.504Z"
+              "WhenOpened": "2025-05-16T22:33:31.352Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "gestion_despacho.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\gestion_despacho.cs",
-              "RelativeDocumentMoniker": "GUI\\gestion_despacho.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\gestion_despacho.cs [Dise\u00F1o]",
-              "RelativeToolTip": "GUI\\gestion_despacho.cs [Dise\u00F1o]",
+              "DocumentIndex": 4,
+              "Title": "FormCliente.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\FormCliente.cs",
+              "RelativeDocumentMoniker": "GUI\\FormCliente.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\FormCliente.cs",
+              "RelativeToolTip": "GUI\\FormCliente.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAUwCIAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T20:10:24.875Z"
+              "WhenOpened": "2025-05-16T20:40:14.331Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
+              "Title": "ClienteSerive.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\ClienteSerive.cs",
+              "RelativeDocumentMoniker": "BLL\\ClienteSerive.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\ClienteSerive.cs",
+              "RelativeToolTip": "BLL\\ClienteSerive.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAEwE8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T20:33:03.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Program.cs",
+              "RelativeDocumentMoniker": "GUI\\Program.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\Program.cs",
+              "RelativeToolTip": "GUI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T20:39:45.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormCliente.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\FormCliente.cs",
+              "RelativeDocumentMoniker": "GUI\\FormCliente.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\FormCliente.cs [Dise\u00F1o]",
+              "RelativeToolTip": "GUI\\FormCliente.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T18:39:24.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DespachoResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Dto\\DespachoResponseDTO.cs",
+              "RelativeDocumentMoniker": "Entity\\Dto\\DespachoResponseDTO.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Dto\\DespachoResponseDTO.cs",
+              "RelativeToolTip": "Entity\\Dto\\DespachoResponseDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAwBIAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T21:38:47.922Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "DespachoRepository.cs",
               "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\DespachoRepository.cs",
               "RelativeDocumentMoniker": "DAL\\DespachoRepository.cs",
               "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\DespachoRepository.cs",
               "RelativeToolTip": "DAL\\DespachoRepository.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAkwFgAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAmwJwAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T20:23:16.695Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "gestion_despacho.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\gestion_despacho.cs",
-              "RelativeDocumentMoniker": "GUI\\gestion_despacho.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\GUI\\gestion_despacho.cs",
-              "RelativeToolTip": "GUI\\gestion_despacho.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T20:21:24.916Z"
             },
             {
               "$type": "Document",
@@ -171,13 +190,13 @@
               "RelativeDocumentMoniker": "BLL\\DespachoService.cs",
               "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\DespachoService.cs",
               "RelativeToolTip": "BLL\\DespachoService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAiwCYAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA/wBkAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T20:23:57.735Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ClienteRepository.cs",
               "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\ClienteRepository.cs",
               "RelativeDocumentMoniker": "DAL\\ClienteRepository.cs",
