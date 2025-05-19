@@ -2,9 +2,7 @@
 DROP TABLE IF EXISTS Pago, Egreso, Nomina, PagoFotografo, AsignacionDeEquipo, EquipoFotografico,
 Fotografo, Despacho, Fotografia, Reserva, PaqueteDeServicio, Evento, mensajero, Bebe, Cliente, Persona CASCADE;
 
--- we don't know how to generate root <with-no-name> (class Root) :(
 
-comment on database postgres is 'default administrative connection database';
 
 create table cliente
 (

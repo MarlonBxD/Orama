@@ -8,7 +8,8 @@ namespace Entity
 {
     public class Pago : Transaccion
     {
-        public string concepto { get; set; }
+        public Cliente Cliente { get; set; }
+
     }
 
 }

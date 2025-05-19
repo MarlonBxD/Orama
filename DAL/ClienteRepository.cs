@@ -78,29 +78,29 @@ namespace DAL
             cmd.Parameters.AddWithValue("@Direccion", cliente.Direccion);
             cmd.ExecuteNonQuery();
         }
-        //public ClienteDTO ObtenerClientePorNombre(string nombre)
-        //{
-        //    using var conn = _conexion.GetConnection();
-        //    conn.Open();
+        public ClienteDTO ObtenerClientePorNombre(string nombre)
+        {
+            using var conn = _conexion.GetConnection();
+            conn.Open();
 
-        //    using var cmd = conn.CreateCommand();
-        //    cmd.CommandText = "SELECT id, Nombre, Telefono, Direccion FROM Cliente WHERE Nombre = @nombre LIMIT 1";
-        //    cmd.Parameters.AddWithValue("@nombre", nombre);
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT id, Nombre, Telefono, Direccion FROM Cliente WHERE Nombre = @nombre LIMIT 1";
+            cmd.Parameters.AddWithValue("@nombre", nombre);
 
-        //    using var reader = cmd.ExecuteReader();
-        //    if (reader.Read())
-        //    {
-        //        return new ClienteDTO
-        //        {
-        //            Id = reader.GetInt32(0),
-        //            Nombre = reader.GetString(1),
-        //            Telefono = reader.GetString(2),
-        //            Direccion = reader.GetString(3)
-        //        };
-        //    }
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return new ClienteDTO
+                {
+                    Id = reader.GetInt32(0),
+                    Nombre = reader.GetString(1),
+                    Telefono = reader.GetString(2),
+                    Direccion = reader.GetString(3)
+                };
+            }
 
-        //    throw new Exception("Cliente no encontrado.");
-        //}
+            throw new Exception("Cliente no encontrado.");
+        }
 
 
     }

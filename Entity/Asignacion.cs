@@ -10,5 +10,7 @@ namespace Entity
     {
         public int Id { get; set; }
         public DateTime FechaAsignacion { get; set; }
+        public Fotografo Fotografo { get; set; }
+        public Evento Evento { get; set; }
     }
 }
