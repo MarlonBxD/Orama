@@ -13,6 +13,6 @@ namespace Entity
         public DateTime FechaNacimiento { get; set; }
         public string Sexo { get; set; }
 
-        public List<Evento> Eventos { get; set; } = new();
+        //public List<Evento> Eventos { get; set; } = new();
     }
 }

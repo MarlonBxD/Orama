@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,11 @@ namespace Entity
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public string Descripcion { get; set; }
         public double Precio { get; set; }
+        public string Descripcion { get; set; }
         public int DuracionPaquete { get; set; }
-        public List<Producto> productos { get; set; }
-        public Evento evento { get; set; }
+        public EventoDTO evento { get; set; }
+        //public List<Producto> productos { get; set; }
 
     }
 

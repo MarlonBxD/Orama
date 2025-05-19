@@ -11,7 +11,6 @@ namespace Entity
     {
         public string Concepto { get; set; }
         public ClienteDTO Cliente { get; set; }
-        public List<Pago> Pagos { get; set; }
     }
 }
 

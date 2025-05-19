@@ -15,6 +15,16 @@ namespace Entity.Dto
         public string Email { get; set; }
         public string Direccion { get; set; }
 
+        public ClienteDTO()
+        {
+            
+        }
+
+        public ClienteDTO(int id, string nombre)
+        {
+            Id = id;
+            Nombre = nombre;
+        }
 
         public override string ToString()
         {

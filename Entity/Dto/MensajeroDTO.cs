@@ -8,6 +8,7 @@ namespace Entity.Dto
 {
     public class MensajeroDTO
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
     }
 }

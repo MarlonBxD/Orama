@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,12 @@ namespace Entity
         public string Tipo { get; set; }
         public DateTime Fecha { get; set; }
         public string Ubicacion { get; set; }
-        public Bebe? Bebe { get; set; } 
+        public ReservaDTO Reserva { get; set; }
+        public Bebe? Bebe { get; set; }
 
-        public List<PaqueteDeServicio> PaqueteDeServicios { get; set; } = new();
+        //public List<PaqueteDeServicio> PaqueteDeServicios { get; set; } = new();
 
-        public List<Fotografo> Fotografos { get; set; }
-        public Reserva Reserva { get; set; } 
+        //public List<Fotografo> Fotografos { get; set; }
     }
 
 }
