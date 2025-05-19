@@ -2,6 +2,7 @@
 using Entity.Dto;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,24 +39,28 @@ namespace DAL
                 return ex.Message;
             }
         }
-        public List<Asignacion> GetAll()
+        public List<AsignacionDTO> GetAll()
         {
             try
             {
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Asignacion";
+                cmd.CommandText = "SELECT a.id, " +
+                                       "e.tipo AS TipoEvento, " +
+                                       "f.nombre AS NombreFotografo " +
+                                       "FROM Asignacion a " +
+                                       "JOIN Evento e ON a.evento_id = e.id " +
+                                       "JOIN Fotografo f ON a.fotografo_id = f.id ";
                 using var reader = cmd.ExecuteReader();
-                var asignaciones = new List<Asignacion>();
+                var asignaciones = new List<AsignacionDTO>();
                 while (reader.Read())
                 {
-                    var asignacion = new Asignacion
+                    var asignacion = new AsignacionDTO
                     {
                         Id = reader.GetInt32(0),
-                        FechaAsignacion = reader.GetDateTime(3),
-                        Fotografo = new Fotografo { Id = reader.GetInt32(1) },
-                        Evento = new Evento { Id = reader.GetInt32(2) }
+                        TipoEvento = reader.GetString(1),
+                        NombreFotografo = reader.GetString(2)
                     };
                     asignaciones.Add(asignacion);
                 }
@@ -83,24 +88,29 @@ namespace DAL
                 return ex.Message;
             }
         }
-        public Asignacion GetById(int id)
+        public AsignacionDTO GetById(int id)
         {
             try
             {
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Asignacion WHERE id = @id";
+                cmd.CommandText = "SELECT a.id, " +
+                                       "e.tipo AS TipoEvento, " +
+                                       "f.nombre AS NombreFotografo " +
+                                       "FROM Asignacion a " +
+                                       "JOIN Evento e ON a.evento_id = e.id " +
+                                       "JOIN Fotografo f ON a.fotografo_id = f.id " +
+                                   "WHERE a.id = @id;";
                 cmd.Parameters.AddWithValue("@id", id);
                 using var reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    var asignacion = new Asignacion
+                    var asignacion = new AsignacionDTO
                     {
                         Id = reader.GetInt32(0),
-                        FechaAsignacion = reader.GetDateTime(3),
-                        Fotografo = new Fotografo { Id = reader.GetInt32(1) },
-                        Evento = new Evento { Id = reader.GetInt32(2) }
+                        TipoEvento = reader.GetString(1),
+                        NombreFotografo = reader.GetString(2)
                     };
                     return asignacion;
                 }
@@ -131,5 +141,106 @@ namespace DAL
                 return ex.Message;
             }
         }
-    }
+        public List<AsignacionDTO> GetByNameFotografo(string nombreFotografo)
+        {
+            var asignaciones = new List<AsignacionDTO>();
+
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText =
+                    "SELECT a.id, " +
+                    "e.tipo AS TipoEvento, " +
+                    "f.nombre AS NombreFotografo " +
+                    "FROM Asignacion a " +
+                    "JOIN Evento e ON a.evento_id = e.id " +
+                    "JOIN Fotografo f ON a.fotografo_id = f.id " +
+                    "WHERE f.nombre LIKE @nombreFotografo";
+
+                cmd.Parameters.AddWithValue("@nombreFotografo", $"%{nombreFotografo}%");
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    asignaciones.Add(new AsignacionDTO
+                    {
+                        Id = reader.GetInt32(0),
+                        TipoEvento = reader.GetString(1),
+                        NombreFotografo = reader.GetString(2)
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return asignaciones;
+        }
+        public List<Asignacion> GetByEventoId(int eventoId)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM Asignacion WHERE Evento_id = @Evento_id";
+                cmd.Parameters.AddWithValue("@Evento_id", eventoId);
+                using var reader = cmd.ExecuteReader();
+                var asignaciones = new List<Asignacion>();
+                while (reader.Read())
+                {
+                    var asignacion = new Asignacion
+                    {
+                        Id = reader.GetInt32(0),
+                        FechaAsignacion = reader.GetDateTime(3),
+                        Fotografo = new Fotografo { Id = reader.GetInt32(1) },
+                        Evento = new Evento { Id = reader.GetInt32(2) }
+                    };
+                    asignaciones.Add(asignacion);
+                }
+                return asignaciones;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public List<AsignacionDTO> GetByFecha(DateTime fecha)
+        {
+            var asignaciones = new List<AsignacionDTO>();
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText =
+                    "SELECT a.id, " +
+                    "e.tipo AS TipoEvento, " +
+                    "f.nombre AS NombreFotografo " +
+                    "FROM Asignacion a " +
+                    "JOIN Evento e ON a.evento_id = e.id " +
+                    "JOIN Fotografo f ON a.fotografo_id = f.id " +
+                    "WHERE CAST(a.fecha AS DATE) = @fecha";
+                cmd.Parameters.AddWithValue("@fecha", fecha.Date);
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    asignaciones.Add(new AsignacionDTO
+                    {
+                        Id = reader.GetInt32(0),
+                        TipoEvento = reader.GetString(1),
+                        NombreFotografo = reader.GetString(2)
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            return asignaciones;
+        }
 }

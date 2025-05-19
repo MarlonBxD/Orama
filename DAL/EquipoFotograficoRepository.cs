@@ -106,36 +106,14 @@ namespace DAL
                 return ex.Message;
             }
         }
-        public List<EquipoFotografico> GetById(int id)
+        public EquipoFotografico GetById(int id)
         {
-            try
-            {
-                using var conn = _conexion.GetConnection();
-                conn.Open();
-                using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Equipofotografico WHERE Id = @Id";
-                cmd.Parameters.AddWithValue("@Id", id);
-                using var reader = cmd.ExecuteReader();
-                var equipos = new List<EquipoFotografico>();
-                while (reader.Read())
-                {
-                    var equipo = new EquipoFotografico
-                    {
-                        Id = reader.GetInt32(0),
-                        Modelo = reader.GetString(1),
-                        Marca = reader.GetString(2),
-                        Tipo = reader.GetString(3),
-                        Estado = reader.GetString(4),
-                        Cantidad = reader.GetInt32(5)
-                    };
-                    equipos.Add(equipo);
-                }
-                return equipos;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener el equipo fotográfico por ID: " + ex.Message);
-            }
+            using var conn = _conexion.GetConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM Cliente WHERE Id = @Id";
+            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.ExecuteNonQuery();
         }
 
     }

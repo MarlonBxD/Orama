@@ -130,6 +130,27 @@ namespace DAL
             }
             return null;
         }
+        public FotografoDTO GetByName(string name)
+        {
+            using var conn = _conexion.GetConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM Fotografo WHERE Nombre = @Nombre";
+            cmd.Parameters.AddWithValue("@Nombre", name);
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                var fotografo = new FotografoDTO
+                {
+                    Nombre = reader.GetString(1),
+                    Apellido = reader.GetString(6),
+                    Telefono = reader.GetString(7),
+                    Especialidad = reader.GetString(2)
+                };
+                return fotografo;
+            }
+            return null;
+        }
 
     }
 }

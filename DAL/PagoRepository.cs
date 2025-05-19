@@ -93,24 +93,6 @@ namespace DAL
                 return ex.Message;
             }
         }
-        public string updateEstado(int id)
-        {
-            try
-            {
-                using var conn = _conexion.GetConnection();
-                conn.Open();
-                using var cmd = conn.CreateCommand();
-                cmd.CommandText = "UPDATE Pagos SET estado = @estado WHERE id = @id";
-                cmd.Parameters.AddWithValue("@estado", "Pagado");
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                return "Pago actualizado correctamente";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-        }
         public PagoDto GetById(int id)
         {
             try

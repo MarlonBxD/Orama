@@ -15,7 +15,7 @@ namespace DAL
         {
             _conexion = new Conexion();
         }
-        public void AgregarCliente(Cliente cliente)
+        public void Agregar(Cliente cliente)
         {
             if (cliente == null || string.IsNullOrEmpty(cliente.Nombre) || string.IsNullOrEmpty(cliente.Telefono))
                 throw new ArgumentException("Datos del cliente no válidos");
@@ -63,7 +63,6 @@ namespace DAL
             cmd.Parameters.AddWithValue("@Id", id);
             cmd.ExecuteNonQuery();
         }
-
         public void UpdateCliente(Cliente cliente)
         {
             using var conn = _conexion.GetConnection();
@@ -101,6 +100,7 @@ namespace DAL
 
             throw new Exception("Cliente no encontrado.");
         }
+        
 
 
     }
