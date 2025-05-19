@@ -24,7 +24,7 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO Cliente (Nombre, Apellido, Telefono, Email, Direccion)
+                cmd.CommandText = @"INSERT INTO cliente (nombre, apellido, telefono, email, direccion)
                             VALUES (@Nombre, @Apellido, @Telefono, @Email, @Direccion)";
                 cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
                 cmd.Parameters.AddWithValue("@Apellido", cliente.Apellido);

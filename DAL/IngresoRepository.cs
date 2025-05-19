@@ -47,11 +47,11 @@ namespace DAL
             }
         }
 
-        public List<IngresoDTO> GetAll()
+        public List<ReservaDTO> GetAll()
         {
             try
             {
-                var ingresos = new List<IngresoDTO>();
+                var ingresos = new List<ReservaDTO>();
 
                 using var conn = _conexion.GetConnection();
                 conn.Open();
@@ -65,7 +65,7 @@ namespace DAL
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    ingresos.Add(new IngresoDTO
+                    ingresos.Add(new ReservaDTO
                     {
                         Id = reader.GetInt32(0),
                         Descripcion = reader.IsDBNull(1) ? null : reader.GetString(1),
