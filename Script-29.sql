@@ -2,161 +2,262 @@
 DROP TABLE IF EXISTS Pago, Egreso, Nomina, PagoFotografo, AsignacionDeEquipo, EquipoFotografico,
 Fotografo, Despacho, Fotografia, Reserva, PaqueteDeServicio, Evento, mensajero, Bebe, Cliente, Persona CASCADE;
 
+-- we don't know how to generate root <with-no-name> (class Root) :(
 
--- Tabla Cliente
-CREATE TABLE Cliente (
-    Id SERIAL PRIMARY KEY,
-    Nombre VARCHAR(100) NOT NULL,
-    Apellido VARCHAR(100) NOT NULL,
-    Telefono VARCHAR(50) NOT NULL,
-    Email VARCHAR(50),
-    Direccion VARCHAR(50) NOT NULL
-);
-CREATE INDEX idx_cliente_telefono ON Cliente(Telefono);
+comment on database postgres is 'default administrative connection database';
 
--- Tabla Bebe
-CREATE TABLE Bebe (
-    Id SERIAL PRIMARY KEY,
-    Nombre VARCHAR(100) NOT NULL,
-    Fecha_Nacimiento DATE NOT NULL,
-    Sexo VARCHAR(10)
+create table cliente
+(
+    id        serial
+        primary key,
+    nombre    varchar(100) not null,
+    apellido  varchar(100) not null,
+    telefono  varchar(50)  not null,
+    email     varchar(100),
+    direccion varchar(100) not null
 );
-CREATE INDEX idx_bebe_nombre ON Bebe(Nombre);
 
--- Tabla Mensajero
-CREATE TABLE Mensajero (
-    Id SERIAL PRIMARY KEY,
-    Nombre VARCHAR(100) NOT NULL,
-    Telefono VARCHAR(50) NOT NULL,
-    Email VARCHAR(50),
-    Tipo VARCHAR(50) NOT NULL,
-    Direccion VARCHAR(50) NOT NULL
-);
-CREATE INDEX idx_mensajero_telefono ON Mensajero(Telefono);
 
--- Tabla Evento
-CREATE TABLE Evento (
-    Id SERIAL PRIMARY KEY,
-    Tipo VARCHAR(100),
-    Fecha DATE NOT NULL,
-    Ubicacion VARCHAR(255)
-);
-CREATE INDEX idx_evento_fecha ON Evento(Fecha);
-CREATE INDEX idx_evento_tipo ON Evento(Tipo);
+create index idx_cliente_telefono
+    on cliente (telefono);
 
--- Tabla PaqueteDeServicio
-CREATE TABLE PaqueteDeServicio (
-    Id SERIAL PRIMARY KEY,
-    Nombre VARCHAR(100) NOT NULL,
-    Precio DECIMAL(10,2) NOT NULL,
-    Descripcion TEXT,
-    Duración INT NOT NULL
+create table bebe
+(
+    id              serial
+        primary key,
+    nombre          varchar(100) not null,
+    fechanacimiento date         not null,
+    sexo            varchar(10)
 );
-CREATE INDEX idx_paquete_precio ON PaqueteDeServicio(Precio);
 
--- Tabla Reserva
-CREATE TABLE Reserva (
-    Id SERIAL PRIMARY KEY,
-    Fecha DATE NOT NULL,
-    Estado VARCHAR(50),
-    Cliente_Id INT NOT NULL,
-    Evento_Id INT NOT NULL,
-    Paquete_ServicioId INT NOT NULL,
-    FOREIGN KEY (Cliente_Id) REFERENCES Cliente(Id),
-    FOREIGN KEY (Evento_Id) REFERENCES Evento(Id),
-    FOREIGN KEY (Paquete_ServicioId) REFERENCES PaqueteDeServicio(Id)
-);
-CREATE INDEX idx_reserva_fecha ON Reserva(Fecha);
-CREATE INDEX idx_reserva_cliente ON Reserva(Cliente_Id);
 
--- Tabla Fotografia
-CREATE TABLE Fotografia (
-    Id SERIAL PRIMARY KEY,
-    Formato VARCHAR(10),
-    Tamaño_MB DOUBLE PRECISION,
-    Evento_Id INT NOT NULL,
-    FOREIGN KEY (Evento_Id) REFERENCES Evento(Id)
-);
-CREATE INDEX idx_foto_evento ON Fotografia(Evento_Id);
+create index idx_bebe_nombre
+    on bebe (nombre);
 
--- Tabla Despacho
-CREATE TABLE Despacho (
-    Id SERIAL PRIMARY KEY,
-    Fecha_Despacho DATE,
-    Estado VARCHAR(50),
-    Cliente_Id INT NOT NULL,
-    Mensajero_Id INT,
-    Numero_Paquetes INT NOT NULL,
-    FOREIGN KEY (Cliente_Id) REFERENCES Cliente(Id),
-    FOREIGN KEY (Mensajero_Id) REFERENCES Mensajero(Id)
+create table reserva
+(
+    id                 serial
+        primary key,
+    fecha_evento       date not null,
+    fecha_reserva      date not null,
+    estado             varchar(50),
+    observaciones      text,
+    cliente_id         integer
+        constraint fk_reserva_cliente
+            references cliente,
+    evento_id          integer,
+    paqueteservicio_id integer
 );
-CREATE INDEX idx_despacho_fecha ON Despacho(Fecha_Despacho);
 
--- Tabla Fotografo
-CREATE TABLE Fotografo (
-    Id SERIAL PRIMARY KEY,
-    Nombre VARCHAR(100),
-    Especialidad VARCHAR(100)
-);
-CREATE INDEX idx_fotografo_especialidad ON Fotografo(Especialidad);
 
--- Tabla EquipoFotografico
-CREATE TABLE EquipoFotografico (
-    Id SERIAL PRIMARY KEY,
-    Nombre VARCHAR(100),
-    Modelo VARCHAR(50),
-    Estado VARCHAR(50),
-    Tipo VARCHAR(50)
+create table evento
+(
+    id         serial
+        primary key,
+    tipo       varchar(100),
+    fecha      date not null,
+    ubicacion  varchar(255),
+    reserva_id integer
+        constraint fk_evento_reserva
+            references reserva,
+    bebe_id    integer
+        constraint fk_evento_bebe
+            references bebe
 );
-CREATE INDEX idx_equipo_tipo ON EquipoFotografico(Tipo);
 
--- Tabla AsignacionDeEquipo
-CREATE TABLE AsignacionDeEquipo (
-    Id SERIAL PRIMARY KEY,
-    Fecha_asignacion DATE NOT NULL,
-    Fecha_entrega DATE NOT NULL,
-    Fotografo_Id INT NOT NULL,
-    Equipo_Id INT NOT NULL,
-    Estado VARCHAR(100),
-    FOREIGN KEY (Fotografo_Id) REFERENCES Fotografo(Id),
-    FOREIGN KEY (Equipo_Id) REFERENCES EquipoFotografico(Id)
-);
-CREATE INDEX idx_asignacion_fecha ON AsignacionDeEquipo(Fecha_asignacion);
 
--- Tabla PagoFotografo
-CREATE TABLE PagoFotografo (
-    Id SERIAL PRIMARY KEY,
-    Monto DECIMAL(10,2) NOT NULL,
-    FechaPago DATE NOT NULL,
-    Metodo VARCHAR(50),
-    FotografoId INT NOT NULL,
-    FOREIGN KEY (FotografoId) REFERENCES Fotografo(Id)
-);
-CREATE INDEX idx_pago_fotografo_fecha ON PagoFotografo(FechaPago);
+create index idx_evento_fecha
+    on evento (fecha);
 
--- Tabla Nomina
-CREATE TABLE Nomina (
-    Id SERIAL PRIMARY KEY,
-    Fecha DATE NOT NULL,
-    
-    Total DECIMAL(10,2)
-);
-CREATE INDEX idx_nomina_fecha ON Nomina(Fecha);
+create index idx_evento_tipo
+    on evento (tipo);
 
--- Tabla Egreso
-CREATE TABLE Egreso (
-    Id SERIAL PRIMARY KEY,
-    Descripcion TEXT,
-    Monto DECIMAL(10,2),
-    Fecha DATE
+create table paquetedeservicio
+(
+    id          serial
+        primary key,
+    nombre      varchar(100)   not null,
+    precio      numeric(10, 2) not null,
+    descripcion text,
+    duracion    interval       not null,
+    evento_id   integer
+        constraint fk_paquete_evento
+            references evento
 );
-CREATE INDEX idx_egreso_fecha ON Egreso(Fecha);
 
--- Tabla Pago
-CREATE TABLE Pago (
-    Id SERIAL PRIMARY KEY,
-    Monto DECIMAL(10,2),
-    FechaPago DATE NOT NULL,
-    Metodo VARCHAR(50)
+
+create index idx_paquete_precio
+    on paquetedeservicio (precio);
+
+create index idx_reserva_fecha
+    on reserva (fecha_evento);
+
+create index idx_reserva_cliente
+    on reserva (cliente_id);
+
+create table productos
+(
+    id                 serial
+        primary key,
+    nombre             varchar(100)   not null,
+    precio             numeric(10, 2) not null,
+    descripcion        text,
+    stock              integer        not null,
+    paquetesercicio_id integer
+        constraint fk_productos_paquetedeservicio
+            references paquetedeservicio
 );
-CREATE INDEX idx_pago_fecha ON Pago(FechaPago);
+
+
+create table nomina
+(
+    id    serial
+        primary key,
+    fecha date not null,
+    total numeric(10, 2)
+);
+
+
+create table fotografo
+(
+    id               serial
+        primary key,
+    nombre           varchar(100),
+    especialidad     varchar(100),
+    nomina_id        integer
+        constraint fk_fotografo_nomina
+            references nomina,
+    pagofotografo_id integer,
+    evento_id        integer
+        constraint fk_fotografo_evento
+            references evento,
+    apellido         varchar(100),
+    telefono         varchar(10),
+    email            varchar(100)
+);
+
+
+create index idx_fotografo_especialidad
+    on fotografo (especialidad);
+
+create index idx_nomina_fecha
+    on nomina (fecha);
+
+create table asignacion
+(
+    id               serial
+        primary key,
+    fotografo_id     integer not null
+        constraint fk_asignacion_fotografo
+            references fotografo,
+    evento_id        integer not null
+        constraint fk_asignacion_evento
+            references evento,
+    fecha_asignacion date    not null
+);
+
+
+create table equipofotografico
+(
+    id     serial
+        primary key,
+    modelo varchar(50),
+    estado varchar(50),
+    tipo   varchar(50),
+    marca  varchar(100)
+);
+
+
+create index idx_equipo_tipo
+    on equipofotografico (tipo);
+
+create table asignaciondeequipo
+(
+    id               serial
+        primary key,
+    fecha_asignacion date    not null,
+    fecha_entrega    date,
+    fotografoid      integer not null
+        constraint fk_asignacion_equipo_fotografo
+            references fotografo,
+    equipoid         integer not null
+        constraint fk_asignacion_equipo_equipo
+            references equipofotografico,
+    estado           varchar(100)
+);
+
+
+
+create index idx_asignacion_fecha
+    on asignaciondeequipo (fecha_asignacion);
+
+create table egreso
+(
+    id          serial
+        primary key,
+    descripcion text,
+    monto       numeric(10, 2),
+    fecha       date,
+    metodo_pago varchar(100)
+);
+
+
+create index idx_egreso_fecha
+    on egreso (fecha);
+
+create table ingreso
+(
+    id              serial
+        primary key,
+    descripcion     varchar(200),
+    monto           numeric(10, 2),
+    fecha           date,
+    concepto        varchar(50),
+    cliente_id      integer
+        constraint fk_ingreso_cliente
+            references cliente,
+    referencia_tipo varchar(50)
+);
+
+
+create index idx_ingreso_fecha
+    on ingreso (fecha);
+
+create table mensajero
+(
+    id        serial
+        primary key,
+    nombre    varchar(100) not null,
+    telefono  varchar(20),
+    email     varchar(100),
+    apellido  varchar(50),
+    direccion varchar(50)
+);
+
+
+
+create table despacho
+(
+    id                  serial
+        primary key,
+    fechadespacho       date,
+    estado              varchar(50),
+    paquete_servicio_id integer
+        constraint fk_despacho_paquete
+            references paquetedeservicio,
+    mensajero_id        integer
+        constraint fk_mensajero_despacho
+            references mensajero,
+    numero_paquetes     integer
+);
+
+
+
+create index idx_despacho_fecha
+    on despacho (fechadespacho);
+
+create index idx_mensajero_nombre
+    on mensajero (nombre);
+
+
+
