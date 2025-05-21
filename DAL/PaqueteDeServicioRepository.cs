@@ -24,9 +24,8 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO paquetedeservicio (id, nombre, precio, descripcion, duracion, evento_id)
-                                VALUES (@id, @nombre, @precio, @descripcion, @duracion, @evento_id)";
-                cmd.Parameters.AddWithValue("@id", paquete.Id);
+                cmd.CommandText = @"INSERT INTO paquetedeservicio (nombre, precio, descripcion, duracion, evento_id)
+                                VALUES (@nombre, @precio, @descripcion, @duracion, @evento_id)";
                 cmd.Parameters.AddWithValue("@nombre", paquete.Nombre);
                 cmd.Parameters.AddWithValue("@precio", paquete.Precio);
                 cmd.Parameters.AddWithValue("@descripcion", paquete.Descripcion);

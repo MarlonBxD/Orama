@@ -12,167 +12,197 @@ namespace DAL
     public class DespachoRepository
     {
         private readonly Conexion _conexion;
+
         public DespachoRepository()
         {
             _conexion = new Conexion();
         }
-        public void AgregarDespacho(Despacho despacho)
-        {
-            if (despacho == null || despacho.NumeroPaquetes <= 0)
-                throw new ArgumentException("Datos del despacho no válidos");
 
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-
-            cmd.CommandText = @"
-                INSERT INTO Despacho (Fecha_Despacho, Estado, Cliente_Id, Mensajero_Id, Numero_Paquetes)
-                VALUES (@FechaDespacho, @Estado, @ClienteId, @MensajeroId, @NumeroPaquetes)";
-
-            cmd.Parameters.AddWithValue("@FechaDespacho", despacho.FechaDespacho);
-            cmd.Parameters.AddWithValue("@Estado", despacho.Estado);
-            cmd.Parameters.AddWithValue("@ClienteId", despacho.ClienteId);
-
-            if (despacho.Mensajeroid.HasValue)
-                cmd.Parameters.AddWithValue("@MensajeroId", despacho.Mensajeroid.Value);
-            else
-                cmd.Parameters.AddWithValue("@MensajeroId", DBNull.Value);
-
-            cmd.Parameters.AddWithValue("@NumeroPaquetes", despacho.NumeroPaquetes);
-
-
-            cmd.ExecuteNonQuery();
-        }
-
-        public void ActualizarDespacho(DespachoResponseDTO dto)
-        {
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-
-            cmd.CommandText = @"UPDATE Despacho SET fecha_despacho = @fecha, estado = @estado,
-                            cliente_id = @cliente, mensajero_id = @mensajero, numero_paquetes = @paquetes
-                            WHERE id = @id";
-
-            cmd.Parameters.AddWithValue("@fecha", dto.FechaDespacho);
-            cmd.Parameters.AddWithValue("@estado", dto.Estado.ToString());
-            cmd.Parameters.AddWithValue("@cliente", dto.ClienteId);
-            cmd.Parameters.AddWithValue("@paquetes", dto.NumeroPaquetes);
-            cmd.Parameters.AddWithValue("@id", dto.Id);
-
-            cmd.ExecuteNonQuery();
-        }
-
-
-        public void Eliminar(int id)
+        public string Agregar(Despacho despacho)
         {
             try
             {
-                _conexion.OpenConnection();
-                using (var command = _conexion.GetConnection().CreateCommand())
-                {
-                    command.CommandText = "DELETE FROM despachos WHERE id_despacho = @id";
-                    command.Parameters.AddWithValue("@id", id);
-                    command.ExecuteNonQuery();
-                }
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+
+                cmd.CommandText = @"INSERT INTO despacho (fechadespacho, estado, numero_paquetes, 
+                                                      paquetedeservicio_id, cliente_id, mensajero_id)
+                                VALUES (@fechadespacho, @estado, @numeropaquetes, 
+                                        @paquetedeservicio_id, @cliente_id, @mensajero_id)";
+
+                cmd.Parameters.AddWithValue("@fechadespacho", despacho.FechaDespacho);
+                cmd.Parameters.AddWithValue("@estado", despacho.Estado);
+                cmd.Parameters.AddWithValue("@numeropaquetes", despacho.NumeroPaquetes);
+                cmd.Parameters.AddWithValue("@paquetedeservicio_id", despacho.PaqueteDeServicio.Id);
+                cmd.Parameters.AddWithValue("@cliente_id", despacho.Cliente.Id);
+                cmd.Parameters.AddWithValue("@mensajero_id", despacho.Mensajero.Id);
+
+                cmd.ExecuteNonQuery();
+
+                return "Despacho agregado correctamente";
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al eliminar el despacho", ex);
-            }
-            finally
-            {
-                _conexion.CloseConnection();
+                return ex.Message;
             }
         }
 
-        public List<DespachoResponseDTO> ObtenerDespachos()
+        public List<DespachoDTO> GetAll()
         {
-            var lista = new List<DespachoResponseDTO>();
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
+            var despachos = new List<DespachoDTO>();
 
-            cmd.CommandText = @"
-                                SELECT 
-                                    d.id, 
-                                    d.fecha_despacho, 
-                                    d.estado, 
-                                    c.nombre, 
-                                    c.direccion, 
-                                    c.telefono,
-                                    m.nombre, 
-                                    d.numero_paquetes 
-                                FROM Despacho d
-                                JOIN Cliente c ON d.cliente_id = c.id
-                                LEFT JOIN Mensajero m ON d.mensajero_id = m.id";
-
-            using var reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                lista.Add(new DespachoResponseDTO
-                {
-                    Id = reader.GetInt32(0),
-                    FechaDespacho = reader.GetDateTime(1),
-                    Estado = reader.GetString(2),
-                    ClienteNombre = reader.GetString(3),
-                    ClienteDireccion = reader.GetString(4),
-                    ClienteTelefono = reader.GetString(5),
-                    MensajeroNombre = reader.IsDBNull(6) ? "N/A" : reader.GetString(6),
-                    NumeroPaquetes = reader.GetInt32(7)
-                });
-            }
-            return lista;
-        }
-
-
-        public DespachoResponseDTO ObtenerDespachoPorId(int id)
-        {
-            DespachoResponseDTO? dto = null; // Use nullable type
             try
             {
-                _conexion.OpenConnection();
-                using (var command = _conexion.GetConnection().CreateCommand())
-                {
-                    command.CommandText = @"
-                    SELECT d.id, d.fecha_despacho, d.estado, 
-                    c.nombre, c.direccion, c.telefono,
-                    m.nombre, d.numero_paquetes
-                    FROM Despacho d
-                    JOIN Cliente c ON d.cliente_id = c.id
-                    LEFT JOIN Mensajero m ON d.mensajero_id = m.id
-                    WHERE d.id = @id";
-                    command.Parameters.AddWithValue("@id", id);
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
 
-                    using (var reader = command.ExecuteReader())
+                cmd.CommandText = @"SELECT 
+                            d.id, d.fechadespacho, d.estado, d.numero_paquetes,
+                            p.nombre AS nombre_paquete,
+                            c.nombre AS nombre_cliente,
+                            m.nombre AS nombre_mensajero
+                            FROM despacho d
+                            LEFT JOIN paquetedeservicio p ON d.paquetedeservicio_id = p.id
+                            LEFT JOIN cliente c ON d.cliente_id = c.id
+                            LEFT JOIN mensajero m ON d.mensajero_id = m.id";
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    despachos.Add(new DespachoDTO
                     {
-                        if (reader.Read())
-                        {
-                            dto = new DespachoResponseDTO
-                            {
-                                Id = reader.GetInt32(0),
-                                FechaDespacho = reader.GetDateTime(1),
-                                Estado = reader.GetString(2),
-                                ClienteNombre = reader.GetString(3),
-                                ClienteTelefono = reader.GetString(4),
-                                ClienteDireccion = reader.GetString(5),
-                                MensajeroNombre = reader.IsDBNull(6) ? "N/A" : reader.GetString(6),
-                                NumeroPaquetes = reader.GetInt32(7)
-                            };
-                        }
-                    }
+                        Id = reader.GetInt32(0),
+                        FechaDespacho = reader.GetDateTime(1),
+                        Estado = reader.GetString(2),
+                        NumeroPaquetes = reader.GetInt32(3),
+                        NombrePaquete = reader.IsDBNull(4) ? null : reader.GetString(4),
+                        NombreCliente = reader.IsDBNull(5) ? null : reader.GetString(5),
+                        NombreMensajero = reader.IsDBNull(6) ? null : reader.GetString(6)
+                    });
                 }
+
+                return despachos;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+        public Despacho GetById(int id)
+        {
+            try
+            {
+                Despacho despacho = null;
+
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+
+                cmd.CommandText = @"SELECT 
+                                d.id, d.fechadespacho, d.estado, d.numero_paquetes,
+                                p.id, p.nombre,
+                                c.id, c.nombre,
+                                m.id, m.nombre
+                                FROM despacho d
+                                LEFT JOIN paquetedeservicio p ON d.paquetedeservicio_id = p.id
+                                LEFT JOIN cliente c ON d.cliente_id = c.id
+                                LEFT JOIN mensajero m ON d.mensajero_id = m.id
+                                WHERE d.id = @id";
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    despacho = new Despacho
+                    {
+                        Id = reader.GetInt32(0),
+                        FechaDespacho = reader.GetDateTime(1),
+                        Estado = reader.GetString(2),
+                        NumeroPaquetes = reader.GetInt32(3),
+                        PaqueteDeServicio = new PaqueteDeServicioDTO
+                        {
+                            Id = reader.GetInt32(4),
+                            Nombre = reader.GetString(5)
+                        },
+                        Cliente = new ClienteDTO
+                        {
+                            Id = reader.GetInt32(6),
+                            Nombre = reader.GetString(7)
+                        },
+                        Mensajero = new MensajeroDTO
+                        {
+                            Id = reader.GetInt32(8),
+                            Nombre = reader.GetString(9)
+                        }
+                    };
+                }
+
+                return despacho;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public string Update(Despacho despacho)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+
+                cmd.CommandText = @"UPDATE despacho SET 
+                                fechadespacho = @fechadespacho,
+                                estado = @estado,
+                                numero_paquetes = @numeropaquetes,
+                                paquetedeservicio_id = @paquetedeservicio_id,
+                                cliente_id = @cliente_id,
+                                mensajero_id = @mensajero_id
+                                WHERE id = @id";
+
+                cmd.Parameters.AddWithValue("@fechadespacho", despacho.FechaDespacho);
+                cmd.Parameters.AddWithValue("@estado", despacho.Estado);
+                cmd.Parameters.AddWithValue("@numeropaquetes", despacho.NumeroPaquetes);
+                cmd.Parameters.AddWithValue("@paquetedeservicio_id", despacho.PaqueteDeServicio.Id);
+                cmd.Parameters.AddWithValue("@cliente_id", despacho.Cliente.Id);
+                cmd.Parameters.AddWithValue("@mensajero_id", despacho.Mensajero.Id);
+                cmd.Parameters.AddWithValue("@id", despacho.Id);
+
+                cmd.ExecuteNonQuery();
+
+                return "Despacho actualizado correctamente";
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener el despacho", ex);
+                return ex.Message;
             }
-            finally
-            {
-                _conexion.CloseConnection();
-            }
-            return dto ?? throw new InvalidOperationException("No se encontró el despacho con el ID especificado.");
         }
 
+        public string Delete(int id)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+
+                cmd.CommandText = @"DELETE FROM despacho WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+
+                return "Despacho eliminado correctamente";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 }

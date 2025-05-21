@@ -11,8 +11,10 @@ namespace Entity.Dto
         public int Id { get; set; }
         public DateTime FechaDespacho { get; set; }
         public string Estado { get; set; }
+        public int NumeroPaquetes { get; set; }
+
+        public string NombrePaquete { get; set; }
         public string NombreCliente { get; set; }
         public string NombreMensajero { get; set; }
-        public int NumeroPaquetes { get; set; }
     }
 }
