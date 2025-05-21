@@ -198,5 +198,37 @@ namespace DAL
                 return ex.Message;
             }
         }
+
+        public List<EventoDTO> ObtenerEventos(int id)
+        {
+            try
+            {
+                List<EventoDTO> eventos = new List<EventoDTO>();
+
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"SELECT id, tipo, fecha, ubicacion FROM evento WHERE reserva_id = @reserva_id";
+                cmd.Parameters.AddWithValue("@reserva_id", id);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var evento = new EventoDTO
+                    {
+                        Id = reader.GetInt32(0),
+                        Tipo = reader.IsDBNull(1) ? null : reader.GetString(1),
+                        Fecha = reader.GetDateTime(2),
+                        Ubicacion = reader.IsDBNull(3) ? null : reader.GetString(3)
+                    };
+                    eventos.Add(evento);
+                }
+                return eventos;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

@@ -26,5 +26,13 @@ namespace Entity.Dto
             Id = id;
             Tipo = tipo;
         }
+
+        public EventoDTO(int id, string tipo, DateTime fecha, string ubicacion)
+        {
+            Id = id;
+            Tipo = tipo;
+            Fecha = fecha;
+            Ubicacion = ubicacion;
+        }
     }
 }
