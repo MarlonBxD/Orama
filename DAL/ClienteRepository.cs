@@ -30,6 +30,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@Email", cliente.Email);
             cmd.Parameters.AddWithValue("@Direccion", cliente.Direccion);
             cmd.ExecuteNonQuery();
+            conn.Close();
         }
         public List<Cliente> GetClientes()
         {
@@ -52,6 +53,7 @@ namespace DAL
                 };
                 clientes.Add(cliente);
             }
+            conn.Close();
             return clientes;
         }
         public void DelecteClienteById(int id)
@@ -62,6 +64,7 @@ namespace DAL
             cmd.CommandText = "DELETE FROM Cliente WHERE Id = @Id";
             cmd.Parameters.AddWithValue("@Id", id);
             cmd.ExecuteNonQuery();
+            conn.Close();
         }
         public void UpdateCliente(Cliente cliente)
         {
@@ -76,32 +79,37 @@ namespace DAL
             cmd.Parameters.AddWithValue("@Email", cliente.Email);
             cmd.Parameters.AddWithValue("@Direccion", cliente.Direccion);
             cmd.ExecuteNonQuery();
+            conn.Close();
         }
         public ClienteDTO ObtenerClientePorNombre(string nombre)
         {
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT id, Nombre, Telefono, Direccion FROM Cliente WHERE Nombre = @nombre LIMIT 1";
-            cmd.Parameters.AddWithValue("@nombre", nombre);
-
-            using var reader = cmd.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                return new ClienteDTO
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT Id, Nombre, Telefono, Direccion FROM Cliente WHERE Nombre = @Nombre";
+                cmd.Parameters.AddWithValue("@Nombre", nombre);
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    Id = reader.GetInt32(0),
-                    Nombre = reader.GetString(1),
-                    Telefono = reader.GetString(2),
-                    Direccion = reader.GetString(3)
-                };
+                    return new ClienteDTO
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.GetString(1),
+                        Telefono = reader.GetString(2),
+                        Direccion = reader.GetString(3)
+                    };
+                }
+                conn.Close();
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el cliente por nombre", ex);
             }
 
-            throw new Exception("Cliente no encontrado.");
         }
-        
-
 
     }
 }

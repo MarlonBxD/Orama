@@ -32,6 +32,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Evento_id", asignacion.Evento.Id);
                 cmd.Parameters.AddWithValue("@Fecha", asignacion.FechaAsignacion);
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return "Asignación agregada correctamente";
             }
             catch (Exception ex)
@@ -64,7 +65,9 @@ namespace DAL
                     };
                     asignaciones.Add(asignacion);
                 }
+                conn.Close();
                 return asignaciones;
+
             }
             catch (Exception ex)
             {
@@ -81,6 +84,7 @@ namespace DAL
                 cmd.CommandText = "DELETE FROM Asignacion WHERE Id = @Id";
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return "Asignación eliminada correctamente";
             }
             catch (Exception ex)
@@ -114,6 +118,7 @@ namespace DAL
                     };
                     return asignacion;
                 }
+                conn.Close();
                 return null;
             }
             catch (Exception ex)
@@ -134,6 +139,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Fecha", asignacion.FechaAsignacion);
                 cmd.Parameters.AddWithValue("@Id", asignacion.Id);
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return "Asignación actualizada correctamente";
             }
             catch (Exception ex)
@@ -172,6 +178,7 @@ namespace DAL
                         NombreFotografo = reader.GetString(2)
                     });
                 }
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -202,6 +209,7 @@ namespace DAL
                     };
                     asignaciones.Add(asignacion);
                 }
+                conn.Close();
                 return asignaciones;
             }
             catch (Exception ex)
@@ -236,6 +244,7 @@ namespace DAL
                         NombreFotografo = reader.GetString(2)
                     });
                 }
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -243,4 +252,5 @@ namespace DAL
             }
             return asignaciones;
         }
+    }
 }

@@ -31,19 +31,12 @@ namespace DAL
 
             cmd.Parameters.AddWithValue("@FechaDespacho", despacho.FechaDespacho);
             cmd.Parameters.AddWithValue("@Estado", despacho.Estado);
-            cmd.Parameters.AddWithValue("@ClienteId", despacho.ClienteId);
-
-            if (despacho.Mensajeroid.HasValue)
-                cmd.Parameters.AddWithValue("@MensajeroId", despacho.Mensajeroid.Value);
-            else
-                cmd.Parameters.AddWithValue("@MensajeroId", DBNull.Value);
-
+            cmd.Parameters.AddWithValue("@ClienteId", despacho.Mensajero.Id);
+            cmd.Parameters.AddWithValue("@MensajeroId", despacho.Mensajero.Id);
             cmd.Parameters.AddWithValue("@NumeroPaquetes", despacho.NumeroPaquetes);
-
-
             cmd.ExecuteNonQuery();
+            conn.Close();
         }
-
         public void ActualizarDespacho(DespachoResponseDTO dto)
         {
             using var conn = _conexion.GetConnection();
@@ -61,31 +54,30 @@ namespace DAL
             cmd.Parameters.AddWithValue("@id", dto.Id);
 
             cmd.ExecuteNonQuery();
+            conn.Close();
         }
-
-
-        public void Eliminar(int id)
+        public string Eliminar(int id)
         {
             try
             {
-                _conexion.OpenConnection();
-                using (var command = _conexion.GetConnection().CreateCommand())
-                {
-                    command.CommandText = "DELETE FROM despachos WHERE id_despacho = @id";
-                    command.Parameters.AddWithValue("@id", id);
-                    command.ExecuteNonQuery();
-                }
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "DELETE FROM Despacho WHERE Id = @Id";
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return "Equipo Fotográfico eliminado correctamente";
             }
-            catch (Exception ex)
+            catch (AppException ex)
             {
-                throw new DALException("Error al eliminar el despacho", ex);
+                throw new AppException("Error al eliminar el despacho", ex);
             }
             finally
             {
                 _conexion.CloseConnection();
             }
         }
-
         public List<DespachoResponseDTO> ObtenerDespachos()
         {
             var lista = new List<DespachoResponseDTO>();
@@ -108,6 +100,7 @@ namespace DAL
                                 LEFT JOIN Mensajero m ON d.mensajero_id = m.id";
 
             using var reader = cmd.ExecuteReader();
+            conn.Close();
             while (reader.Read())
             {
                 lista.Add(new DespachoResponseDTO
@@ -124,54 +117,46 @@ namespace DAL
             }
             return lista;
         }
-
-
-        public DespachoResponseDTO ObtenerDespachoPorId(int id)
+        public DespachoResponseDTO GetById(int id)
         {
-            DespachoResponseDTO? dto = null; // Use nullable type
             try
             {
-                _conexion.OpenConnection();
-                using (var command = _conexion.GetConnection().CreateCommand())
-                {
-                    command.CommandText = @"
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"
                     SELECT d.id, d.fecha_despacho, d.estado, 
-                    c.nombre, c.direccion, c.telefono,
-                    m.nombre, d.numero_paquetes
+                                c.nombre, c.direccion, c.telefono,
+                                m.nombre, d.numero_paquetes
                     FROM Despacho d
                     JOIN Cliente c ON d.cliente_id = c.id
                     LEFT JOIN Mensajero m ON d.mensajero_id = m.id
                     WHERE d.id = @id";
-                    command.Parameters.AddWithValue("@id", id);
-
-                    using (var reader = command.ExecuteReader())
+                cmd.Parameters.AddWithValue("@id", id);
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    var despacho = new DespachoResponseDTO
                     {
-                        if (reader.Read())
-                        {
-                            dto = new DespachoResponseDTO
-                            {
-                                Id = reader.GetInt32(0),
-                                FechaDespacho = reader.GetDateTime(1),
-                                Estado = reader.GetString(2),
-                                ClienteNombre = reader.GetString(3),
-                                ClienteTelefono = reader.GetString(4),
-                                ClienteDireccion = reader.GetString(5),
-                                MensajeroNombre = reader.IsDBNull(6) ? "N/A" : reader.GetString(6),
-                                NumeroPaquetes = reader.GetInt32(7)
-                            };
-                        }
-                    }
+                        Id = reader.GetInt32(0),
+                        FechaDespacho = reader.GetDateTime(1),
+                        Estado = reader.GetString(2),
+                        ClienteNombre = reader.GetString(3),
+                        ClienteDireccion = reader.GetString(4),
+                        ClienteTelefono = reader.GetString(5),
+                        MensajeroNombre = reader.GetString(6),
+                        NumeroPaquetes = reader.GetInt32(7)
+                    };
+                    conn.Close();
+                    return despacho;
                 }
+                return null;
+
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener el despacho", ex);
+                return null; 
             }
-            finally
-            {
-                _conexion.CloseConnection();
-            }
-            return dto ?? throw new InvalidOperationException("No se encontró el despacho con el ID especificado.");
         }
 
     }

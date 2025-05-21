@@ -32,6 +32,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Email", fotografo.Email);
                 cmd.Parameters.AddWithValue("@TipoFotografo", fotografo.Especialidad);
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return "Fotografo agregado correctamente";
 
             }
@@ -61,6 +62,7 @@ namespace DAL
                     };
                     fotografos.Add(fotografo);
                 }
+                conn.Close();
                 return fotografos;
 
             }
@@ -79,6 +81,7 @@ namespace DAL
                 cmd.CommandText = "DELETE FROM Fotografo WHERE id = @id";
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return "Fotografo eliminado correctamente";
 
             }
@@ -102,6 +105,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Especialidad", fotografo.Especialidad);
                 cmd.Parameters.AddWithValue("@id", fotografo.Id);
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return "Fotografo actualizado correctamente";
             }
             catch (Exception ex)
@@ -126,6 +130,7 @@ namespace DAL
                     Telefono = reader.GetString(7),
                     Especialidad = reader.GetString(2)
                 };
+                conn.Close();
                 return fotografo;
             }
             return null;
@@ -147,6 +152,7 @@ namespace DAL
                     Telefono = reader.GetString(7),
                     Especialidad = reader.GetString(2)
                 };
+                conn.Close();
                 return fotografo;
             }
             return null;

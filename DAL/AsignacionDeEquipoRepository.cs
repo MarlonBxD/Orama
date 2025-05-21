@@ -149,7 +149,6 @@ namespace DAL
                                   "JOIN fotografo f ON a.fotografoid = f.id " +
                                   "JOIN equipofotografico e ON a.equipoid = e.id " +
                                   "WHERE a.id = @id";
-
                 cmd.Parameters.AddWithValue("@id", id);
 
                 using var reader = cmd.ExecuteReader();
@@ -166,7 +165,7 @@ namespace DAL
                     };
                     return asignacion;
                 }
-
+                conn.Close();
                 return null;
             }
             catch (Exception ex)

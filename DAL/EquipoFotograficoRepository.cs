@@ -30,6 +30,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Estado", equipoFotografico.Estado);
                 cmd.Parameters.AddWithValue("@cantidad", equipoFotografico.Cantidad);
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return "Equipo Fotográfico agregado correctamente";
             }
             catch (Exception ex)
@@ -61,6 +62,7 @@ namespace DAL
                     };
                     equipos.Add(equipo);
                 }
+                conn.Close();
                 return equipos;
             }
             catch (Exception ex)
@@ -82,6 +84,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Tipo", equipoFotografico.Tipo);
                 cmd.Parameters.AddWithValue("@Estado", equipoFotografico.Estado);
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return "Equipo Fotográfico actualizado correctamente";
             }
             catch (Exception ex)
@@ -99,6 +102,7 @@ namespace DAL
                 cmd.CommandText = "DELETE FROM Equipofotografico WHERE Id = @Id";
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return "Equipo Fotográfico eliminado correctamente";
             }
             catch (Exception ex)
@@ -108,12 +112,32 @@ namespace DAL
         }
         public EquipoFotografico GetById(int id)
         {
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = "DELETE FROM Cliente WHERE Id = @Id";
-            cmd.Parameters.AddWithValue("@Id", id);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM Cliente WHERE Id = @Id";
+                cmd.Parameters.AddWithValue("@Id", id);
+                using var reader = cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
+                var EquipoFotografico = new EquipoFotografico
+                {
+                    Id = reader.GetInt32(0),
+                    Modelo = reader.GetString(1),
+                    Estado = reader.GetString(2),
+                    Tipo = reader.GetString(3),
+                    Marca = reader.GetString(4),
+                    Cantidad = reader.GetInt32(5)
+                };
+                conn.Close();
+                return EquipoFotografico;
+                
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
     }

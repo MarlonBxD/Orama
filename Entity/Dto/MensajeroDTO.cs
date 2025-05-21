@@ -9,5 +9,6 @@ namespace Entity.Dto
     public class MensajeroDTO
     {
         public string Nombre { get; set; }
+        public string Telefono { get; set; }
     }
 }

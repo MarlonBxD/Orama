@@ -54,7 +54,7 @@ namespace BLL
         {
             try
             {
-                return _mensajeroRepository.GetMensajeros().FirstOrDefault(m => m.Id == id);
+                return _mensajeroRepository.GetMensajero(id);
             }
             catch (Exception ex)
             {
