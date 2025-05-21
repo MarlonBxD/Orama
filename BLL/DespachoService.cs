@@ -9,68 +9,126 @@ namespace BLL
     public class DespachoService
     {
         private readonly DespachoRepository _repository;
-        private readonly MensajeroRepository _mensajeroRepository;
-        private readonly CLienteRepository _clienteRepository;
 
         public DespachoService()
         {
             _repository = new DespachoRepository();
-            _mensajeroRepository = new MensajeroRepository();
-            _clienteRepository = new CLienteRepository();
         }
 
-        public string GuardarDespacho(Despacho dto)
+        public string Agregar(Despacho despacho)
         {
             try
             {
-                _repository.AgregarDespacho(dto);
-                return "Despacho guardado correctamente.";
+                if (despacho == null)
+                    throw new ArgumentException("El despacho no puede ser nulo.");
+
+                if (despacho.FechaDespacho == default)
+                    throw new ArgumentException("La fecha de despacho es obligatoria.");
+
+                if (string.IsNullOrWhiteSpace(despacho.Estado))
+                    throw new ArgumentException("El estado es obligatorio.");
+
+                if (despacho.NumeroPaquetes <= 0)
+                    throw new ArgumentException("El número de paquetes debe ser mayor a cero.");
+
+                if (despacho.PaqueteDeServicio == null || despacho.PaqueteDeServicio.Id <= 0)
+                    throw new ArgumentException("Debe especificar un paquete de servicio válido.");
+
+                if (despacho.Cliente == null || despacho.Cliente.Id <= 0)
+                    throw new ArgumentException("Debe especificar un cliente válido.");
+
+                if (despacho.Mensajero == null || despacho.Mensajero.Id <= 0)
+                    throw new ArgumentException("Debe especificar un mensajero válido.");
+
+                return _repository.Agregar(despacho);
             }
             catch (Exception ex)
             {
-                return $"Error al guardar despacho: {ex.Message}";
-            }
-        }
-        public List<DespachoResponseDTO> ObtenerDespachos()
-        {
-            try
-            {
-                return _repository.ObtenerDespachos();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error consultando despachos: {ex.Message}");
+                throw new BLLException("Error al agregar el despacho", ex);
             }
         }
 
-        //public string ActualizarDespacho(DespachoDTO dto)
-        //{
-        //    try
-        //    {
-        //        _repository.ActualizarDespacho(dto);
-        //        return "Despacho actualizado correctamente.";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return $"Error actualizando despacho: {ex.Message}";
-        //    }
-        //}
-
-        public string EliminarDespacho(int id)
+        public List<DespachoDTO> GetAll()
         {
             try
             {
-                _repository.Eliminar(id);
-                return "Despacho eliminado con éxito.";
-            }
-            catch (DALException ex)
-            {
-                return $"Error eliminando despacho: {ex.Message}";
+                return _repository.GetAll();
             }
             catch (Exception ex)
             {
-                return $"Error inesperado: {ex.Message}";
+                throw new BLLException("Error al obtener la lista de despachos", ex);
+            }
+        }
+
+        public Despacho GetById(int id)
+        {
+            try
+            {
+                if (id <= 0)
+                    throw new ArgumentException("El ID debe ser mayor que cero.");
+
+                var despacho = _repository.GetById(id);
+                if (despacho == null)
+                    throw new BLLException("No se encontró el despacho con el ID especificado.");
+
+                return despacho;
+            }
+            catch (Exception ex)
+            {
+                throw new BLLException("Error al obtener el despacho por ID", ex);
+            }
+        }
+
+        public string Update(Despacho despacho)
+        {
+            try
+            {
+                if (despacho == null)
+                    throw new ArgumentException("El despacho no puede ser nulo.");
+
+                if (despacho.Id <= 0)
+                    throw new ArgumentException("El ID del despacho no es válido.");
+
+                if (despacho.FechaDespacho == default)
+                    throw new ArgumentException("La fecha de despacho es obligatoria.");
+
+                if (string.IsNullOrWhiteSpace(despacho.Estado))
+                    throw new ArgumentException("El estado es obligatorio.");
+
+                if (despacho.NumeroPaquetes <= 0)
+                    throw new ArgumentException("El número de paquetes debe ser mayor a cero.");
+
+                if (despacho.PaqueteDeServicio == null || despacho.PaqueteDeServicio.Id <= 0)
+                    throw new ArgumentException("Debe especificar un paquete de servicio válido.");
+
+                if (despacho.Cliente == null || despacho.Cliente.Id <= 0)
+                    throw new ArgumentException("Debe especificar un cliente válido.");
+
+                if (despacho.Mensajero == null || despacho.Mensajero.Id <= 0)
+                    throw new ArgumentException("Debe especificar un mensajero válido.");
+
+                return _repository.Update(despacho);
+            }
+            catch (Exception ex)
+            {
+                throw new BLLException("Error al actualizar el despacho", ex);
+            }
+        }
+
+        public string Delete(int id)
+        {
+            try
+            {
+                if (id <= 0)
+                    throw new ArgumentException("El ID debe ser mayor que cero.");
+
+                return _repository.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                throw new BLLException("Error al eliminar el despacho", ex);
             }
         }
     }
+
 }
