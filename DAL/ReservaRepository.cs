@@ -40,7 +40,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al agregar reserva", ex);
             }
         }
 
@@ -84,9 +84,9 @@ namespace DAL
                 }
                 return reservas;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener reservas", ex);
             }
         }
 
@@ -140,9 +140,9 @@ namespace DAL
                 }
                 return reserva;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener reserva", ex);
             }
         }
 
@@ -177,7 +177,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al actualizar reserva", ex);
             }
         }
 
@@ -195,7 +195,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al eliminar reserva", ex);
             }
         }
 
@@ -225,9 +225,9 @@ namespace DAL
                 }
                 return eventos;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener eventos", ex);
             }
         }
     }

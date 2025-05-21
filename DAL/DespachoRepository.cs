@@ -44,7 +44,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al agregar despacho", ex);
             }
         }
 
@@ -85,9 +85,9 @@ namespace DAL
 
                 return despachos;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener despachos", ex);
             }
         }
 
@@ -144,9 +144,9 @@ namespace DAL
 
                 return despacho;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener despacho", ex);
             }
         }
 
@@ -181,7 +181,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al actualizar despacho", ex);
             }
         }
 
@@ -201,7 +201,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al eliminar despacho", ex);
             }
         }
     }

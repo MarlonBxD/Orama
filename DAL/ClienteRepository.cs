@@ -37,7 +37,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al agregar cliente", ex);
             }
         }
         public List<Cliente> GetAll()
@@ -66,35 +66,42 @@ namespace DAL
 
                 return clientes;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener clintes", ex);
             }
         }
 
         public Cliente GetById(int id)
         {
-            Cliente cliente = null;
-
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT id, nombre, apellido, telefono, email, direccion FROM cliente WHERE id = @id";
-            cmd.Parameters.AddWithValue("@id", id);
-            using var reader = cmd.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                cliente = new Cliente
+                Cliente cliente = null;
+
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT id, nombre, apellido, telefono, email, direccion FROM cliente WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    Id = reader.GetInt32(0),
-                    Nombre = reader.IsDBNull(1) ? null : reader.GetString(1),
-                    Apellido = reader.IsDBNull(2) ? null : reader.GetString(2),
-                    Telefono = reader.IsDBNull(3) ? null : reader.GetString(3),
-                    Email = reader.IsDBNull(4) ? null : reader.GetString(4),
-                    Direccion = reader.IsDBNull(5) ? null : reader.GetString(5)
-                };
+                    cliente = new Cliente
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.IsDBNull(1) ? null : reader.GetString(1),
+                        Apellido = reader.IsDBNull(2) ? null : reader.GetString(2),
+                        Telefono = reader.IsDBNull(3) ? null : reader.GetString(3),
+                        Email = reader.IsDBNull(4) ? null : reader.GetString(4),
+                        Direccion = reader.IsDBNull(5) ? null : reader.GetString(5)
+                    };
+                }
+                return cliente;
             }
-            return cliente;
+            catch (Exception ex)
+            {
+                throw new DALException("Error al obtener cliente", ex);
+            }
         }
 
         public string Delete(int id)
@@ -112,7 +119,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al eliminar cliente", ex);
             }
         }
 
@@ -136,7 +143,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al actualizar cliente", ex);
             }
         }
 
@@ -220,9 +227,9 @@ namespace DAL
                 }
                 return reservas;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener reservas", ex);
             }
         }
 
@@ -274,9 +281,9 @@ namespace DAL
                 }
                 return despachos;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener despachos", ex);
             }
         }
 

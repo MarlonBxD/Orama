@@ -43,15 +43,15 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al agregar ingreso", ex);
             }
         }
 
-        public List<ReservaDTO> GetAll()
+        public List<IngresoDTO> GetAll()
         {
             try
             {
-                var ingresos = new List<ReservaDTO>();
+                var ingresos = new List<IngresoDTO>();
 
                 using var conn = _conexion.GetConnection();
                 conn.Open();
@@ -65,7 +65,7 @@ namespace DAL
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    ingresos.Add(new ReservaDTO
+                    ingresos.Add(new IngresoDTO
                     {
                         Id = reader.GetInt32(0),
                         Descripcion = reader.IsDBNull(1) ? null : reader.GetString(1),
@@ -79,10 +79,9 @@ namespace DAL
                 }
                 return ingresos;
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Error al obtener ingresos");
-                //throw new DALException("Error al obtener ingresos", ex);
+                throw new DALException("Error al obtener ingresos", ex);
             }
         }
 
@@ -127,9 +126,9 @@ namespace DAL
                 }
                 return ingreso;
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Error al obtener ingreso");
+                throw new DALException("Error al obtener ingreso", ex);
             }
         }
 
@@ -161,7 +160,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al actualizar ingreso", ex);
             }
         }
 
@@ -180,7 +179,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al eliminar ingreso", ex);
             }
         }
     }

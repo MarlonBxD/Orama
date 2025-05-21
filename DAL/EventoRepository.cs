@@ -38,7 +38,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al agregar evento", ex);
             }
         }
 
@@ -70,9 +70,9 @@ namespace DAL
                 }
                 return eventos;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener eventos", ex);
             }
         }
 
@@ -103,9 +103,9 @@ namespace DAL
                 }
                 return evento;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener evento", ex);
             }
         }
 
@@ -138,7 +138,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al actualizar evento", ex);
             }
         }
 
@@ -159,7 +159,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al eliminar evento", ex);
             }
         }
 
@@ -188,9 +188,9 @@ namespace DAL
                 }
                 return paquetes;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener paquetes", ex);
             }
         }
 
