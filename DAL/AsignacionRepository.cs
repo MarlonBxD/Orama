@@ -147,7 +147,7 @@ namespace DAL
                 return ex.Message;
             }
         }
-        public List<AsignacionDTO> GetByNameFotografo(string nombreFotografo)
+        public List<AsignacionDTO> GetByFotografo(string nombreFotografo)
         {
             var asignaciones = new List<AsignacionDTO>();
 
@@ -251,6 +251,47 @@ namespace DAL
                 return null;
             }
             return asignaciones;
+        }
+        public AsignacionDTO GetByFotografoId(int id)
+        {            
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText =
+                    "SELECT a.id, " +
+                    "e.tipo AS TipoEvento, " +
+                    "f.nombre AS NombreFotografo " +
+                    "FROM Asignacion a " +
+                    "JOIN Evento e ON a.evento_id = e.id " +
+                    "JOIN Fotografo f ON a.fotografo_id = f.id " +
+                    "WHERE f.id LIKE @Fotografo_id";
+
+                cmd.Parameters.AddWithValue("@Fotografo_id", $"%{id}%");
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var asignacion = new AsignacionDTO
+                    {
+                        Id = reader.GetInt32(0),
+                        TipoEvento = reader.GetString(1),
+                        NombreFotografo = reader.GetString(2)
+
+                    };
+                    return asignacion;
+                }
+                conn.Close();
+                return null;
+               
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
         }
     }
 }

@@ -1,72 +1,48 @@
-# Carpetas generadas por Visual Studio
+# Carpetas de compilación
+bin/
+obj/
+out/
+
+# Archivos temporales de Visual Studio
 .vs/
-.idea/
-*.suo
 *.user
+*.suo
 *.userosscache
 *.sln.docstates
 
-# Archivos de build (compilación)
-bin/
-obj/
-[Bb]uild/
-[Ll]og/
+# Archivos generados por diseño
+*.Designer.cs
+*.Generated.cs
+
+# Archivos de logs y configuración de depuración
 *.log
+*.pdb
+*.cache
+*.dbmdl
 
-# Archivos de configuración de dependencias
-*.nuget.*
-project.lock.json
-project.fragment.lock.json
-artifacts/
+# Sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-# Archivos de paquetes NuGet
+# Rider / JetBrains
+.idea/
+
+# DotCover
+*.dcvr
+
+# Archivos de respaldo
+*.bak
+*.old
+
+# Paquetes NuGet
 *.nupkg
 *.snupkg
 *.nuspec
-*.psmdcp
+packages/
 
-# Archivos DLL y PDB generados
-*.dll
-*.pdb
-*.exe
-
-# Archivos de configuración temporal
-*.cache
-*.dbmdl
-*.bak
+# Otros
 *.tmp
 
-# Archivos de configuración de MSBuild
-*.props
-*.targets
-
-# Configuraciones específicas del usuario o IDE
-*.json
-*.env
-*.launchSettings.json
-
-# Archivos generados por Rider o ReSharper
-.ReSharper*/
-*_ReSharper*/
-*.DotSettings.user
-
-# Test result y coverage
-TestResults/
-*.coverage
-*.coveragexml
-*.trx
-
-# Configuración de VS Code
-.vscode/
-
-# Archivos generados por Windows
-Thumbs.db
-desktop.ini
-$RECYCLE.BIN/
-
-# Archivos de publicación
-publish/
-*.Publish.xml
-
-# Archivos de configuración secretos o temporales
-secrets.json
+# NO IGNORAR archivos .exe manuales
+!*.exe

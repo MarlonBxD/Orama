@@ -26,7 +26,7 @@ namespace BLL
                 throw new ArgumentException("El evento de la asignación es obligatorio.");
             return _asignacionRepository.Agregar(asignacion);
         }
-        public List<Asignacion> ObtenerAsignaciones()
+        public List<AsignacionDTO> ObtenerAsignaciones()
         {
             return _asignacionRepository.GetAll();
         }
@@ -44,7 +44,7 @@ namespace BLL
                 return ex.Message;
             }
         }
-        public Asignacion GetById(int id)
+        public AsignacionDTO GetById(int id)
         {
             if (id <= 0)
                 throw new ArgumentException("El ID de la asignación debe ser mayor que cero.");

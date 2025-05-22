@@ -64,7 +64,7 @@ namespace DAL
                         Monto = reader.GetDecimal(2),
                         Descripcion = reader.GetString(3),
                         MetodoPago = reader.GetString(4),
-                        nombreCliente = reader.GetInt32(5)
+                        nombreCliente = reader.GetString(5)
                     };
                     pagos.Add(pago);
                 }

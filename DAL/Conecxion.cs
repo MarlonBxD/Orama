@@ -23,7 +23,7 @@ namespace DAL
             catch (Exception ex)
             {
                 
-                throw new DALException("Error al crear la conexión", ex);
+                throw new AppException("Error al crear la conexión", ex);
             }
         }
 
@@ -43,7 +43,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al abrir la conexión", ex);
+                throw new AppException("Error al abrir la conexión", ex);
             }
         }
 
@@ -58,7 +58,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al cerrar la conexión", ex);
+                throw new AppException("Error al cerrar la conexión", ex);
             }
         }
 
