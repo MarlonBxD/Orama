@@ -7,8 +7,8 @@
 *.sln.docstates
 
 # Archivos de build (compilación)
-bin/
-obj/
+#bin/
+#obj/
 [Bb]uild/
 [Ll]og/
 *.log
