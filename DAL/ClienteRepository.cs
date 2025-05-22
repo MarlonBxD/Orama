@@ -15,101 +15,302 @@ namespace DAL
         {
             _conexion = new Conexion();
         }
-        public void Agregar(Cliente cliente)
+        public string Agregar(Cliente cliente)
         {
-            if (cliente == null || string.IsNullOrEmpty(cliente.Nombre) || string.IsNullOrEmpty(cliente.Telefono))
-                throw new ArgumentException("Datos del cliente no válidos");
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = @"INSERT INTO Cliente (Nombre, Apellido, Telefono, Email, Direccion)
-                            VALUES (@Nombre, @Apellido, @Telefono, @Email, @Direccion)";
-            cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
-            cmd.Parameters.AddWithValue("@Apellido", cliente.Apellido);
-            cmd.Parameters.AddWithValue("@Telefono", cliente.Telefono);
-            cmd.Parameters.AddWithValue("@Email", cliente.Email);
-            cmd.Parameters.AddWithValue("@Direccion", cliente.Direccion);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-        }
-        public List<Cliente> GetClientes()
-        {
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Cliente";
-            using var reader = cmd.ExecuteReader();
-            var clientes = new List<Cliente>();
-            while (reader.Read())
+            try
             {
-                var cliente = new Cliente
-                {
-                    Id = reader.GetInt32(0),
-                    Nombre = reader.GetString(1),
-                    Apellido = reader.GetString(2),
-                    Telefono = reader.GetString(3),
-                    Email = reader.GetString(4),
-                    Direccion = reader.GetString(5)
-                };
-                clientes.Add(cliente);
+                if (cliente == null || string.IsNullOrEmpty(cliente.Nombre) || string.IsNullOrEmpty(cliente.Telefono))
+                    throw new ArgumentException("Datos del cliente no válidos");
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"INSERT INTO cliente (nombre, apellido, telefono, email, direccion)
+                            VALUES (@Nombre, @Apellido, @Telefono, @Email, @Direccion)";
+                cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
+                cmd.Parameters.AddWithValue("@Apellido", cliente.Apellido);
+                cmd.Parameters.AddWithValue("@Telefono", cliente.Telefono);
+                cmd.Parameters.AddWithValue("@Email", cliente.Email);
+                cmd.Parameters.AddWithValue("@Direccion", cliente.Direccion);
+                cmd.ExecuteNonQuery();
+
+                return "Cliente agregado correctamente";
             }
-            conn.Close();
-            return clientes;
+            catch (Exception ex)
+            {
+                throw new DALException("Error al agregar cliente", ex);
+            }
         }
-        public void DelecteClienteById(int id)
-        {
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = "DELETE FROM Cliente WHERE Id = @Id";
-            cmd.Parameters.AddWithValue("@Id", id);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-        }
-        public void UpdateCliente(Cliente cliente)
-        {
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = @"UPDATE Cliente SET Nombre = @Nombre, Apellido = @Apellido, Telefono = @Telefono, Email = @Email, Direccion = @Direccion WHERE Id = @Id";
-            cmd.Parameters.AddWithValue("@Id", cliente.Id);
-            cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
-            cmd.Parameters.AddWithValue("@Apellido", cliente.Apellido);
-            cmd.Parameters.AddWithValue("@Telefono", cliente.Telefono);
-            cmd.Parameters.AddWithValue("@Email", cliente.Email);
-            cmd.Parameters.AddWithValue("@Direccion", cliente.Direccion);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-        }
-        public ClienteDTO ObtenerClientePorNombre(string nombre)
+        public List<Cliente> GetAll()
         {
             try
             {
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT Id, Nombre, Telefono, Direccion FROM Cliente WHERE Nombre = @Nombre";
-                cmd.Parameters.AddWithValue("@Nombre", nombre);
+                cmd.CommandText = "SELECT id, nombre, apellido, telefono, email, direccion FROM cliente";
                 using var reader = cmd.ExecuteReader();
-                if (reader.Read())
+                var clientes = new List<Cliente>();
+                while (reader.Read())
                 {
-                    return new ClienteDTO
+                    var cliente = new Cliente
                     {
                         Id = reader.GetInt32(0),
                         Nombre = reader.GetString(1),
-                        Telefono = reader.GetString(2),
-                        Direccion = reader.GetString(3)
+                        Apellido = reader.GetString(2),
+                        Telefono = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        Direccion = reader.GetString(5)
                     };
+                    clientes.Add(cliente);
                 }
-                conn.Close();
-                return null;
+
+                return clientes;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener el cliente por nombre", ex);
+                throw new DALException("Error al obtener clintes", ex);
             }
-
         }
+
+        public Cliente GetById(int id)
+        {
+            try
+            {
+                Cliente cliente = null;
+
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT id, nombre, apellido, telefono, email, direccion FROM cliente WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    cliente = new Cliente
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.IsDBNull(1) ? null : reader.GetString(1),
+                        Apellido = reader.IsDBNull(2) ? null : reader.GetString(2),
+                        Telefono = reader.IsDBNull(3) ? null : reader.GetString(3),
+                        Email = reader.IsDBNull(4) ? null : reader.GetString(4),
+                        Direccion = reader.IsDBNull(5) ? null : reader.GetString(5)
+                    };
+                }
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                throw new DALException("Error al obtener cliente", ex);
+            }
+        }
+
+        public string Delete(int id)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "DELETE FROM cliente WHERE id = @id";
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
+
+                return "Cliente eliminado correctamente";
+            }
+            catch (Exception ex)
+            {
+                throw new DALException("Error al eliminar cliente", ex);
+            }
+        }
+
+        public string Update(Cliente cliente)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"UPDATE cliente SET nombre = @nombre, apellido = @apellido, telefono = @telefono, email = @email, direccion = @direccion WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", cliente.Id);
+                cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                cmd.Parameters.AddWithValue("@apellido", cliente.Apellido);
+                cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
+                cmd.Parameters.AddWithValue("@email", cliente.Email);
+                cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);
+                cmd.ExecuteNonQuery();
+
+                return "Cliente actualizado correctamente";
+            }
+            catch (Exception ex)
+            {
+                throw new DALException("Error al actualizar cliente", ex);
+            }
+        }
+
+        public List<Reserva> ObtenerPagos(int id)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT id, fecha, monto, descripcion, metodo_pago WHERE cliente_id = @cliente_id";
+                cmd.Parameters.AddWithValue("@cliente_id", id);
+                using var reader = cmd.ExecuteReader();
+                var pagos = new List<Reserva>();
+                while (reader.Read())
+                {
+                    var pago = new Reserva
+                    {
+                        Id = reader.GetInt32(0),
+                        Fecha = reader.GetDateTime(1),
+                        Monto = reader.GetDecimal(2),
+                        Descripcion = reader.IsDBNull(3) ? null : reader.GetString(3),
+                        MetodoPago = reader.IsDBNull(4) ? null : reader.GetString(4)
+                    };
+                    pagos.Add(pago);
+                }
+                return pagos;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Reserva> ObtenerReservas(int id)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"SELECT
+                                    r.id, r.fecha_evento, r.fecha_reserva, r.estado, r.observaciones,
+                                    e.id, e.tipo,
+                                    p.id, p.nombre,
+                                    c.id, c.nombre
+                                    FROM reserva r
+                                    LEFT JOIN evento e ON r.evento_id = e.id
+                                    LEFT JOIN paquetedeservicio p ON r.paqueteservicio_id = p.id
+                                    LEFT JOIN cliente c ON r.cliente_id = c.id
+                                    WHERE r.cliente_id = @cliente_id";
+                cmd.Parameters.AddWithValue("@cliente_id", id);
+                using var reader = cmd.ExecuteReader();
+                var reservas = new List<Reserva>();
+                while (reader.Read())
+                {
+                    var reserva = new Reserva
+                    {
+                        Id = reader.GetInt32(0),
+                        FechaEvento = reader.GetDateTime(1),
+                        FechaReserva = reader.GetDateTime(2),
+                        EstadoReserva = reader.IsDBNull(3) ? null : reader.GetString(3),
+                        Observaciones = reader.IsDBNull(4) ? null : reader.GetString(4),
+                        Evento = new EventoDTO
+                        {
+                            Id = reader.GetInt32(5),
+                            Tipo = reader.IsDBNull(6) ? null : reader.GetString(6)
+                        },
+                        PaqueteDeServicio = new PaqueteDeServicioDTO
+                        {
+                            Id = reader.GetInt32(7),
+                            Nombre = reader.IsDBNull(8) ? null : reader.GetString(8)
+                        },
+                        Cliente = new ClienteDTO
+                        {
+                            Id = reader.GetInt32(9),
+                            Nombre = reader.GetString(10)
+                        }
+                    };
+                    reservas.Add(reserva);
+                }
+                return reservas;
+            }
+            catch (Exception ex)
+            {
+                throw new DALException("Error al obtener reservas", ex);
+            }
+        }
+
+        public List<Despacho> ObtenerDespachos(int id)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"SELECT
+                                    d.id, d.fechadespacho, d.estado, d.numero_paquetes,
+                                    p.id, p.nombre,
+                                    m.id, m.nombre,
+                                    c.id, c.nombre
+                                    FROM despacho d
+                                    LEFT JOIN paquetedeservicio p ON d.paquete_servicio_id = p.id
+                                    LEFT JOIN mensajero m ON d.mensajero_id = m.id
+                                    LEFT JOIN cliente c ON d.cliente_id = c.id
+                                    WHERE d.cliente_id = @cliente_id";
+
+                cmd.Parameters.AddWithValue("@cliente_id", id);
+                using var reader = cmd.ExecuteReader();
+                var despachos = new List<Despacho>();
+                while (reader.Read())
+                {
+                    var despacho = new Despacho
+                    {
+                        Id = reader.GetInt32(0),
+                        FechaDespacho = reader.GetDateTime(1),
+                        Estado = reader.IsDBNull(2) ? null : reader.GetString(2),
+                        NumeroPaquetes = reader.GetInt32(3),
+                        PaqueteDeServicio = new PaqueteDeServicioDTO
+                        {
+                            Id = reader.GetInt32(4),
+                            Nombre = reader.IsDBNull(5) ? null : reader.GetString(5)
+                        },
+                        Mensajero = new MensajeroDTO
+                        {
+                            Id = reader.GetInt32(6),
+                            Nombre = reader.IsDBNull(7) ? null : reader.GetString(7)
+                        },
+                        Cliente = new ClienteDTO
+                        {
+                            Id = reader.GetInt32(8),
+                            Nombre = reader.IsDBNull(9) ? null : reader.GetString(9)
+                        }
+                    };
+                }
+                return despachos;
+            }
+            catch (Exception ex)
+            {
+                throw new DALException("Error al obtener despachos", ex);
+            }
+        }
+
+        //public ClienteDTO ObtenerClientePorNombre(string nombre)
+        //{
+        //    using var conn = _conexion.GetConnection();
+        //    conn.Open();
+
+        //    using var cmd = conn.CreateCommand();
+        //    cmd.CommandText = "SELECT id, Nombre, Telefono, Direccion FROM Cliente WHERE Nombre = @nombre LIMIT 1";
+        //    cmd.Parameters.AddWithValue("@nombre", nombre);
+
+        //    using var reader = cmd.ExecuteReader();
+        //    if (reader.Read())
+        //    {
+        //        return new ClienteDTO
+        //        {
+        //            Id = reader.GetInt32(0),
+        //            Nombre = reader.GetString(1),
+        //            Telefono = reader.GetString(2),
+        //            Direccion = reader.GetString(3)
+        //        };
+        //    }
+
+        //    throw new Exception("Cliente no encontrado.");
+        //}
+
 
     }
 }

@@ -14,11 +14,11 @@ namespace GUI
 
     public partial class FormCliente : Form
     {
-        private ClienteSerive clienteService = new ClienteSerive();
+        private ClienteService clienteService = new ClienteService();
         public FormCliente()
         {
             InitializeComponent();
-            clienteService = new ClienteSerive();
+            clienteService = new ClienteService();
         }
         private void EnviarCorreo()
         {   

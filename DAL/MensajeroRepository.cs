@@ -15,7 +15,7 @@ namespace DAL
         {
             _conexion = new Conexion();
         }
-        public string AgregarMensajero(Mensajero mensajero)
+        public string Agregar(Mensajero mensajero)
         {
             try
             {
@@ -33,43 +33,45 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Direccion", mensajero.Direccion);
                 cmd.Parameters.AddWithValue("@TipoMensajero", mensajero.tipo_mensajero);
                 cmd.ExecuteNonQuery();
-                conn.Close();
-                return "Mensajero Agregado";
+
+                return "Mensajero agregado correctamente";
             }
-            catch (AppException ex) 
-            { 
-                return ex.Message;
+            catch (Exception ex)
+            {
+                throw new DALException("Error al agregar mensajero", ex);
             }
         }
-        public Mensajero GetMensajero(int id)
+        public List<Mensajero> GetAll()
         {
             try
             {
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Mensajero WHERE id = @id";
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.CommandText = "SELECT * FROM Mensajero";
                 using var reader = cmd.ExecuteReader();
-                var mensajero = new Mensajero
+                var mensajeros = new List<Mensajero>();
+                while (reader.Read())
                 {
-                    Id = reader.GetInt32(0),
-                    Nombre = reader.GetString(1),
-                    Telefono = reader.GetString(2),
-                    Email = reader.GetString(3),
-                    Direccion = reader.GetString(4),
-                    tipo_mensajero = reader.GetString(5)
-                };
-                conn.Close();
-                return mensajero;
-
+                    var mensajero = new Mensajero
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.GetString(1),
+                        Telefono = reader.GetString(2),
+                        Email = reader.GetString(3),
+                        Direccion = reader.GetString(4),
+                        tipo_mensajero = reader.GetString(5)
+                    };
+                    mensajeros.Add(mensajero);
+                }
+                return mensajeros;
             }
-            catch (AppException ex) 
+            catch (Exception ex)
             {
-                return null;
+                throw new DALException("Error al obtener mensajeros", ex);
             }
         }
-        public string DeleteMensajero(int id)
+        public string Delete(int id)
         {
             try
             {
@@ -79,16 +81,15 @@ namespace DAL
                 cmd.CommandText = "DELETE FROM Mensajero WHERE id = @id";
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
-                conn.Close();
-                return "Eliminado con Exito";
+
+                return "Mensajero eliminado correctamente";
             }
-            catch (AppException ex) 
+            catch (Exception ex)
             {
-                return ex.Message;
-            
+                throw new DALException("Error al eliminar mensajero", ex);
             }
         }
-        public string UpdateMensajero(Mensajero mensajero)
+        public string Update(Mensajero mensajero)
         {
             try
             {
@@ -105,59 +106,64 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@TipoMensajero", mensajero.tipo_mensajero);
                 cmd.Parameters.AddWithValue("@id", mensajero.Id);
                 cmd.ExecuteNonQuery();
-                conn.Close();
-                return "Actualizado Con exito";
+
+                return "Mensajero actualizado correctamente";
             }
-            catch (AppException ex) 
+            catch (Exception ex)
             {
-                return ex.Message;
+                throw new DALException("Error al actualizar mensajero", ex);
             }
         }
-        public Mensajero GetMensajeroById(int id)
+        public Mensajero GetById(int id)
         {
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Mensajero WHERE id = @id";
-            cmd.Parameters.AddWithValue("@id", id);
-            using var reader = cmd.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                return new Mensajero
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM Mensajero WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    Id = reader.GetInt32(0),
-                    Nombre = reader.GetString(1),
-                    Apellido = reader.GetString(2),
-                    Telefono = reader.GetString(3),
-                    Email = reader.GetString(4),
-                    Direccion = reader.GetString(5),
-                    tipo_mensajero = reader.GetString(6)
-                };
+                    return new Mensajero
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.GetString(1),
+                        Apellido = reader.GetString(2),
+                        Telefono = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        Direccion = reader.GetString(5),
+                        tipo_mensajero = reader.GetString(6)
+                    };
+                }
+                return null;
             }
-            conn.Close();
-            return null;
-        }
-        public MensajeroDTO ObtenerMensajeroPorNombre(string nombre)
-        {
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT Nombre telfono FROM Mensajero WHERE Nombre = @nombre LIMIT 1";
-            cmd.Parameters.AddWithValue("@nombre", nombre);
-
-            using var reader = cmd.ExecuteReader();
-            if (reader.Read())
+            catch (Exception ex)
             {
-                return new MensajeroDTO
-                {
-                    Nombre = reader.GetString(0),
-                    Telefono = reader.GetString(1)
-                };
+                throw new DALException("Error al obtener mensajero", ex);
             }
-
-            throw new Exception("Mensajero no encontrado.");
         }
+        //public MensajeroDTO ObtenerMensajeroPorNombre(string nombre)
+        //{
+        //    using var conn = _conexion.GetConnection();
+        //    conn.Open();
+
+        //    using var cmd = conn.CreateCommand();
+        //    cmd.CommandText = "SELECT Nombre FROM Mensajero WHERE Nombre = @nombre LIMIT 1";
+        //    cmd.Parameters.AddWithValue("@nombre", nombre);
+
+        //    using var reader = cmd.ExecuteReader();
+        //    if (reader.Read())
+        //    {
+        //        return new MensajeroDTO
+        //        {
+        //            Nombre = reader.GetString(0)
+        //        };
+        //    }
+
+        //    throw new Exception("Mensajero no encontrado.");
+        //}
 
     }
 }

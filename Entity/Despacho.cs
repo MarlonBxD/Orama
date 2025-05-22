@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,9 @@ namespace Entity
         public string Estado { get; set; }
         public int NumeroPaquetes { get; set; }
 
-        public Cliente Cliente { get; set; }
-        public Mensajero Mensajero { get; set; } 
+        public PaqueteDeServicioDTO PaqueteDeServicio { get; set; }
+        public ClienteDTO Cliente { get; set; }
+        public MensajeroDTO Mensajero { get; set; } 
 
     }
 

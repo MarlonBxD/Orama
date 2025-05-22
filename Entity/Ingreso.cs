@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace Entity
 {
     public class Ingreso : Transaccion
     {
-       public List<Pago> Pagos { get; set; }
+        public string Concepto { get; set; }
+        public ClienteDTO Cliente { get; set; }
     }
 }
 

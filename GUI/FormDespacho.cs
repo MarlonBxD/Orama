@@ -17,14 +17,14 @@ namespace GUI
     {
         private readonly DespachoService _service;
         private readonly MensajeroService _mensajeroservice;
-        private readonly ClienteSerive _clienteservice;
+        private readonly ClienteService _clienteservice;
         private List<string> estados;
         public FormDespacho()
         {
             InitializeComponent();
             _service = new DespachoService();
             _mensajeroservice = new MensajeroService();
-            _clienteservice = new ClienteSerive();
+            _clienteservice = new ClienteService();
             CargarClientes();
             CargarMensajeros();
             estados = new List<string>{"Pendiente",
