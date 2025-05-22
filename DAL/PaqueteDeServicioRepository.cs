@@ -37,7 +37,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al agregar paquete de servicio", ex);
+                throw new AppException("Error al agregar paquete de servicio", ex);
             }
         }
 
@@ -71,7 +71,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener paquetes", ex);
+                throw new AppException("Error al obtener paquetes", ex);
             }
         }
 
@@ -110,7 +110,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener paquete", ex);
+                throw new AppException("Error al obtener paquete", ex);
             }
         }
 
@@ -140,7 +140,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al actualizar paquete de servicio", ex);
+                throw new AppException("Error al actualizar paquete de servicio", ex);
             }
         }
 
@@ -159,7 +159,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al eliminar paquete de servicio", ex);
+                throw new AppException("Error al eliminar paquete de servicio", ex);
             }
         }
 
@@ -190,7 +190,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener productos", ex);
+                throw new AppException("Error al obtener productos", ex);
             }
         }
     }

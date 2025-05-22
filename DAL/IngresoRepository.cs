@@ -43,7 +43,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al agregar ingreso", ex);
+                throw new AppException("Error al agregar ingreso", ex);
             }
         }
 
@@ -81,7 +81,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener ingresos", ex);
+                throw new AppException("Error al obtener ingresos", ex);
             }
         }
 
@@ -128,7 +128,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener ingreso", ex);
+                throw new AppException("Error al obtener ingreso", ex);
             }
         }
 
@@ -160,7 +160,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al actualizar ingreso", ex);
+                throw new AppException("Error al actualizar ingreso", ex);
             }
         }
 
@@ -179,7 +179,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al eliminar ingreso", ex);
+                throw new AppException("Error al eliminar ingreso", ex);
             }
         }
     }

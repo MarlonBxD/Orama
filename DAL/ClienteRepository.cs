@@ -37,7 +37,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al agregar cliente", ex);
+                throw new AppException("Error al agregar cliente", ex);
             }
         }
         public List<Cliente> GetAll()
@@ -68,7 +68,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener clintes", ex);
+                throw new AppException("Error al obtener clintes", ex);
             }
         }
 
@@ -100,7 +100,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener cliente", ex);
+                throw new AppException("Error al obtener cliente", ex);
             }
         }
 
@@ -119,7 +119,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al eliminar cliente", ex);
+                throw new AppException("Error al eliminar cliente", ex);
             }
         }
 
@@ -143,11 +143,11 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al actualizar cliente", ex);
+                throw new AppException("Error al actualizar cliente", ex);
             }
         }
 
-        public List<Reserva> ObtenerPagos(int id)
+        public List<PagoDto> ObtenerPagos(int id)
         {
             try
             {
@@ -157,10 +157,10 @@ namespace DAL
                 cmd.CommandText = "SELECT id, fecha, monto, descripcion, metodo_pago WHERE cliente_id = @cliente_id";
                 cmd.Parameters.AddWithValue("@cliente_id", id);
                 using var reader = cmd.ExecuteReader();
-                var pagos = new List<Reserva>();
+                var pagos = new List<PagoDto>();
                 while (reader.Read())
                 {
-                    var pago = new Reserva
+                    var pago = new PagoDto
                     {
                         Id = reader.GetInt32(0),
                         Fecha = reader.GetDateTime(1),
@@ -172,9 +172,9 @@ namespace DAL
                 }
                 return pagos;
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                throw new AppException("Error al obtener pagos", ex);
             }
         }
 
@@ -229,7 +229,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener reservas", ex);
+                throw new AppException("Error al obtener reservas", ex);
             }
         }
 
@@ -283,7 +283,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener despachos", ex);
+                throw new AppException("Error al obtener despachos", ex);
             }
         }
 

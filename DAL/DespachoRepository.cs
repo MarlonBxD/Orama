@@ -44,7 +44,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al agregar despacho", ex);
+                throw new AppException("Error al agregar despacho", ex);
             }
         }
 
@@ -87,7 +87,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener despachos", ex);
+                throw new AppException("Error al obtener despachos", ex);
             }
         }
 
@@ -146,7 +146,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener despacho", ex);
+                throw new AppException("Error al obtener despacho", ex);
             }
         }
 
@@ -181,7 +181,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al actualizar despacho", ex);
+                throw new AppException("Error al actualizar despacho", ex);
             }
         }
 
@@ -201,7 +201,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al eliminar despacho", ex);
+                throw new AppException("Error al eliminar despacho", ex);
             }
         }
     }

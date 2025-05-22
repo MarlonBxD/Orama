@@ -38,7 +38,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al agregar mensajero", ex);
+                throw new AppException("Error al agregar mensajero", ex);
             }
         }
         public List<Mensajero> GetAll()
@@ -68,7 +68,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener mensajeros", ex);
+                throw new AppException("Error al obtener mensajeros", ex);
             }
         }
         public string Delete(int id)
@@ -86,7 +86,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al eliminar mensajero", ex);
+                throw new AppException("Error al eliminar mensajero", ex);
             }
         }
         public string Update(Mensajero mensajero)
@@ -111,7 +111,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al actualizar mensajero", ex);
+                throw new AppException("Error al actualizar mensajero", ex);
             }
         }
         public Mensajero GetById(int id)
@@ -141,7 +141,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new DALException("Error al obtener mensajero", ex);
+                throw new AppException("Error al obtener mensajero", ex);
             }
         }
         //public MensajeroDTO ObtenerMensajeroPorNombre(string nombre)
