@@ -1,0 +1,93 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\bll\\asignacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|solutionrelative:bll\\asignacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\asignacionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\asignacionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\pagorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\pagorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\conecxion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\conecxion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AsignacionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\AsignacionRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\AsignacionRepository.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\AsignacionRepository.cs",
+              "RelativeToolTip": "DAL\\AsignacionRepository.cs",
+              "ViewState": "AgIAAAQBAAAAAAAAAAAowB8BAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T20:30:54.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AsignacionService.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\AsignacionService.cs",
+              "RelativeDocumentMoniker": "BLL\\AsignacionService.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\AsignacionService.cs",
+              "RelativeToolTip": "BLL\\AsignacionService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAQwBAAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T20:29:17.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PagoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\PagoRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\PagoRepository.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\PagoRepository.cs",
+              "RelativeToolTip": "DAL\\PagoRepository.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAawEUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T20:29:58.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Conecxion.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\Conecxion.cs",
+              "RelativeDocumentMoniker": "DAL\\Conecxion.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\Conecxion.cs",
+              "RelativeToolTip": "DAL\\Conecxion.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAawDwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T20:29:40.075Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

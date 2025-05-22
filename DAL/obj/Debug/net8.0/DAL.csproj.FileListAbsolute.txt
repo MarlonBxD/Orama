@@ -1,0 +1,16 @@
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\bin\Debug\net8.0\DAL.deps.json
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\bin\Debug\net8.0\DAL.dll
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\bin\Debug\net8.0\DAL.pdb
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\bin\Debug\net8.0\Entity.dll
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\bin\Debug\net8.0\Entity.pdb
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\DAL.csproj.AssemblyReference.cache
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\DAL.AssemblyInfoInputs.cache
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\DAL.AssemblyInfo.cs
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\DAL.sourcelink.json
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\DAL.csproj.Up2Date
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\DAL.dll
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\refint\DAL.dll
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\DAL.pdb
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\DAL\obj\Debug\net8.0\ref\DAL.dll
