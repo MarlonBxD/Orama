@@ -30,7 +30,6 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@precio", paquete.Precio);
                 cmd.Parameters.AddWithValue("@descripcion", paquete.Descripcion);
                 cmd.Parameters.AddWithValue("@duracion", paquete.DuracionPaquete);
-                cmd.Parameters.AddWithValue("@evento_id", paquete.evento.Id);
                 cmd.ExecuteNonQuery();
 
                 return "Paquete de servicio agregado correctamente";
@@ -98,12 +97,7 @@ namespace DAL
                         Nombre = reader.IsDBNull(1) ? null : reader.GetString(1),
                         Precio = reader.GetDouble(2),
                         Descripcion = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        DuracionPaquete = reader.GetInt32(4),
-                        evento = new EventoDTO
-                        {
-                            Id = reader.GetInt32(5),
-                            Tipo = reader.IsDBNull(6) ? null : reader.GetString(6)
-                        }
+                        DuracionPaquete = reader.GetInt32(4)
                     };
                 }
                 return paquete;
@@ -132,7 +126,6 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@precio", paquete.Precio);
                 cmd.Parameters.AddWithValue("@descripcion", paquete.Descripcion);
                 cmd.Parameters.AddWithValue("@duracion", paquete.DuracionPaquete);
-                cmd.Parameters.AddWithValue("@evento_id", paquete.evento.Id);
                 cmd.Parameters.AddWithValue("@id", paquete.Id);
                 cmd.ExecuteNonQuery();
 

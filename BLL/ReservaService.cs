@@ -23,31 +23,31 @@ namespace BLL
             try
             {
                 if (reserva == null)
-                    throw new BLLException("La reserva no puede ser nula.");
+                    throw new AppException("La reserva no puede ser nula.");
 
                 if (reserva.Id <= 0)
-                    throw new BLLException("El ID de la reserva es inválido.");
+                    throw new AppException("El ID de la reserva es inválido.");
 
                 if (reserva.FechaEvento == default)
-                    throw new BLLException("La fecha del evento es obligatoria.");
+                    throw new AppException("La fecha del evento es obligatoria.");
 
                 if (reserva.FechaReserva == default)
-                    throw new BLLException("La fecha de la reserva es obligatoria.");
+                    throw new AppException("La fecha de la reserva es obligatoria.");
 
                 if (reserva.Cliente == null || reserva.Cliente.Id <= 0)
-                    throw new BLLException("El cliente es obligatorio y debe tener un ID válido.");
+                    throw new AppException("El cliente es obligatorio y debe tener un ID válido.");
 
                 if (reserva.Evento == null || reserva.Evento.Id <= 0)
-                    throw new BLLException("El evento es obligatorio y debe tener un ID válido.");
+                    throw new AppException("El evento es obligatorio y debe tener un ID válido.");
 
                 if (reserva.PaqueteDeServicio == null || reserva.PaqueteDeServicio.Id <= 0)
-                    throw new BLLException("El paquete de servicio es obligatorio y debe tener un ID válido.");
+                    throw new AppException("El paquete de servicio es obligatorio y debe tener un ID válido.");
 
                 return _reservaRepository.Agregar(reserva);
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error en la lógica de negocio al agregar reserva", ex);
+                throw new AppException("Error en la lógica de negocio al agregar reserva", ex);
             }
         }
 
@@ -56,31 +56,31 @@ namespace BLL
             try
             {
                 if (reserva == null)
-                    throw new BLLException("La reserva no puede ser nula.");
+                    throw new AppException("La reserva no puede ser nula.");
 
                 if (reserva.Id <= 0)
-                    throw new BLLException("El ID de la reserva es inválido.");
+                    throw new AppException("El ID de la reserva es inválido.");
 
                 if (reserva.FechaEvento == default)
-                    throw new BLLException("La fecha del evento es obligatoria.");
+                    throw new AppException("La fecha del evento es obligatoria.");
 
                 if (reserva.FechaReserva == default)
-                    throw new BLLException("La fecha de la reserva es obligatoria.");
+                    throw new AppException("La fecha de la reserva es obligatoria.");
 
                 if (reserva.Cliente == null || reserva.Cliente.Id <= 0)
-                    throw new BLLException("El cliente es obligatorio y debe tener un ID válido.");
+                    throw new AppException("El cliente es obligatorio y debe tener un ID válido.");
 
                 if (reserva.Evento == null || reserva.Evento.Id <= 0)
-                    throw new BLLException("El evento es obligatorio y debe tener un ID válido.");
+                    throw new AppException("El evento es obligatorio y debe tener un ID válido.");
 
                 if (reserva.PaqueteDeServicio == null || reserva.PaqueteDeServicio.Id <= 0)
-                    throw new BLLException("El paquete de servicio es obligatorio y debe tener un ID válido.");
+                    throw new AppException("El paquete de servicio es obligatorio y debe tener un ID válido.");
 
                 return _reservaRepository.Update(reserva);
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error en la lógica de negocio al actualizar reserva", ex);
+                throw new AppException("Error en la lógica de negocio al actualizar reserva", ex);
             }
         }
 
@@ -89,13 +89,13 @@ namespace BLL
             try
             {
                 if (id <= 0)
-                    throw new BLLException("El ID de la reserva es inválido.");
+                    throw new AppException("El ID de la reserva es inválido.");
 
                 return _reservaRepository.Delete(id);
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error en la lógica de negocio al eliminar reserva", ex);
+                throw new AppException("Error en la lógica de negocio al eliminar reserva", ex);
             }
         }
 
@@ -107,7 +107,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error en la lógica de negocio al obtener todas las reservas", ex);
+                throw new AppException("Error en la lógica de negocio al obtener todas las reservas", ex);
             }
         }
 
@@ -116,13 +116,13 @@ namespace BLL
             try
             {
                 if (id <= 0)
-                    throw new BLLException("El ID de la reserva es inválido.");
+                    throw new AppException("El ID de la reserva es inválido.");
 
                 return _reservaRepository.GetById(id);
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error en la lógica de negocio al obtener reserva por ID", ex);
+                throw new AppException("Error en la lógica de negocio al obtener reserva por ID", ex);
             }
         }
 
@@ -131,13 +131,13 @@ namespace BLL
             try
             {
                 if (reservaId <= 0)
-                    throw new BLLException("El ID de la reserva es inválido.");
+                    throw new AppException("El ID de la reserva es inválido.");
 
                 return _reservaRepository.ObtenerEventos(reservaId);
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error en la lógica de negocio al obtener eventos por reserva", ex);
+                throw new AppException("Error en la lógica de negocio al obtener eventos por reserva", ex);
             }
         }
     }

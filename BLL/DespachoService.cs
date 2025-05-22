@@ -44,7 +44,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al agregar el despacho", ex);
+                throw new AppException("Error al agregar el despacho", ex);
             }
         }
 
@@ -56,7 +56,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al obtener la lista de despachos", ex);
+                throw new AppException("Error al obtener la lista de despachos", ex);
             }
         }
 
@@ -69,13 +69,13 @@ namespace BLL
 
                 var despacho = _repository.GetById(id);
                 if (despacho == null)
-                    throw new BLLException("No se encontró el despacho con el ID especificado.");
+                    throw new AppException("No se encontró el despacho con el ID especificado.");
 
                 return despacho;
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al obtener el despacho por ID", ex);
+                throw new AppException("Error al obtener el despacho por ID", ex);
             }
         }
 
@@ -111,7 +111,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al actualizar el despacho", ex);
+                throw new AppException("Error al actualizar el despacho", ex);
             }
         }
 
@@ -126,7 +126,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al eliminar el despacho", ex);
+                throw new AppException("Error al eliminar el despacho", ex);
             }
         }
     }

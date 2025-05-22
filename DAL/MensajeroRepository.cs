@@ -24,14 +24,13 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO Mensajero (Nombre, Apellido, Telefono, Email, Direccion, TipoMensajero)
-                            VALUES (@Nombre, @Apellido, @Telefono, @Email, @Direccion, @TipoMensajero)";
+                cmd.CommandText = @"INSERT INTO Mensajero (Nombre, Apellido, Telefono, Email, Direccion)
+                            VALUES (@Nombre, @Apellido, @Telefono, @Email, @Direccion)";
                 cmd.Parameters.AddWithValue("@Nombre", mensajero.Nombre);
                 cmd.Parameters.AddWithValue("@Apellido", mensajero.Apellido);
                 cmd.Parameters.AddWithValue("@Telefono", mensajero.Telefono);
                 cmd.Parameters.AddWithValue("@Email", mensajero.Email);
                 cmd.Parameters.AddWithValue("@Direccion", mensajero.Direccion);
-                cmd.Parameters.AddWithValue("@TipoMensajero", mensajero.tipo_mensajero);
                 cmd.ExecuteNonQuery();
 
                 return "Mensajero agregado correctamente";
@@ -59,8 +58,7 @@ namespace DAL
                         Nombre = reader.GetString(1),
                         Telefono = reader.GetString(2),
                         Email = reader.GetString(3),
-                        Direccion = reader.GetString(4),
-                        tipo_mensajero = reader.GetString(5)
+                        Direccion = reader.GetString(4)
                     };
                     mensajeros.Add(mensajero);
                 }
@@ -97,13 +95,12 @@ namespace DAL
                 conn.Open();
                 using var cmd = conn.CreateCommand();
                 cmd.CommandText = @"UPDATE Mensajero SET Nombre = @Nombre, Apellido = @Apellido, Telefono = @Telefono,
-                            Email = @Email, Direccion = @Direccion, TipoMensajero = @TipoMensajero WHERE id = @id";
+                            Email = @Email, Direccion = @Direccion WHERE id = @id";
                 cmd.Parameters.AddWithValue("@Nombre", mensajero.Nombre);
                 cmd.Parameters.AddWithValue("@Apellido", mensajero.Apellido);
                 cmd.Parameters.AddWithValue("@Telefono", mensajero.Telefono);
                 cmd.Parameters.AddWithValue("@Email", mensajero.Email);
                 cmd.Parameters.AddWithValue("@Direccion", mensajero.Direccion);
-                cmd.Parameters.AddWithValue("@TipoMensajero", mensajero.tipo_mensajero);
                 cmd.Parameters.AddWithValue("@id", mensajero.Id);
                 cmd.ExecuteNonQuery();
 
@@ -121,49 +118,33 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Mensajero WHERE id = @id";
+
+                cmd.CommandText = "SELECT id, nombre, apellido, telefono, email, direccion FROM Mensajero WHERE id = @id";
                 cmd.Parameters.AddWithValue("@id", id);
+
                 using var reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     return new Mensajero
                     {
-                        Id = reader.GetInt32(0),
-                        Nombre = reader.GetString(1),
-                        Apellido = reader.GetString(2),
-                        Telefono = reader.GetString(3),
-                        Email = reader.GetString(4),
-                        Direccion = reader.GetString(5),
-                        tipo_mensajero = reader.GetString(6)
+                        Id = reader.GetInt32(reader.GetOrdinal("id")),
+                        Nombre = reader["nombre"] as string,
+                        Apellido = reader["apellido"] as string,
+                        Telefono = reader["telefono"] as string,
+                        Email = reader["email"] as string,
+                        Direccion = reader["direccion"] as string
                     };
                 }
+
                 return null;
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al obtener mensajero", ex);
+                throw new Exception("Error al obtener el mensajero por ID", ex);
             }
         }
-        //public MensajeroDTO ObtenerMensajeroPorNombre(string nombre)
-        //{
-        //    using var conn = _conexion.GetConnection();
-        //    conn.Open();
 
-        //    using var cmd = conn.CreateCommand();
-        //    cmd.CommandText = "SELECT Nombre FROM Mensajero WHERE Nombre = @nombre LIMIT 1";
-        //    cmd.Parameters.AddWithValue("@nombre", nombre);
 
-        //    using var reader = cmd.ExecuteReader();
-        //    if (reader.Read())
-        //    {
-        //        return new MensajeroDTO
-        //        {
-        //            Nombre = reader.GetString(0)
-        //        };
-        //    }
-
-        //    throw new Exception("Mensajero no encontrado.");
-        //}
 
     }
 }

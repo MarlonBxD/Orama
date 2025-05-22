@@ -4,3 +4,15 @@ C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\obj\Debug\net8.0\BLL.Assem
 C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\obj\Debug\net8.0\BLL.AssemblyInfo.cs
 C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\obj\Debug\net8.0\BLL.csproj.CoreCompileInputs.cache
 C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\obj\Debug\net8.0\BLL.sourcelink.json
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\bin\Debug\net8.0\BLL.deps.json
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\bin\Debug\net8.0\BLL.dll
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\bin\Debug\net8.0\BLL.pdb
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\bin\Debug\net8.0\DAL.dll
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\bin\Debug\net8.0\Entity.dll
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\bin\Debug\net8.0\DAL.pdb
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\bin\Debug\net8.0\Entity.pdb
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\obj\Debug\net8.0\BLL.csproj.Up2Date
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\obj\Debug\net8.0\BLL.dll
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\obj\Debug\net8.0\refint\BLL.dll
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\obj\Debug\net8.0\BLL.pdb
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\BLL\obj\Debug\net8.0\ref\BLL.dll

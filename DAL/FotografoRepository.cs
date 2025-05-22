@@ -21,26 +21,31 @@ namespace DAL
             {
                 if (fotografo == null || string.IsNullOrEmpty(fotografo.Nombre) || string.IsNullOrEmpty(fotografo.Telefono))
                     throw new ArgumentException("Datos del fotografo no válidos");
+
                 using var conn = _conexion.GetConnection();
                 conn.Open();
+
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO Fotografo (Nombre, apellido, Telefono, Email, Direccion, Especialidad)
-                            VALUES (@Nombre,@Apellido @Telefono, @Email, @Direccion, @Especialidad)";
+                cmd.CommandText = @"INSERT INTO Fotografo (nombre, apellido, telefono, email, especialidad)
+                            VALUES (@Nombre, @Apellido, @Telefono, @Email, @Especialidad)";
                 cmd.Parameters.AddWithValue("@Nombre", fotografo.Nombre);
                 cmd.Parameters.AddWithValue("@Apellido", fotografo.Apellido);
                 cmd.Parameters.AddWithValue("@Telefono", fotografo.Telefono);
                 cmd.Parameters.AddWithValue("@Email", fotografo.Email);
-                cmd.Parameters.AddWithValue("@TipoFotografo", fotografo.Especialidad);
+                cmd.Parameters.AddWithValue("@Especialidad", fotografo.Especialidad); // corregido
+
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                return "Fotografo agregado correctamente";
 
+                return "Fotógrafo agregado correctamente";
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return ex.Message;
             }
         }
+
         public List<FotografoDTO> GetAll()
         {
             try
@@ -58,6 +63,7 @@ namespace DAL
                         
                         Nombre = reader.GetString(1),
                         Apellido = reader.GetString(6),
+                        Telefono = reader.GetString(7),
                         Especialidad = reader.GetString(2)
                     };
                     fotografos.Add(fotografo);

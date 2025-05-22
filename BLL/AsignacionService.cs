@@ -53,12 +53,7 @@ namespace BLL
                 throw new KeyNotFoundException($"No se encontró una asignación con ID {id}.");
             return asignacion;
         }
-        public List<Asignacion> GetByFotografoId(int fotografoId)
-        {
-            if (fotografoId <= 0)
-                throw new ArgumentException("El ID del fotógrafo debe ser mayor que cero.");
-            return _asignacionRepository.GetByFotografoId(fotografoId);
-        }
+        
         public List<Asignacion> GetByEventoId(int eventoId)
         {
             if (eventoId <= 0)
@@ -69,9 +64,6 @@ namespace BLL
         {
             return _asignacionRepository.GetByFecha(fecha);
         }
-        public List<AsignacionDTO> GetByNameFotografo(string nombre)
-        {
-            return _asignacionRepository.GetByNameFotografo(nombre);
-        }
+        
     }
 }

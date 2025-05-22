@@ -8,13 +8,14 @@ namespace Entity
 {
     public class Mensajero: Persona
     {
-        public string Direccion { get; set; }
-        public string tipo_mensajero { get; set; }
+        public string Direccion { get; set; } = string.Empty;
 
-        public Mensajero()
+        public override string ToString()
         {
+            return $"Id: {Id}, Nombre: {Nombre}, Apellido: {Apellido}, Teléfono: {Telefono}, Email: {Email}, Dirección: {Direccion}";
         }
-        public string NombreCompleto => $"{Nombre} {Apellido}";
+
+
     }
 
 }

@@ -37,7 +37,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al agregar cliente", ex);
+                throw new Exception("Error al agregar cliente", ex);
             }
         }
         public List<Cliente> GetAll()
@@ -62,13 +62,14 @@ namespace DAL
                         Direccion = reader.GetString(5)
                     };
                     clientes.Add(cliente);
+                    conn.Close();
                 }
 
                 return clientes;
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al obtener clintes", ex);
+                throw new Exception("Error al obtener clintes", ex);
             }
         }
 
@@ -89,18 +90,18 @@ namespace DAL
                     cliente = new Cliente
                     {
                         Id = reader.GetInt32(0),
-                        Nombre = reader.IsDBNull(1) ? null : reader.GetString(1),
-                        Apellido = reader.IsDBNull(2) ? null : reader.GetString(2),
-                        Telefono = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        Email = reader.IsDBNull(4) ? null : reader.GetString(4),
-                        Direccion = reader.IsDBNull(5) ? null : reader.GetString(5)
+                        Nombre = reader.GetString(1),
+                        Apellido = reader.GetString(2),
+                        Telefono = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        Direccion = reader.GetString(5)
                     };
                 }
                 return cliente;
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al obtener cliente", ex);
+                throw new Exception("Error al obtener cliente", ex);
             }
         }
 
@@ -287,29 +288,7 @@ namespace DAL
             }
         }
 
-        //public ClienteDTO ObtenerClientePorNombre(string nombre)
-        //{
-        //    using var conn = _conexion.GetConnection();
-        //    conn.Open();
-
-        //    using var cmd = conn.CreateCommand();
-        //    cmd.CommandText = "SELECT id, Nombre, Telefono, Direccion FROM Cliente WHERE Nombre = @nombre LIMIT 1";
-        //    cmd.Parameters.AddWithValue("@nombre", nombre);
-
-        //    using var reader = cmd.ExecuteReader();
-        //    if (reader.Read())
-        //    {
-        //        return new ClienteDTO
-        //        {
-        //            Id = reader.GetInt32(0),
-        //            Nombre = reader.GetString(1),
-        //            Telefono = reader.GetString(2),
-        //            Direccion = reader.GetString(3)
-        //        };
-        //    }
-
-        //    throw new Exception("Cliente no encontrado.");
-        //}
+        
 
 
     }

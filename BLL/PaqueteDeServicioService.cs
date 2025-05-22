@@ -31,14 +31,11 @@ namespace BLL
                 if (paquete.DuracionPaquete <= 0)
                     throw new ArgumentException("La duración debe ser mayor que cero.");
 
-                if (paquete.evento == null || paquete.evento.Id <= 0)
-                    throw new ArgumentException("Debe asociar un evento válido.");
-
                 return _repository.Agregar(paquete);
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al agregar paquete de servicio", ex);
+                throw new AppException("Error al agregar paquete de servicio", ex);
             }
         }
 
@@ -50,7 +47,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al obtener paquetes de servicio", ex);
+                throw new AppException("Error al obtener paquetes de servicio", ex);
             }
         }
 
@@ -63,13 +60,13 @@ namespace BLL
 
                 var paquete = _repository.GetById(id);
                 if (paquete == null)
-                    throw new BLLException("No se encontró el paquete con el ID especificado.");
+                    throw new AppException("No se encontró el paquete con el ID especificado.");
 
                 return paquete;
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al buscar paquete de servicio por ID", ex);
+                throw new AppException("Error al buscar paquete de servicio por ID", ex);
             }
         }
 
@@ -89,14 +86,11 @@ namespace BLL
                 if (paquete.DuracionPaquete <= 0)
                     throw new ArgumentException("La duración debe ser mayor que cero.");
 
-                if (paquete.evento == null || paquete.evento.Id <= 0)
-                    throw new ArgumentException("Debe asociar un evento válido.");
-
                 return _repository.Update(paquete);
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al actualizar paquete de servicio", ex);
+                throw new AppException("Error al actualizar paquete de servicio", ex);
             }
         }
 
@@ -111,7 +105,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al eliminar paquete de servicio", ex);
+                throw new AppException("Error al eliminar paquete de servicio", ex);
             }
         }
 
@@ -126,7 +120,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al obtener productos del paquete de servicio", ex);
+                throw new AppException("Error al obtener productos del paquete de servicio", ex);
             }
         }
     }

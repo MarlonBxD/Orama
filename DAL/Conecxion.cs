@@ -22,7 +22,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                
+                Console.WriteLine(ex.Message);
                 throw new AppException("Error al crear la conexión", ex);
             }
         }

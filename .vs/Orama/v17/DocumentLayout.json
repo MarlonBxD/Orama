@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\bll\\asignacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|solutionrelative:bll\\asignacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\bll\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|solutionrelative:bll\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\asignacionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\asignacionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\pagorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\pagorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0D968BD-32B9-4981-B0CD-C7A3DEB3F9E9}|pruevas\\pruevas.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\pruevas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0D968BD-32B9-4981-B0CD-C7A3DEB3F9E9}|pruevas\\pruevas.csproj|solutionrelative:pruevas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\conecxion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\conecxion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\entity\\mensajero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C5EB3BD-1DBD-4FF0-84C1-DE93FBA5E790}|Entity\\Entity.csproj|solutionrelative:entity\\mensajero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\dal\\mensajerorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA81681C-E6D0-48FB-9595-7C151152F4D8}|DAL\\DAL.csproj|solutionrelative:dal\\mensajerorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|c:\\users\\marlo\\onedrive\\documentos\\c#\\guias\\orama\\bll\\mensajeroservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC6C0E64-599B-4708-B5E4-ABA660AA41BB}|BLL\\BLL.csproj|solutionrelative:bll\\mensajeroservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,6 +37,19 @@
           "SelectedChildIndex": 3,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClienteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\ClienteRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\ClienteRepository.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\ClienteRepository.cs",
+              "RelativeToolTip": "DAL\\ClienteRepository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAswEAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T19:55:56.721Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
@@ -38,52 +59,68 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AsignacionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\AsignacionRepository.cs",
-              "RelativeDocumentMoniker": "DAL\\AsignacionRepository.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\AsignacionRepository.cs",
-              "RelativeToolTip": "DAL\\AsignacionRepository.cs",
-              "ViewState": "AgIAAAQBAAAAAAAAAAAowB8BAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T20:30:54.629Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AsignacionService.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\AsignacionService.cs",
-              "RelativeDocumentMoniker": "BLL\\AsignacionService.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\AsignacionService.cs",
-              "RelativeToolTip": "BLL\\AsignacionService.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAQwBAAAAA/AAAAAAAAAA==",
+              "Title": "ClienteService.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\ClienteService.cs",
+              "RelativeDocumentMoniker": "BLL\\ClienteService.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\ClienteService.cs",
+              "RelativeToolTip": "BLL\\ClienteService.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAUwGUAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T20:29:17.307Z",
+              "WhenOpened": "2025-05-22T19:25:08.026Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PagoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\PagoRepository.cs",
-              "RelativeDocumentMoniker": "DAL\\PagoRepository.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\PagoRepository.cs",
-              "RelativeToolTip": "DAL\\PagoRepository.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAawEUAAAARAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\pruevas\\Program.cs",
+              "RelativeDocumentMoniker": "pruevas\\Program.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\pruevas\\Program.cs",
+              "RelativeToolTip": "pruevas\\Program.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwBEAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T20:29:58.701Z"
+              "WhenOpened": "2025-05-22T16:59:32.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MensajeroRepository.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\MensajeroRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\MensajeroRepository.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\MensajeroRepository.cs",
+              "RelativeToolTip": "DAL\\MensajeroRepository.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwHEAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T19:08:54.046Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Conecxion.cs",
-              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\Conecxion.cs",
-              "RelativeDocumentMoniker": "DAL\\Conecxion.cs",
-              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\DAL\\Conecxion.cs",
-              "RelativeToolTip": "DAL\\Conecxion.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAawDwAAAAdAAAAAAAAAA==",
+              "Title": "Mensajero.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Mensajero.cs",
+              "RelativeDocumentMoniker": "Entity\\Mensajero.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\Entity\\Mensajero.cs",
+              "RelativeToolTip": "Entity\\Mensajero.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T20:29:40.075Z"
+              "WhenOpened": "2025-05-22T18:55:38.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MensajeroService.cs",
+              "DocumentMoniker": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\MensajeroService.cs",
+              "RelativeDocumentMoniker": "BLL\\MensajeroService.cs",
+              "ToolTip": "C:\\Users\\marlo\\OneDrive\\Documentos\\C#\\guias\\Orama\\BLL\\MensajeroService.cs",
+              "RelativeToolTip": "BLL\\MensajeroService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T16:41:46.54Z",
+              "EditorCaption": ""
             }
           ]
         }

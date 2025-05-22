@@ -26,7 +26,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al obtener la lista de ingresos.", ex);
+                throw new AppException("Error al obtener la lista de ingresos.", ex);
             }
         }
 
@@ -43,7 +43,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al agregar el ingreso.", ex);
+                throw new AppException("Error al agregar el ingreso.", ex);
             }
         }
 
@@ -55,7 +55,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException($"Error al obtener el ingreso con ID {id}.", ex);
+                throw new AppException($"Error al obtener el ingreso con ID {id}.", ex);
             }
         }
 
@@ -72,7 +72,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException("Error al actualizar el ingreso.", ex);
+                throw new AppException("Error al actualizar el ingreso.", ex);
             }
         }
 
@@ -85,7 +85,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new BLLException($"Error al eliminar el ingreso con ID {id}.", ex);
+                throw new AppException($"Error al eliminar el ingreso con ID {id}.", ex);
             }
         }
     }

@@ -21,8 +21,6 @@ namespace DAL
         {
             try
             {
-                if (asignacion == null || asignacion.Fotografo == null)
-                    throw new ArgumentException("Datos de la asignación no válidos");
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();

@@ -40,40 +40,35 @@ namespace DAL
         }
         public List<AsignacionDeEquipoDTO> GetAll()
         {
-            try
-            {
-                using var conn = _conexion.GetConnection();
-                conn.Open();
-                using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT a.id, a.fechaasignacion, " +
-                                  "a.fechadevolucion, a.estado, " +
-                                  "f.Nombre AS nombrefotografo, " +
-                                  "e.modelo AS modeloequipo " +
-                                  "FROM Asignaciondeequipo a " +
-                                  "JOIN fotografo f ON a.fotografoid = f.id " +
-                                  "JOIN equipofotografico e ON a.equipoid = e.id";
+            
+            using var conn = _conexion.GetConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT a.id, a.fechaasignacion, " +
+                                "a.fechadevolucion, a.estado, " +
+                                "f.Nombre AS nombrefotografo, " +
+                                "e.modelo AS modeloequipo " +
+                                "FROM Asignaciondeequipo a " +
+                                "JOIN fotografo f ON a.fotografoid = f.id " +
+                                "JOIN equipofotografico e ON a.equipoid = e.id";
 
-                using var reader = cmd.ExecuteReader();
-                var asignaciones = new List<AsignacionDeEquipoDTO>();
-                while (reader.Read())
-                {
-                    var asignacion = new AsignacionDeEquipoDTO
-                    {
-                        Id = reader.GetInt32(0),
-                        FechaAsignacion = reader.GetDateTime(1),
-                        FechaDevolucion = reader.GetDateTime(2),
-                        Estado = reader.GetString(3),
-                        nombreFotografo = reader.GetString(4),
-                        nombreEquipo = reader.GetString(5)
-                    };
-                    asignaciones.Add(asignacion);
-                }
-                return asignaciones;
-            }
-            catch (Exception ex)
+            using var reader = cmd.ExecuteReader();
+            var asignaciones = new List<AsignacionDeEquipoDTO>();
+            while (reader.Read())
             {
-                return null;
+                var asignacion = new AsignacionDeEquipoDTO
+                {
+                    Id = reader.GetInt32(0),
+                    FechaAsignacion = reader.GetDateTime(1),
+                    FechaDevolucion = reader.GetDateTime(2),
+                    Estado = reader.GetString(3),
+                    nombreFotografo = reader.GetString(4),
+                    nombreEquipo = reader.GetString(5)
+                };
+                asignaciones.Add(asignacion);
             }
+            return asignaciones;
+            
         }
 
         public string Delete(int id)
