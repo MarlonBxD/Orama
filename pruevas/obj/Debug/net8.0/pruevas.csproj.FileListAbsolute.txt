@@ -1,0 +1,6 @@
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\pruevas\obj\Debug\net8.0\pruevas.csproj.AssemblyReference.cache
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\pruevas\obj\Debug\net8.0\pruevas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\pruevas\obj\Debug\net8.0\pruevas.AssemblyInfoInputs.cache
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\pruevas\obj\Debug\net8.0\pruevas.AssemblyInfo.cs
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\pruevas\obj\Debug\net8.0\pruevas.csproj.CoreCompileInputs.cache
+C:\Users\marlo\OneDrive\Documentos\C#\guias\Orama\pruevas\obj\Debug\net8.0\pruevas.sourcelink.json
