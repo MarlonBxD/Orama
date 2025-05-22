@@ -28,7 +28,7 @@ artifacts/
 # Archivos DLL y PDB generados
 *.dll
 *.pdb
-*.exe
+
 
 # Archivos de configuración temporal
 *.cache
