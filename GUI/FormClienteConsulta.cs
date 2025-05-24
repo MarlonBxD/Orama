@@ -26,7 +26,7 @@ namespace GUI
         {
             try
             {
-                var listaClientes = _clienteService.ObtenerTodos();
+                var listaClientes = _clienteService.GetAll();
 
                 var listaFormateada = listaClientes.Select(c => new
                 {

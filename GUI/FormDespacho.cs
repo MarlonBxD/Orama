@@ -39,7 +39,7 @@ namespace GUI
         {
             try
             {
-                var mensajeros = _mensajeroservice.GetMensajeros();
+                var mensajeros = _mensajeroservice.GetAll();
                 cbMensajeros.DataSource = mensajeros;
                 cbMensajeros.DisplayMember = "Nombre";
                 cbMensajeros.ValueMember = "Id";
@@ -54,7 +54,7 @@ namespace GUI
         {
             try
             {
-                var nombres = _clienteservice.GetClientes();
+                var nombres = _clienteservice.GetAll();
                 cbClientes.DataSource = nombres;
                 cbClientes.DisplayMember = "Nombre";
                 cbClientes.ValueMember = "Id";
@@ -140,12 +140,18 @@ namespace GUI
                 {
                     FechaDespacho = dtpFecha.Value,
                     Estado = cbEstados.Text,
-                    ClienteId = clienteSeleccionado.Id,
-                    Mensajeroid = mensajeroSeleccionado.Id,
+                    Cliente = new ClienteDTO
+                    {
+                        Id = clienteSeleccionado.Id
+                    },
+                    Mensajero = new MensajeroDTO
+                    {
+                        Id = mensajeroSeleccionado.Id
+                    },
                     NumeroPaquetes = (int)numup.Value
                 };
 
-                string resultado = _service.GuardarDespacho(despacho);
+                string resultado = _service.Agregar(despacho);
                 MessageBox.Show(resultado, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarFormulario();
             }

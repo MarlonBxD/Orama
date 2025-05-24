@@ -30,6 +30,23 @@ namespace BLL
         {
             return _equipoFotograficoRepository.GetAll();
         }
+        public string Actualizar(EquipoFotografico equipoFotografico)
+        {
+            try
+            {
+                if (equipoFotografico == null)
+                    throw new ArgumentNullException(nameof(equipoFotografico), "El equipo fotográfico no puede ser nulo.");
+                if (string.IsNullOrWhiteSpace(equipoFotografico.Modelo))
+                    throw new ArgumentException("El modelo del equipo fotográfico es obligatorio.");
+                if (string.IsNullOrWhiteSpace(equipoFotografico.Marca))
+                    throw new ArgumentException("La marca del equipo fotográfico es obligatoria.");
+                return _equipoFotograficoRepository.Update(equipoFotografico);
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error al actualizar equipo fotográfico");
+            }
+        }
         public string EliminarEquipoFotografico(int id)
         {
             if (id <= 0)

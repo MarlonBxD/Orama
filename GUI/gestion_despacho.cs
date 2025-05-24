@@ -25,7 +25,7 @@ namespace GUI
         {
             try
             {
-                var despachos = DespachoService.ObtenerDespachos();
+                var despachos = DespachoService.GetAll();
 
                 dgvDespachos.DataSource = null;
                 dgvDespachos.AutoGenerateColumns = true;
@@ -47,7 +47,7 @@ namespace GUI
         {
             try
             {
-                var despachos = DespachoService.ObtenerDespachos();
+                var despachos = DespachoService.GetAll();
                 var estadoSeleccionado = cbEstados.SelectedItem.ToString();
                 if (estadoSeleccionado != "Todos")
                 {

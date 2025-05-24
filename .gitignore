@@ -1,48 +1,54 @@
-# Carpetas de compilación
+# Compilación
 bin/
 obj/
 out/
+publish/
 
-# Archivos temporales de Visual Studio
+# Visual Studio
 .vs/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
+*.VC.db
+*.vscode/
+TestResults/
 
-# Archivos generados por diseño
-*.Designer.cs
-*.Generated.cs
-
-# Archivos de logs y configuración de depuración
+# Archivos temporales
 *.log
 *.pdb
 *.cache
+*.tmp
+*.bak
+*.old
 *.dbmdl
+*.tlog
 
-# Sistema operativo
+# Sistema
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Rider / JetBrains
+# JetBrains
 .idea/
-
-# DotCover
 *.dcvr
 
-# Archivos de respaldo
-*.bak
-*.old
-
-# Paquetes NuGet
+# NuGet
 *.nupkg
 *.snupkg
 *.nuspec
 packages/
 
-# Otros
-*.tmp
+# Archivos de control de código fuente antiguos
+*.vspscc
+*.vssscc
+*.ncb
+*.aps
+*.sdf
+*.opensdf
 
-# NO IGNORAR archivos .exe manuales
+# launchSettings
+!Properties/launchSettings.json
+
+# No ignorar ejecutables manuales
 !*.exe

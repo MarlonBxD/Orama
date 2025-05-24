@@ -88,7 +88,7 @@ namespace GUI
                     return;
                 }
 
-                _clienteService.Eliminar(idCliente);
+                _clienteService.Delete(idCliente);
                 MessageBox.Show("Cliente eliminado correctamente");
             }
             catch (Exception ex)
@@ -107,7 +107,7 @@ namespace GUI
                     return;
                 }
 
-                Cliente cliente = _clienteService.ObtenerPorId(idCliente);
+                Cliente cliente = _clienteService.GetById(idCliente);
 
                 if(cliente != null)
                 {
@@ -124,7 +124,7 @@ namespace GUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al buscar cliente: {ex.Message}")
+                MessageBox.Show($"Error al buscar cliente: {ex.Message}");
             }
         }
     }
