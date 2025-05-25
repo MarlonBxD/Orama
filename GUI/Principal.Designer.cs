@@ -65,6 +65,7 @@
             btnProductos.Text = "Productos";
             btnProductos.TextAlign = ContentAlignment.MiddleLeft;
             btnProductos.UseVisualStyleBackColor = true;
+            btnProductos.Click += btnProductos_Click_1;
             // 
             // btnEquipoFotografico
             // 
@@ -120,6 +121,7 @@
             // 
             panelFormHijo.BackColor = SystemColors.AppWorkspace;
             panelFormHijo.Dock = DockStyle.Fill;
+            panelFormHijo.ForeColor = Color.Transparent;
             panelFormHijo.Location = new Point(219, 0);
             panelFormHijo.Name = "panelFormHijo";
             panelFormHijo.Size = new Size(802, 577);

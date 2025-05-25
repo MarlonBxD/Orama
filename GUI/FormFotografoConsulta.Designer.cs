@@ -36,6 +36,7 @@
             // btnVolver
             // 
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVolver.ForeColor = SystemColors.Desktop;
             btnVolver.Location = new Point(13, 8);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(76, 27);

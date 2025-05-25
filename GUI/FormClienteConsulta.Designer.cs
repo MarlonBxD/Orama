@@ -51,6 +51,7 @@
             // btnVolver
             // 
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVolver.ForeColor = SystemColors.Desktop;
             btnVolver.Location = new Point(12, 12);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(76, 27);
@@ -61,8 +62,9 @@
             // 
             // btnGetAll
             // 
-            btnGetAll.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnGetAll.Anchor = AnchorStyles.None;
             btnGetAll.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGetAll.ForeColor = SystemColors.Desktop;
             btnGetAll.Location = new Point(8, 125);
             btnGetAll.Name = "btnGetAll";
             btnGetAll.Size = new Size(187, 91);
@@ -73,8 +75,9 @@
             // 
             // btnPagos
             // 
-            btnPagos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPagos.Anchor = AnchorStyles.None;
             btnPagos.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPagos.ForeColor = SystemColors.Desktop;
             btnPagos.Location = new Point(201, 125);
             btnPagos.Name = "btnPagos";
             btnPagos.Size = new Size(187, 91);
@@ -85,9 +88,10 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.Desktop;
             label1.Location = new Point(224, 61);
             label1.Name = "label1";
             label1.Size = new Size(104, 30);
@@ -96,7 +100,8 @@
             // 
             // txtId
             // 
-            txtId.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtId.Anchor = AnchorStyles.None;
+            txtId.ForeColor = SystemColors.Desktop;
             txtId.Location = new Point(334, 68);
             txtId.Name = "txtId";
             txtId.Size = new Size(207, 25);
@@ -105,8 +110,9 @@
             // 
             // btnReservas
             // 
-            btnReservas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnReservas.Anchor = AnchorStyles.None;
             btnReservas.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnReservas.ForeColor = SystemColors.Desktop;
             btnReservas.Location = new Point(394, 125);
             btnReservas.Name = "btnReservas";
             btnReservas.Size = new Size(187, 91);
@@ -117,8 +123,9 @@
             // 
             // btnDespachos
             // 
-            btnDespachos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnDespachos.Anchor = AnchorStyles.None;
             btnDespachos.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDespachos.ForeColor = SystemColors.Desktop;
             btnDespachos.Location = new Point(587, 125);
             btnDespachos.Name = "btnDespachos";
             btnDespachos.Size = new Size(187, 91);

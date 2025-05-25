@@ -57,5 +57,10 @@ namespace GUI
         {
             CambiarFormulario(new FormEquipoFotografico(CambiarFormulario));
         }
+
+        private void btnProductos_Click_1(object sender, EventArgs e)
+        {
+            CambiarFormulario(new FormProducto(CambiarFormulario));
+        }
     }
 }
