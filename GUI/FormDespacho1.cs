@@ -44,6 +44,21 @@ namespace GUI
         {
             try
             {
+                if (clienteSeleccionado == null)
+                {
+                    MessageBox.Show("Cliente sin asignar");
+                }
+
+                if (mensajeroSeleccionado == null)
+                {
+                    MessageBox.Show("Mensajero sin asignar");
+                }
+
+                if (paqueteSeleccionado == null)
+                {
+                    MessageBox.Show("Paquete de servicio sin asignar");
+                }
+
                 Despacho despacho = new Despacho
                 {
                     FechaDespacho = dtFecha.Value,
@@ -69,7 +84,7 @@ namespace GUI
             {
                 if (dgv.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Seleccione un cliente primero.");
+                    MessageBox.Show("Seleccione un despacho primero.");
                     return;
                 }
 
@@ -114,7 +129,7 @@ namespace GUI
             {
                 if (dgv.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Seleccione un cliente para eliminar.");
+                    MessageBox.Show("Seleccione un despacho para eliminar.");
                     return;
                 }
 
