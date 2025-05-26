@@ -49,11 +49,13 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnBuscar.Anchor = AnchorStyles.None;
             btnBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBuscar.Location = new Point(546, 291);
+            btnBuscar.ForeColor = SystemColors.Desktop;
+            btnBuscar.Location = new Point(732, 371);
+            btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(176, 37);
+            btnBuscar.Size = new Size(201, 44);
             btnBuscar.TabIndex = 37;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -61,11 +63,13 @@
             // 
             // btnConsultar
             // 
-            btnConsultar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnConsultar.Anchor = AnchorStyles.None;
             btnConsultar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnConsultar.Location = new Point(546, 380);
+            btnConsultar.ForeColor = SystemColors.Desktop;
+            btnConsultar.Location = new Point(732, 476);
+            btnConsultar.Margin = new Padding(3, 4, 3, 4);
             btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(176, 37);
+            btnConsultar.Size = new Size(201, 44);
             btnConsultar.TabIndex = 36;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
@@ -73,11 +77,13 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnEliminar.Anchor = AnchorStyles.None;
             btnEliminar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(546, 230);
+            btnEliminar.ForeColor = SystemColors.Desktop;
+            btnEliminar.Location = new Point(732, 300);
+            btnEliminar.Margin = new Padding(3, 4, 3, 4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(176, 37);
+            btnEliminar.Size = new Size(201, 44);
             btnEliminar.TabIndex = 35;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -85,11 +91,13 @@
             // 
             // btnActualizar
             // 
-            btnActualizar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnActualizar.Anchor = AnchorStyles.None;
             btnActualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnActualizar.Location = new Point(546, 173);
+            btnActualizar.ForeColor = SystemColors.Desktop;
+            btnActualizar.Location = new Point(732, 233);
+            btnActualizar.Margin = new Padding(3, 4, 3, 4);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(176, 37);
+            btnActualizar.Size = new Size(201, 44);
             btnActualizar.TabIndex = 34;
             btnActualizar.Text = "Actualizar nombre";
             btnActualizar.UseVisualStyleBackColor = true;
@@ -97,11 +105,13 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnAgregar.Anchor = AnchorStyles.None;
             btnAgregar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAgregar.Location = new Point(546, 113);
+            btnAgregar.ForeColor = SystemColors.Desktop;
+            btnAgregar.Location = new Point(732, 162);
+            btnAgregar.Margin = new Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(176, 37);
+            btnAgregar.Size = new Size(201, 44);
             btnAgregar.TabIndex = 33;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -109,18 +119,21 @@
             // 
             // txtId
             // 
-            txtId.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtId.Location = new Point(223, 134);
+            txtId.Anchor = AnchorStyles.None;
+            txtId.ForeColor = SystemColors.Desktop;
+            txtId.Location = new Point(363, 187);
+            txtId.Margin = new Padding(3, 4, 3, 4);
             txtId.Name = "txtId";
-            txtId.Size = new Size(179, 25);
+            txtId.Size = new Size(204, 27);
             txtId.TabIndex = 30;
             // 
             // lblId
             // 
-            lblId.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblId.Anchor = AnchorStyles.None;
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI", 14.25F);
-            lblId.Location = new Point(102, 131);
+            lblId.ForeColor = SystemColors.Desktop;
+            lblId.Location = new Point(225, 183);
             lblId.Name = "lblId";
             lblId.Size = new Size(30, 25);
             lblId.TabIndex = 29;
@@ -128,42 +141,51 @@
             // 
             // txtNombre
             // 
-            txtNombre.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNombre.Location = new Point(223, 182);
+            txtNombre.Anchor = AnchorStyles.None;
+            txtNombre.ForeColor = SystemColors.Desktop;
+            txtNombre.Location = new Point(363, 243);
+            txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(179, 25);
+            txtNombre.Size = new Size(204, 27);
             txtNombre.TabIndex = 28;
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtDescripcion.Location = new Point(223, 239);
+            txtDescripcion.Anchor = AnchorStyles.None;
+            txtDescripcion.ForeColor = SystemColors.Desktop;
+            txtDescripcion.Location = new Point(363, 310);
+            txtDescripcion.Margin = new Padding(3, 4, 3, 4);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(179, 25);
+            txtDescripcion.Size = new Size(204, 27);
             txtDescripcion.TabIndex = 27;
             // 
             // txtStock
             // 
-            txtStock.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtStock.Location = new Point(223, 360);
+            txtStock.Anchor = AnchorStyles.None;
+            txtStock.ForeColor = SystemColors.Desktop;
+            txtStock.Location = new Point(363, 453);
+            txtStock.Margin = new Padding(3, 4, 3, 4);
             txtStock.Name = "txtStock";
-            txtStock.Size = new Size(179, 25);
+            txtStock.Size = new Size(204, 27);
             txtStock.TabIndex = 26;
             // 
             // txtPrecio
             // 
-            txtPrecio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtPrecio.Location = new Point(223, 300);
+            txtPrecio.Anchor = AnchorStyles.None;
+            txtPrecio.ForeColor = SystemColors.Desktop;
+            txtPrecio.Location = new Point(363, 382);
+            txtPrecio.Margin = new Padding(3, 4, 3, 4);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(179, 25);
+            txtPrecio.Size = new Size(204, 27);
             txtPrecio.TabIndex = 25;
             // 
             // lblTelefono
             // 
-            lblTelefono.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblTelefono.Anchor = AnchorStyles.None;
             lblTelefono.AutoSize = true;
             lblTelefono.Font = new Font("Segoe UI", 14.25F);
-            lblTelefono.Location = new Point(102, 297);
+            lblTelefono.ForeColor = SystemColors.Desktop;
+            lblTelefono.Location = new Point(225, 378);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(65, 25);
             lblTelefono.TabIndex = 24;
@@ -171,10 +193,11 @@
             // 
             // lblEmail
             // 
-            lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblEmail.Anchor = AnchorStyles.None;
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 14.25F);
-            lblEmail.Location = new Point(102, 357);
+            lblEmail.ForeColor = SystemColors.Desktop;
+            lblEmail.Location = new Point(225, 449);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(56, 25);
             lblEmail.TabIndex = 23;
@@ -182,10 +205,11 @@
             // 
             // lblApellido
             // 
-            lblApellido.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblApellido.Anchor = AnchorStyles.None;
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 14.25F);
-            lblApellido.Location = new Point(103, 239);
+            lblApellido.ForeColor = SystemColors.Desktop;
+            lblApellido.Location = new Point(226, 310);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(111, 25);
             lblApellido.TabIndex = 22;
@@ -193,10 +217,11 @@
             // 
             // lblNombre
             // 
-            lblNombre.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblNombre.Anchor = AnchorStyles.None;
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 14.25F);
-            lblNombre.Location = new Point(102, 179);
+            lblNombre.ForeColor = SystemColors.Desktop;
+            lblNombre.Location = new Point(225, 240);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(81, 25);
             lblNombre.TabIndex = 21;
@@ -204,10 +229,11 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(311, 41);
+            label1.ForeColor = SystemColors.Desktop;
+            label1.Location = new Point(463, 77);
             label1.Name = "label1";
             label1.Size = new Size(148, 37);
             label1.TabIndex = 20;
@@ -216,9 +242,11 @@
             // btnVolver
             // 
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVolver.Location = new Point(12, 12);
+            btnVolver.ForeColor = SystemColors.Desktop;
+            btnVolver.Location = new Point(14, 14);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(75, 29);
+            btnVolver.Size = new Size(86, 34);
             btnVolver.TabIndex = 19;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -226,9 +254,9 @@
             // 
             // FormProducto
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(786, 538);
+            ClientSize = new Size(1114, 690);
             Controls.Add(btnBuscar);
             Controls.Add(btnConsultar);
             Controls.Add(btnEliminar);
@@ -246,6 +274,7 @@
             Controls.Add(lblNombre);
             Controls.Add(label1);
             Controls.Add(btnVolver);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormProducto";
             Text = "FormProducto";
             ResumeLayout(false);

@@ -11,21 +11,16 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class Principal : Form
+    public partial class Orama : Form
     {
-        private TelegramBotService _botService = new TelegramBotService();
-        public Principal()
+        public Orama()
         {
             InitializeComponent();
         }
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            _botService.Iniciar();
-        }
-        private void Principal_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            _botService.Detener();
+
         }
 
         private Form formActivo = null;
@@ -62,6 +57,11 @@ namespace GUI
         private void btnEquipoFotografico_Click(object sender, EventArgs e)
         {
             CambiarFormulario(new FormEquipoFotografico(CambiarFormulario));
+        }
+
+        private void btnProductos_Click_1(object sender, EventArgs e)
+        {
+            CambiarFormulario(new FormProducto(CambiarFormulario));
         }
     }
 }

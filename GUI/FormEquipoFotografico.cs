@@ -16,6 +16,8 @@ namespace GUI
     {
         private readonly EquipoDefotografiaService _equipoService = new EquipoDefotografiaService();
         private readonly Action<Form> cambiarFormulario;
+        private List<EquipoFotografico> listaEquipos = new();
+
 
         public FormEquipoFotografico(Action<Form> cambiarFormulario)
         {
@@ -54,23 +56,34 @@ namespace GUI
         {
             try
             {
-                if (!int.TryParse(txtId.Text, out int idEquipo))
+                if (dgv.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Ingrese un ID válido.");
+                    MessageBox.Show("Seleccione un equipo para actualizar.");
                     return;
                 }
 
-                EquipoFotografico equipo = new EquipoFotografico
+                int idEquipo = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                var equipoActualizado = new EquipoFotografico
                 {
                     Id = idEquipo,
-                    Marca = txtMarca.Text,
-                    Modelo = txtModelo.Text,
-                    Tipo = txtTipo.Text,
-                    Estado = txtEstado.Text,
-                    Cantidad = int.Parse(txtCantidad.Text)
+                    Marca = txtMarca.Text.Trim(),
+                    Modelo = txtModelo.Text.Trim(),
+                    Tipo = txtTipo.Text.Trim(),
+                    Estado = txtEstado.Text.Trim(),
+                    Cantidad = int.TryParse(txtCantidad.Text, out int cantidad) ? cantidad : 0
                 };
 
-                _equipoService.Actualizar(equipo);
+                _equipoService.Actualizar(equipoActualizado);
+
+                CargarEquipos();
+
+                dgv.DataSource = null;
+                dgv.DataSource = listaEquipos;
+
+                if (dgv.Columns.Contains("Id"))
+                    dgv.Columns["Id"].Visible = false;
+
                 MessageBox.Show("Equipo fotográfico actualizado correctamente.");
             }
             catch (Exception ex)
@@ -83,14 +96,29 @@ namespace GUI
         {
             try
             {
-                if (!int.TryParse(txtId.Text, out int idEquipo))
+                if (dgv.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Ingrese un ID válido.");
+                    MessageBox.Show("Seleccione un equipo para eliminar.");
                     return;
                 }
 
-                _equipoService.EliminarEquipoFotografico(idEquipo);
-                MessageBox.Show("Equipo fotográfico eliminado correctamente.");
+                int idEquipo = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                var confirm = MessageBox.Show("¿Está seguro de eliminar este equipo?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+                if (confirm == DialogResult.Yes)
+                {
+                    _equipoService.EliminarEquipoFotografico(idEquipo);
+
+                    CargarEquipos();
+
+                    dgv.DataSource = null;
+                    dgv.DataSource = listaEquipos;
+
+                    if (dgv.Columns.Contains("Id"))
+                        dgv.Columns["Id"].Visible = false;
+
+                    MessageBox.Show("Equipo fotográfico eliminado correctamente.");
+                }
             }
             catch (Exception ex)
             {
@@ -98,40 +126,66 @@ namespace GUI
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void CargarEquipos()
         {
-            try
-            {
-                if (!int.TryParse(txtId.Text, out int idEquipo))
-                {
-                    MessageBox.Show("Ingrese un ID válido.");
-                    return;
-                }
+            listaEquipos = _equipoService.ObtenerEquiposFotograficos();
+        }
 
-                EquipoFotografico equipo = _equipoService.GetById(idEquipo);
+        private void btnVerEquipos_Click(object sender, EventArgs e)
+        {
+            dgv.DataSource = null;
+            dgv.DataSource = listaEquipos;
 
-                if (equipo != null)
-                {
-                    txtMarca.Text = equipo.Marca;
-                    txtModelo.Text = equipo.Modelo;
-                    txtTipo.Text = equipo.Tipo;
-                    txtEstado.Text = equipo.Estado;
-                    txtCantidad.Text = equipo.Cantidad.ToString();
-                }
-                else
-                {
-                    MessageBox.Show("Equipo no encontrado.");
-                }
-            }
-            catch (Exception ex)
+            if (dgv.Columns.Contains("Id"))
+                dgv.Columns["Id"].Visible = false;
+        }
+
+        private void FormEquipoFotografico_Load(object sender, EventArgs e)
+        {
+            CargarEquipos();
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv.SelectedRows.Count > 0)
             {
-                MessageBox.Show($"Error al buscar equipo: {ex.Message}");
+                var fila = dgv.SelectedRows[0];
+                txtMarca.Text = fila.Cells["Marca"].Value?.ToString();
+                txtModelo.Text = fila.Cells["Modelo"].Value?.ToString();
+                txtTipo.Text = fila.Cells["Tipo"].Value?.ToString();
+                txtEstado.Text = fila.Cells["Estado"].Value?.ToString();
+                txtCantidad.Text = fila.Cells["Cantidad"].Value?.ToString();
             }
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            cambiarFormulario(new FormEquipoConsulta(cambiarFormulario));
+            timer1.Stop();
+
+            string textoBuscar = txtBuscar.Text.Trim();
+
+            ActualizarResultados(textoBuscar);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            timer1.Start();
+        }
+
+        private void ActualizarResultados(string filtro)
+        {
+            if (string.IsNullOrWhiteSpace(filtro))
+            {
+                dgv.DataSource = listaEquipos;
+            }
+            else
+            {
+                var listaFiltrada = listaEquipos.Where(e => e.Marca.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)
+                                                        || e.Modelo.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                dgv.DataSource = listaFiltrada;
+            }
         }
     }
 }

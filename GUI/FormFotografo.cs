@@ -16,8 +16,8 @@ namespace GUI
     public partial class FormFotografo : Form
     {
         private readonly FotografoService _fotografoService = new FotografoService();
-
         private readonly Action<Form> cambiarFormulario;
+        private List<Fotografo> listaFotografos = new List<Fotografo>();
 
         public FormFotografo(Action<Form> cambiarFormulario)
         {
@@ -28,11 +28,6 @@ namespace GUI
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            cambiarFormulario(new FormFotografoConsulta(cambiarFormulario));
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -61,21 +56,43 @@ namespace GUI
         {
             try
             {
-                Fotografo fotografo = new Fotografo
+                if (dgv.SelectedRows.Count == 0)
                 {
-                    Nombre = txtNombre.Text,
-                    Apellido = txtApellido.Text,
-                    Telefono = txtTelefono.Text,
-                    Email = txtEmail.Text,
-                    Especialidad = txtEspecialidad.Text
-                };
+                    MessageBox.Show("Seleccione un cliente primero.");
+                    return;
+                }
 
-                _fotografoService.ActualizarFotografo(fotografo);
-                MessageBox.Show("Fotografo actualizado correctamente");
+                int idCliente = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                Fotografo fotografo = listaFotografos.FirstOrDefault(f => f.Id == idCliente);
+
+                if (fotografo != null)
+                {
+                    fotografo.Nombre = txtNombre.Text.Trim();
+                    fotografo.Apellido = txtApellido.Text.Trim();
+                    fotografo.Email = txtEmail.Text.Trim();
+                    fotografo.Telefono = txtTelefono.Text.Trim();
+                    fotografo.Especialidad = txtEspecialidad.Text.Trim();
+
+                    _fotografoService.ActualizarFotografo(fotografo);
+
+                    CargarFotografos();
+
+                    dgv.DataSource = null;
+                    dgv.DataSource = listaFotografos;
+
+                    if (dgv.Columns.Contains("Id"))
+                        dgv.Columns["Id"].Visible = false;
+
+                    if (dgv.Columns.Contains("NombreCompleto"))
+                        dgv.Columns["NombreCompleto"].Visible = false;
+
+                    MessageBox.Show("Cliente modificado correctamente");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al actualizar fotografo: {ex.Message}");
+                MessageBox.Show($"Error al actualizar cliente: {ex.Message}");
             }
         }
 
@@ -83,50 +100,109 @@ namespace GUI
         {
             try
             {
-                if (!int.TryParse(txtId.Text, out int idFotografo))
+                if (dgv.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Ingrese un ID válido.");
+                    MessageBox.Show("Seleccione un fotógrafo para eliminar.");
                     return;
                 }
 
-                _fotografoService.EliminarFotografo(idFotografo);
-                MessageBox.Show("Fotografo eliminado correctamente");
+                int idCliente = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                var confirmar = MessageBox.Show("¿Está seguro de eliminar este cliente?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirmar != DialogResult.Yes) return;
+
+                _fotografoService.EliminarFotografo(idCliente);
+
+                CargarFotografos();
+
+                dgv.DataSource = null;
+                dgv.DataSource = listaFotografos;
+
+                if (dgv.Columns.Contains("Id"))
+                    dgv.Columns["Id"].Visible = false;
+
+                if (dgv.Columns.Contains("NombreCompleto"))
+                    dgv.Columns["NombreCompleto"].Visible = false;
+
+                MessageBox.Show("Fotógrafo eliminado correctamente");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al eliminar fotografo: {ex.Message}");
+                MessageBox.Show($"Error al eliminar fotógrafo: {ex.Message}");
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void FormFotografo_Load(object sender, EventArgs e)
+        {
+            CargarFotografos();
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgv.Rows[e.RowIndex];
+
+                txtNombre.Text = fila.Cells["Nombre"].Value?.ToString();
+                txtApellido.Text = fila.Cells["Apellido"].Value?.ToString();
+                txtEmail.Text = fila.Cells["Email"].Value?.ToString();
+                txtTelefono.Text = fila.Cells["Telefono"].Value?.ToString();
+                txtEspecialidad.Text = fila.Cells["Especialidad"].Value?.ToString();
+            }
+        }
+
+        private void CargarFotografos()
         {
             try
             {
-                if (!int.TryParse(txtId.Text, out int idFotografo))
-                {
-                    MessageBox.Show("Ingrese un ID válido.");
-                    return;
-                }
-
-                FotografoDTO fotografo = _fotografoService.ObtenerFotografoPorId(idFotografo);
-
-                if (fotografo != null)
-                {
-                    txtNombre.Text = fotografo.Nombre;
-                    txtApellido.Text = fotografo.Apellido;
-                    txtTelefono.Text = fotografo.Telefono;
-                    txtEmail.Text = fotografo.Email;
-                    txtEspecialidad.Text = fotografo.Especialidad;
-                }
-                else
-                {
-                    MessageBox.Show("Cliente no encontrado");
-                }
+                listaFotografos = _fotografoService.ObtenerFotografos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al eliminar fotografo: {ex.Message}");
+                MessageBox.Show($"Error al cargar fotografos {ex.Message}");
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+
+            string textoBuscar = txtBuscar.Text.Trim();
+
+            ActualizarResultados(textoBuscar);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            timer1.Start();
+        }
+
+        private void ActualizarResultados(string filtro)
+        {
+            if (string.IsNullOrWhiteSpace(filtro))
+            {
+                dgv.DataSource = listaFotografos;
+            }
+            else
+            {
+                var listaFiltrada = listaFotografos.Where(f => f.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)
+                                                        || f.Apellido.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                dgv.DataSource = listaFiltrada;
+            }
+        }
+
+        private void btnVerFotografos_Click(object sender, EventArgs e)
+        {
+            dgv.DataSource = null;
+            dgv.DataSource = listaFotografos;
+
+            if (dgv.Columns.Contains("Id"))
+                dgv.Columns["Id"].Visible = false;
+
+            if (dgv.Columns.Contains("NombreCompleto"))
+                dgv.Columns["NombreCompleto"].Visible = false;
         }
     }
 }
