@@ -28,292 +28,381 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBuscar = new Button();
-            btnConsultar = new Button();
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            panelCampos = new Panel();
+            txtEspecialidad = new TextBox();
+            txtTelefono = new TextBox();
+            txtApellido = new TextBox();
+            txtNombre = new TextBox();
+            label1 = new Label();
+            btnVolver = new Button();
             btnEliminar = new Button();
             btnActualizar = new Button();
             btnAgregar = new Button();
-            txtEspecialidad = new TextBox();
             lblEspecialidad = new Label();
-            txtId = new TextBox();
-            lblId = new Label();
-            txtNombre = new TextBox();
-            txtApellido = new TextBox();
             txtEmail = new TextBox();
-            txtTelefono = new TextBox();
             lblTelefono = new Label();
             lblEmail = new Label();
             lblApellido = new Label();
             lblNombre = new Label();
-            label1 = new Label();
-            btnVolver = new Button();
+            panelBuscar = new Panel();
+            btnVerFotografos = new Button();
+            txtBuscar = new TextBox();
+            label2 = new Label();
+            dgv = new DataGridView();
+            timer1 = new System.Windows.Forms.Timer(components);
+            panelCampos.SuspendLayout();
+            panelBuscar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
             // 
-            // btnBuscar
+            // panelCampos
             // 
-            btnBuscar.Anchor = AnchorStyles.None;
-            btnBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBuscar.ForeColor = SystemColors.Desktop;
-            btnBuscar.Location = new Point(560, 320);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(115, 37);
-            btnBuscar.TabIndex = 36;
-            btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
-            // 
-            // btnConsultar
-            // 
-            btnConsultar.Anchor = AnchorStyles.None;
-            btnConsultar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnConsultar.ForeColor = SystemColors.Desktop;
-            btnConsultar.Location = new Point(560, 432);
-            btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(115, 37);
-            btnConsultar.TabIndex = 35;
-            btnConsultar.Text = "Consultar";
-            btnConsultar.UseVisualStyleBackColor = true;
-            btnConsultar.Click += btnConsultar_Click;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Anchor = AnchorStyles.None;
-            btnEliminar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.ForeColor = SystemColors.Desktop;
-            btnEliminar.Location = new Point(560, 259);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(115, 37);
-            btnEliminar.TabIndex = 34;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += btnEliminar_Click;
-            // 
-            // btnActualizar
-            // 
-            btnActualizar.Anchor = AnchorStyles.None;
-            btnActualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnActualizar.ForeColor = SystemColors.Desktop;
-            btnActualizar.Location = new Point(560, 202);
-            btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(115, 37);
-            btnActualizar.TabIndex = 33;
-            btnActualizar.Text = "Actualizar";
-            btnActualizar.UseVisualStyleBackColor = true;
-            btnActualizar.Click += btnActualizar_Click;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.Anchor = AnchorStyles.None;
-            btnAgregar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAgregar.ForeColor = SystemColors.Desktop;
-            btnAgregar.Location = new Point(560, 142);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(115, 37);
-            btnAgregar.TabIndex = 32;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click;
+            panelCampos.BackColor = Color.White;
+            panelCampos.Controls.Add(txtEspecialidad);
+            panelCampos.Controls.Add(txtTelefono);
+            panelCampos.Controls.Add(txtApellido);
+            panelCampos.Controls.Add(txtNombre);
+            panelCampos.Controls.Add(label1);
+            panelCampos.Controls.Add(btnVolver);
+            panelCampos.Controls.Add(btnEliminar);
+            panelCampos.Controls.Add(btnActualizar);
+            panelCampos.Controls.Add(btnAgregar);
+            panelCampos.Controls.Add(lblEspecialidad);
+            panelCampos.Controls.Add(txtEmail);
+            panelCampos.Controls.Add(lblTelefono);
+            panelCampos.Controls.Add(lblEmail);
+            panelCampos.Controls.Add(lblApellido);
+            panelCampos.Controls.Add(lblNombre);
+            panelCampos.Dock = DockStyle.Top;
+            panelCampos.Location = new Point(0, 0);
+            panelCampos.Name = "panelCampos";
+            panelCampos.Size = new Size(1114, 308);
+            panelCampos.TabIndex = 25;
             // 
             // txtEspecialidad
             // 
-            txtEspecialidad.Anchor = AnchorStyles.None;
-            txtEspecialidad.ForeColor = SystemColors.Desktop;
-            txtEspecialidad.Location = new Point(242, 444);
+            txtEspecialidad.Anchor = AnchorStyles.Top;
+            txtEspecialidad.BackColor = Color.DimGray;
+            txtEspecialidad.BorderStyle = BorderStyle.None;
+            txtEspecialidad.ForeColor = Color.White;
+            txtEspecialidad.Location = new Point(869, 86);
+            txtEspecialidad.Margin = new Padding(3, 4, 3, 4);
             txtEspecialidad.Name = "txtEspecialidad";
-            txtEspecialidad.Size = new Size(179, 25);
-            txtEspecialidad.TabIndex = 31;
-            // 
-            // lblEspecialidad
-            // 
-            lblEspecialidad.Anchor = AnchorStyles.None;
-            lblEspecialidad.AutoSize = true;
-            lblEspecialidad.Font = new Font("Segoe UI", 14.25F);
-            lblEspecialidad.ForeColor = SystemColors.Desktop;
-            lblEspecialidad.Location = new Point(112, 441);
-            lblEspecialidad.Name = "lblEspecialidad";
-            lblEspecialidad.Size = new Size(117, 25);
-            lblEspecialidad.TabIndex = 30;
-            lblEspecialidad.Text = "Especialidad";
-            // 
-            // txtId
-            // 
-            txtId.Anchor = AnchorStyles.None;
-            txtId.ForeColor = SystemColors.Desktop;
-            txtId.Location = new Point(242, 154);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(179, 25);
-            txtId.TabIndex = 29;
-            // 
-            // lblId
-            // 
-            lblId.Anchor = AnchorStyles.None;
-            lblId.AutoSize = true;
-            lblId.Font = new Font("Segoe UI", 14.25F);
-            lblId.ForeColor = SystemColors.Desktop;
-            lblId.Location = new Point(112, 151);
-            lblId.Name = "lblId";
-            lblId.Size = new Size(30, 25);
-            lblId.TabIndex = 28;
-            lblId.Text = "ID";
-            // 
-            // txtNombre
-            // 
-            txtNombre.Anchor = AnchorStyles.None;
-            txtNombre.ForeColor = SystemColors.Desktop;
-            txtNombre.Location = new Point(242, 202);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(179, 25);
-            txtNombre.TabIndex = 27;
-            // 
-            // txtApellido
-            // 
-            txtApellido.Anchor = AnchorStyles.None;
-            txtApellido.ForeColor = SystemColors.Desktop;
-            txtApellido.Location = new Point(242, 259);
-            txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(179, 25);
-            txtApellido.TabIndex = 26;
-            // 
-            // txtEmail
-            // 
-            txtEmail.Anchor = AnchorStyles.None;
-            txtEmail.ForeColor = SystemColors.Desktop;
-            txtEmail.Location = new Point(242, 380);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(179, 25);
-            txtEmail.TabIndex = 25;
+            txtEspecialidad.Size = new Size(204, 20);
+            txtEspecialidad.TabIndex = 38;
             // 
             // txtTelefono
             // 
-            txtTelefono.Anchor = AnchorStyles.None;
-            txtTelefono.ForeColor = SystemColors.Desktop;
-            txtTelefono.Location = new Point(242, 320);
+            txtTelefono.Anchor = AnchorStyles.Top;
+            txtTelefono.BackColor = Color.DimGray;
+            txtTelefono.BorderStyle = BorderStyle.None;
+            txtTelefono.ForeColor = Color.White;
+            txtTelefono.Location = new Point(502, 158);
+            txtTelefono.Margin = new Padding(3, 4, 3, 4);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(179, 25);
-            txtTelefono.TabIndex = 24;
+            txtTelefono.Size = new Size(204, 20);
+            txtTelefono.TabIndex = 37;
             // 
-            // lblTelefono
+            // txtApellido
             // 
-            lblTelefono.Anchor = AnchorStyles.None;
-            lblTelefono.AutoSize = true;
-            lblTelefono.Font = new Font("Segoe UI", 14.25F);
-            lblTelefono.ForeColor = SystemColors.Desktop;
-            lblTelefono.Location = new Point(112, 317);
-            lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(84, 25);
-            lblTelefono.TabIndex = 23;
-            lblTelefono.Text = "Teléfono";
+            txtApellido.Anchor = AnchorStyles.Top;
+            txtApellido.BackColor = Color.DimGray;
+            txtApellido.BorderStyle = BorderStyle.None;
+            txtApellido.ForeColor = Color.White;
+            txtApellido.Location = new Point(147, 157);
+            txtApellido.Margin = new Padding(3, 4, 3, 4);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(204, 20);
+            txtApellido.TabIndex = 36;
             // 
-            // lblEmail
+            // txtNombre
             // 
-            lblEmail.Anchor = AnchorStyles.None;
-            lblEmail.AutoSize = true;
-            lblEmail.Font = new Font("Segoe UI", 14.25F);
-            lblEmail.ForeColor = SystemColors.Desktop;
-            lblEmail.Location = new Point(112, 377);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(58, 25);
-            lblEmail.TabIndex = 22;
-            lblEmail.Text = "Email";
-            // 
-            // lblApellido
-            // 
-            lblApellido.Anchor = AnchorStyles.None;
-            lblApellido.AutoSize = true;
-            lblApellido.Font = new Font("Segoe UI", 14.25F);
-            lblApellido.ForeColor = SystemColors.Desktop;
-            lblApellido.Location = new Point(113, 259);
-            lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(82, 25);
-            lblApellido.TabIndex = 21;
-            lblApellido.Text = "Apellido";
-            // 
-            // lblNombre
-            // 
-            lblNombre.Anchor = AnchorStyles.None;
-            lblNombre.AutoSize = true;
-            lblNombre.Font = new Font("Segoe UI", 14.25F);
-            lblNombre.ForeColor = SystemColors.Desktop;
-            lblNombre.Location = new Point(112, 199);
-            lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(81, 25);
-            lblNombre.TabIndex = 20;
-            lblNombre.Text = "Nombre";
+            txtNombre.Anchor = AnchorStyles.Top;
+            txtNombre.BackColor = Color.DimGray;
+            txtNombre.BorderStyle = BorderStyle.None;
+            txtNombre.ForeColor = Color.White;
+            txtNombre.Location = new Point(147, 86);
+            txtNombre.Margin = new Padding(3, 4, 3, 4);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(204, 20);
+            txtNombre.TabIndex = 35;
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.None;
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Desktop;
-            label1.Location = new Point(304, 69);
+            label1.Location = new Point(451, 15);
             label1.Name = "label1";
             label1.Size = new Size(158, 37);
-            label1.TabIndex = 19;
+            label1.TabIndex = 34;
             label1.Text = "Fotógrafos";
             // 
             // btnVolver
             // 
+            btnVolver.BackColor = Color.DimGray;
+            btnVolver.FlatStyle = FlatStyle.Flat;
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVolver.ForeColor = SystemColors.Desktop;
-            btnVolver.Location = new Point(12, 12);
+            btnVolver.ForeColor = Color.White;
+            btnVolver.Location = new Point(12, 18);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(75, 29);
-            btnVolver.TabIndex = 37;
+            btnVolver.Size = new Size(86, 34);
+            btnVolver.TabIndex = 33;
             btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Anchor = AnchorStyles.Top;
+            btnEliminar.BackColor = Color.DimGray;
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEliminar.ForeColor = Color.White;
+            btnEliminar.Location = new Point(642, 219);
+            btnEliminar.Margin = new Padding(3, 4, 3, 4);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(131, 44);
+            btnEliminar.TabIndex = 31;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.Anchor = AnchorStyles.Top;
+            btnActualizar.BackColor = Color.DimGray;
+            btnActualizar.FlatStyle = FlatStyle.Flat;
+            btnActualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnActualizar.ForeColor = Color.White;
+            btnActualizar.Location = new Point(467, 219);
+            btnActualizar.Margin = new Padding(3, 4, 3, 4);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(131, 44);
+            btnActualizar.TabIndex = 30;
+            btnActualizar.Text = "Actualizar";
+            btnActualizar.UseVisualStyleBackColor = false;
+            btnActualizar.Click += btnActualizar_Click;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Anchor = AnchorStyles.Top;
+            btnAgregar.BackColor = Color.DimGray;
+            btnAgregar.FlatStyle = FlatStyle.Flat;
+            btnAgregar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAgregar.ForeColor = Color.White;
+            btnAgregar.Location = new Point(292, 219);
+            btnAgregar.Margin = new Padding(3, 4, 3, 4);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(131, 44);
+            btnAgregar.TabIndex = 29;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // lblEspecialidad
+            // 
+            lblEspecialidad.Anchor = AnchorStyles.Top;
+            lblEspecialidad.AutoSize = true;
+            lblEspecialidad.Font = new Font("Segoe UI", 14.25F);
+            lblEspecialidad.ForeColor = SystemColors.Desktop;
+            lblEspecialidad.Location = new Point(745, 81);
+            lblEspecialidad.Name = "lblEspecialidad";
+            lblEspecialidad.Size = new Size(117, 25);
+            lblEspecialidad.TabIndex = 27;
+            lblEspecialidad.Text = "Especialidad";
+            // 
+            // txtEmail
+            // 
+            txtEmail.Anchor = AnchorStyles.Top;
+            txtEmail.BackColor = Color.DimGray;
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.ForeColor = Color.White;
+            txtEmail.Location = new Point(502, 86);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(204, 20);
+            txtEmail.TabIndex = 24;
+            // 
+            // lblTelefono
+            // 
+            lblTelefono.Anchor = AnchorStyles.Top;
+            lblTelefono.AutoSize = true;
+            lblTelefono.Font = new Font("Segoe UI", 14.25F);
+            lblTelefono.ForeColor = SystemColors.Desktop;
+            lblTelefono.Location = new Point(391, 153);
+            lblTelefono.Name = "lblTelefono";
+            lblTelefono.Size = new Size(84, 25);
+            lblTelefono.TabIndex = 22;
+            lblTelefono.Text = "Teléfono";
+            // 
+            // lblEmail
+            // 
+            lblEmail.Anchor = AnchorStyles.Top;
+            lblEmail.AutoSize = true;
+            lblEmail.Font = new Font("Segoe UI", 14.25F);
+            lblEmail.ForeColor = SystemColors.Desktop;
+            lblEmail.Location = new Point(391, 82);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(58, 25);
+            lblEmail.TabIndex = 21;
+            lblEmail.Text = "Email";
+            // 
+            // lblApellido
+            // 
+            lblApellido.Anchor = AnchorStyles.Top;
+            lblApellido.AutoSize = true;
+            lblApellido.Font = new Font("Segoe UI", 14.25F);
+            lblApellido.ForeColor = SystemColors.Desktop;
+            lblApellido.Location = new Point(41, 153);
+            lblApellido.Name = "lblApellido";
+            lblApellido.Size = new Size(82, 25);
+            lblApellido.TabIndex = 20;
+            lblApellido.Text = "Apellido";
+            // 
+            // lblNombre
+            // 
+            lblNombre.Anchor = AnchorStyles.Top;
+            lblNombre.AutoSize = true;
+            lblNombre.Font = new Font("Segoe UI", 14.25F);
+            lblNombre.ForeColor = SystemColors.Desktop;
+            lblNombre.Location = new Point(40, 82);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(81, 25);
+            lblNombre.TabIndex = 19;
+            lblNombre.Text = "Nombre";
+            // 
+            // panelBuscar
+            // 
+            panelBuscar.BackColor = Color.White;
+            panelBuscar.Controls.Add(btnVerFotografos);
+            panelBuscar.Controls.Add(txtBuscar);
+            panelBuscar.Controls.Add(label2);
+            panelBuscar.Controls.Add(dgv);
+            panelBuscar.Dock = DockStyle.Fill;
+            panelBuscar.Location = new Point(0, 0);
+            panelBuscar.Name = "panelBuscar";
+            panelBuscar.Size = new Size(1114, 690);
+            panelBuscar.TabIndex = 24;
+            // 
+            // btnVerFotografos
+            // 
+            btnVerFotografos.Anchor = AnchorStyles.Top;
+            btnVerFotografos.BackColor = Color.DimGray;
+            btnVerFotografos.FlatStyle = FlatStyle.Flat;
+            btnVerFotografos.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVerFotografos.ForeColor = Color.White;
+            btnVerFotografos.Location = new Point(333, 311);
+            btnVerFotografos.Margin = new Padding(3, 4, 3, 4);
+            btnVerFotografos.Name = "btnVerFotografos";
+            btnVerFotografos.Size = new Size(142, 34);
+            btnVerFotografos.TabIndex = 31;
+            btnVerFotografos.Text = "Ver fotógrafos";
+            btnVerFotografos.UseVisualStyleBackColor = false;
+            btnVerFotografos.Click += btnVerFotografos_Click;
+            // 
+            // txtBuscar
+            // 
+            txtBuscar.BackColor = Color.DimGray;
+            txtBuscar.BorderStyle = BorderStyle.None;
+            txtBuscar.ForeColor = Color.White;
+            txtBuscar.Location = new Point(108, 320);
+            txtBuscar.Margin = new Padding(3, 4, 3, 4);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(204, 20);
+            txtBuscar.TabIndex = 27;
+            txtBuscar.TextChanged += txtBuscar_TextChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14.25F);
+            label2.ForeColor = SystemColors.Desktop;
+            label2.Location = new Point(34, 316);
+            label2.Name = "label2";
+            label2.Size = new Size(68, 25);
+            label2.TabIndex = 26;
+            label2.Text = "Buscar";
+            // 
+            // dgv
+            // 
+            dgv.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.BackgroundColor = Color.White;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Black;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.GridColor = Color.LightGray;
+            dgv.Location = new Point(0, 347);
+            dgv.Name = "dgv";
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DimGray;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dgv.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dgv.Size = new Size(1114, 340);
+            dgv.TabIndex = 25;
+            dgv.CellContentClick += dgv_CellContentClick;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 500;
+            timer1.Tick += timer1_Tick;
             // 
             // FormFotografo
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(786, 538);
-            Controls.Add(btnVolver);
-            Controls.Add(btnBuscar);
-            Controls.Add(btnConsultar);
-            Controls.Add(btnEliminar);
-            Controls.Add(btnActualizar);
-            Controls.Add(btnAgregar);
-            Controls.Add(txtEspecialidad);
-            Controls.Add(lblEspecialidad);
-            Controls.Add(txtId);
-            Controls.Add(lblId);
-            Controls.Add(txtNombre);
-            Controls.Add(txtApellido);
-            Controls.Add(txtEmail);
-            Controls.Add(txtTelefono);
-            Controls.Add(lblTelefono);
-            Controls.Add(lblEmail);
-            Controls.Add(lblApellido);
-            Controls.Add(lblNombre);
-            Controls.Add(label1);
+            ClientSize = new Size(1114, 690);
+            Controls.Add(panelCampos);
+            Controls.Add(panelBuscar);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormFotografo";
             Text = "FormFotografo";
+            Load += FormFotografo_Load;
+            panelCampos.ResumeLayout(false);
+            panelCampos.PerformLayout();
+            panelBuscar.ResumeLayout(false);
+            panelBuscar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Button btnBuscar;
-        private Button btnConsultar;
+        private Panel panelCampos;
+        private TextBox txtEspecialidad;
+        private TextBox txtTelefono;
+        private TextBox txtApellido;
+        private TextBox txtNombre;
+        private Label label1;
+        private Button btnVolver;
         private Button btnEliminar;
         private Button btnActualizar;
         private Button btnAgregar;
-        private TextBox txtEspecialidad;
         private Label lblEspecialidad;
-        private TextBox txtId;
-        private Label lblId;
-        private TextBox txtNombre;
-        private TextBox txtApellido;
         private TextBox txtEmail;
-        private TextBox txtTelefono;
         private Label lblTelefono;
         private Label lblEmail;
         private Label lblApellido;
         private Label lblNombre;
-        private Label label1;
-        private Button btnVolver;
+        private Panel panelBuscar;
+        private Button btnVerFotografos;
+        private TextBox txtBuscar;
+        private Label label2;
+        private DataGridView dgv;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class Principal : Form
+    public partial class Orama : Form
     {
-        public Principal()
+        public Orama()
         {
             InitializeComponent();
         }

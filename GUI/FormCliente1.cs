@@ -15,8 +15,8 @@ namespace GUI
     public partial class FormCliente1 : Form
     {
         private readonly ClienteService _clienteService = new ClienteService();
-
         private readonly Action<Form> cambiarFormulario;
+        private List<Cliente> listaClientes = new List<Cliente>();
 
         public FormCliente1(Action<Form> cambiarFormulario)
         {
@@ -27,11 +27,6 @@ namespace GUI
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            cambiarFormulario(new FormClienteConsulta(cambiarFormulario));
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -60,17 +55,39 @@ namespace GUI
         {
             try
             {
-                Cliente cliente = new Cliente
+                if (dgv.SelectedRows.Count == 0)
                 {
-                    Nombre = txtNombre.Text,
-                    Apellido = txtApellido.Text,
-                    Telefono = txtTelefono.Text,
-                    Email = txtEmail.Text,
-                    Direccion = txtDireccion.Text
-                };
+                    MessageBox.Show("Seleccione un cliente primero.");
+                    return;
+                }
 
-                _clienteService.Actualizar(cliente);
-                MessageBox.Show("Cliente actualizado correctamente");
+                int idCliente = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                Cliente cliente = listaClientes.FirstOrDefault(c => c.Id == idCliente);
+
+                if (cliente != null)
+                {
+                    cliente.Nombre = txtNombre.Text.Trim();
+                    cliente.Apellido = txtApellido.Text.Trim();
+                    cliente.Email = txtEmail.Text.Trim();
+                    cliente.Telefono = txtTelefono.Text.Trim();
+                    cliente.Direccion = txtDireccion.Text.Trim();
+
+                    _clienteService.Actualizar(cliente);
+
+                    CargarClientes();
+
+                    dgv.DataSource = null;
+                    dgv.DataSource = listaClientes;
+
+                    if (dgv.Columns.Contains("Id"))
+                        dgv.Columns["Id"].Visible = false;
+
+                    if (dgv.Columns.Contains("NombreCompleto"))
+                        dgv.Columns["NombreCompleto"].Visible = false;
+
+                    MessageBox.Show("Cliente modificado correctamente");
+                }
             }
             catch (Exception ex)
             {
@@ -82,13 +99,30 @@ namespace GUI
         {
             try
             {
-                if (!int.TryParse(txtId.Text, out int idCliente))
+                if (dgv.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Ingrese un ID válido.");
+                    MessageBox.Show("Seleccione un cliente para eliminar.");
                     return;
                 }
 
+                int idCliente = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                var confirmar = MessageBox.Show("¿Está seguro de eliminar este cliente?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirmar != DialogResult.Yes) return;
+
                 _clienteService.Delete(idCliente);
+
+                CargarClientes();
+
+                dgv.DataSource = null;
+                dgv.DataSource = listaClientes;
+
+                if (dgv.Columns.Contains("Id"))
+                    dgv.Columns["Id"].Visible = false;
+
+                if (dgv.Columns.Contains("NombreCompleto"))
+                    dgv.Columns["NombreCompleto"].Visible = false;
+
                 MessageBox.Show("Cliente eliminado correctamente");
             }
             catch (Exception ex)
@@ -97,34 +131,143 @@ namespace GUI
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void CargarClientes()
         {
             try
             {
-                if (!int.TryParse(txtId.Text, out int idCliente))
-                {
-                    MessageBox.Show("Ingrese un ID válido.");
-                    return;
-                }
-
-                Cliente cliente = _clienteService.GetById(idCliente);
-
-                if(cliente != null)
-                {
-                    txtNombre.Text = cliente.Nombre;
-                    txtApellido.Text = cliente.Apellido;
-                    txtTelefono.Text = cliente.Telefono;
-                    txtEmail.Text = cliente.Email;
-                    txtDireccion.Text = cliente.Direccion;
-                }
-                else
-                {
-                    MessageBox.Show("Cliente no encontrado");
-                }
+                listaClientes = _clienteService.GetAll();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al buscar cliente: {ex.Message}");
+                MessageBox.Show($"Error al cargar clientes {ex.Message}");
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+
+            string textoBuscar = txtBuscar.Text.Trim();
+
+            ActualizarResultados(textoBuscar);
+        }
+
+        private void ActualizarResultados(string filtro)
+        {
+            if (string.IsNullOrWhiteSpace(filtro))
+            {
+                dgv.DataSource = listaClientes;
+            }
+            else
+            {
+                var listaFiltrada = listaClientes.Where(c => c.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)
+                                                        || c.Apellido.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                dgv.DataSource = listaFiltrada;
+            }
+        }
+
+        private void FormCliente1_Load(object sender, EventArgs e)
+        {
+            CargarClientes();
+        }
+
+        private void btnVerClientes_Click(object sender, EventArgs e)
+        {
+            dgv.DataSource = null;
+            dgv.DataSource = listaClientes;
+
+            if (dgv.Columns.Contains("Id"))
+                dgv.Columns["Id"].Visible = false;
+
+            if (dgv.Columns.Contains("NombreCompleto"))
+                dgv.Columns["NombreCompleto"].Visible = false;
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgv.Rows[e.RowIndex];
+
+
+                txtNombre.Text = fila.Cells["Nombre"].Value?.ToString();
+                txtApellido.Text = fila.Cells["Apellido"].Value?.ToString();
+                txtEmail.Text = fila.Cells["Email"].Value?.ToString();
+                txtTelefono.Text = fila.Cells["Telefono"].Value?.ToString();
+                txtDireccion.Text = fila.Cells["Direccion"].Value?.ToString();
+            }
+        }
+
+        private void btnDespachos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgv.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Seleccione un cliente para continuar");
+                    return;
+                }
+
+                int idCliente = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                var despachos = _clienteService.ObtenerDespachosPorCliente(idCliente);
+
+                dgv.DataSource = despachos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar despachos: {ex.Message}");
+            }
+        }
+
+        private void btnReservas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgv.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Seleccione un cliente para continuar");
+                    return;
+                }
+
+                int idCliente = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                var reservas = _clienteService.ObtenerReservasPorCliente(idCliente);
+
+                dgv.DataSource = reservas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar reservas: {ex.Message}");
+            }
+        }
+
+        private void btnPagos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgv.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Seleccione un cliente para continuar");
+                    return;
+                }
+
+                int idCliente = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                var pagos = _clienteService.ObtenerPagosPorCliente(idCliente);
+
+                dgv.DataSource = pagos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar pagos: {ex.Message}");
             }
         }
     }

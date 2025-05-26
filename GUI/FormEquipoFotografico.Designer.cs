@@ -54,9 +54,10 @@
             btnBuscar.Anchor = AnchorStyles.None;
             btnBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnBuscar.ForeColor = SystemColors.Desktop;
-            btnBuscar.Location = new Point(546, 291);
+            btnBuscar.Location = new Point(732, 371);
+            btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(115, 37);
+            btnBuscar.Size = new Size(131, 44);
             btnBuscar.TabIndex = 37;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -67,9 +68,10 @@
             btnConsultar.Anchor = AnchorStyles.None;
             btnConsultar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnConsultar.ForeColor = SystemColors.Desktop;
-            btnConsultar.Location = new Point(546, 403);
+            btnConsultar.Location = new Point(732, 503);
+            btnConsultar.Margin = new Padding(3, 4, 3, 4);
             btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(115, 37);
+            btnConsultar.Size = new Size(131, 44);
             btnConsultar.TabIndex = 36;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
@@ -80,9 +82,10 @@
             btnEliminar.Anchor = AnchorStyles.None;
             btnEliminar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEliminar.ForeColor = SystemColors.Desktop;
-            btnEliminar.Location = new Point(546, 230);
+            btnEliminar.Location = new Point(732, 300);
+            btnEliminar.Margin = new Padding(3, 4, 3, 4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(115, 37);
+            btnEliminar.Size = new Size(131, 44);
             btnEliminar.TabIndex = 35;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -93,9 +96,10 @@
             btnActualizar.Anchor = AnchorStyles.None;
             btnActualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnActualizar.ForeColor = SystemColors.Desktop;
-            btnActualizar.Location = new Point(546, 173);
+            btnActualizar.Location = new Point(732, 233);
+            btnActualizar.Margin = new Padding(3, 4, 3, 4);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(115, 37);
+            btnActualizar.Size = new Size(131, 44);
             btnActualizar.TabIndex = 34;
             btnActualizar.Text = "Actualizar";
             btnActualizar.UseVisualStyleBackColor = true;
@@ -106,9 +110,10 @@
             btnAgregar.Anchor = AnchorStyles.None;
             btnAgregar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = SystemColors.Desktop;
-            btnAgregar.Location = new Point(546, 113);
+            btnAgregar.Location = new Point(732, 162);
+            btnAgregar.Margin = new Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(115, 37);
+            btnAgregar.Size = new Size(131, 44);
             btnAgregar.TabIndex = 33;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -118,9 +123,10 @@
             // 
             txtCantidad.Anchor = AnchorStyles.None;
             txtCantidad.ForeColor = SystemColors.Desktop;
-            txtCantidad.Location = new Point(195, 415);
+            txtCantidad.Location = new Point(331, 517);
+            txtCantidad.Margin = new Padding(3, 4, 3, 4);
             txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(179, 25);
+            txtCantidad.Size = new Size(204, 27);
             txtCantidad.TabIndex = 32;
             // 
             // lblDireccion
@@ -129,7 +135,7 @@
             lblDireccion.AutoSize = true;
             lblDireccion.Font = new Font("Segoe UI", 14.25F);
             lblDireccion.ForeColor = SystemColors.Desktop;
-            lblDireccion.Location = new Point(98, 412);
+            lblDireccion.Location = new Point(220, 514);
             lblDireccion.Name = "lblDireccion";
             lblDireccion.Size = new Size(88, 25);
             lblDireccion.TabIndex = 31;
@@ -139,9 +145,10 @@
             // 
             txtId.Anchor = AnchorStyles.None;
             txtId.ForeColor = SystemColors.Desktop;
-            txtId.Location = new Point(195, 125);
+            txtId.Location = new Point(331, 176);
+            txtId.Margin = new Padding(3, 4, 3, 4);
             txtId.Name = "txtId";
-            txtId.Size = new Size(179, 25);
+            txtId.Size = new Size(204, 27);
             txtId.TabIndex = 30;
             // 
             // lblId
@@ -150,7 +157,7 @@
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI", 14.25F);
             lblId.ForeColor = SystemColors.Desktop;
-            lblId.Location = new Point(98, 122);
+            lblId.Location = new Point(220, 173);
             lblId.Name = "lblId";
             lblId.Size = new Size(30, 25);
             lblId.TabIndex = 29;
@@ -160,36 +167,40 @@
             // 
             txtMarca.Anchor = AnchorStyles.None;
             txtMarca.ForeColor = SystemColors.Desktop;
-            txtMarca.Location = new Point(195, 173);
+            txtMarca.Location = new Point(331, 233);
+            txtMarca.Margin = new Padding(3, 4, 3, 4);
             txtMarca.Name = "txtMarca";
-            txtMarca.Size = new Size(179, 25);
+            txtMarca.Size = new Size(204, 27);
             txtMarca.TabIndex = 28;
             // 
             // txtModelo
             // 
             txtModelo.Anchor = AnchorStyles.None;
             txtModelo.ForeColor = SystemColors.Desktop;
-            txtModelo.Location = new Point(195, 230);
+            txtModelo.Location = new Point(331, 300);
+            txtModelo.Margin = new Padding(3, 4, 3, 4);
             txtModelo.Name = "txtModelo";
-            txtModelo.Size = new Size(179, 25);
+            txtModelo.Size = new Size(204, 27);
             txtModelo.TabIndex = 27;
             // 
             // txtEstado
             // 
             txtEstado.Anchor = AnchorStyles.None;
             txtEstado.ForeColor = SystemColors.Desktop;
-            txtEstado.Location = new Point(195, 351);
+            txtEstado.Location = new Point(331, 442);
+            txtEstado.Margin = new Padding(3, 4, 3, 4);
             txtEstado.Name = "txtEstado";
-            txtEstado.Size = new Size(179, 25);
+            txtEstado.Size = new Size(204, 27);
             txtEstado.TabIndex = 26;
             // 
             // txtTipo
             // 
             txtTipo.Anchor = AnchorStyles.None;
             txtTipo.ForeColor = SystemColors.Desktop;
-            txtTipo.Location = new Point(195, 291);
+            txtTipo.Location = new Point(331, 371);
+            txtTipo.Margin = new Padding(3, 4, 3, 4);
             txtTipo.Name = "txtTipo";
-            txtTipo.Size = new Size(179, 25);
+            txtTipo.Size = new Size(204, 27);
             txtTipo.TabIndex = 25;
             // 
             // lblTelefono
@@ -198,7 +209,7 @@
             lblTelefono.AutoSize = true;
             lblTelefono.Font = new Font("Segoe UI", 14.25F);
             lblTelefono.ForeColor = SystemColors.Desktop;
-            lblTelefono.Location = new Point(98, 288);
+            lblTelefono.Location = new Point(220, 368);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(49, 25);
             lblTelefono.TabIndex = 24;
@@ -210,7 +221,7 @@
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 14.25F);
             lblEmail.ForeColor = SystemColors.Desktop;
-            lblEmail.Location = new Point(98, 348);
+            lblEmail.Location = new Point(220, 438);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(68, 25);
             lblEmail.TabIndex = 23;
@@ -222,7 +233,7 @@
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 14.25F);
             lblApellido.ForeColor = SystemColors.Desktop;
-            lblApellido.Location = new Point(99, 230);
+            lblApellido.Location = new Point(221, 300);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(77, 25);
             lblApellido.TabIndex = 22;
@@ -234,7 +245,7 @@
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 14.25F);
             lblNombre.ForeColor = SystemColors.Desktop;
-            lblNombre.Location = new Point(98, 170);
+            lblNombre.Location = new Point(220, 229);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(65, 25);
             lblNombre.TabIndex = 21;
@@ -246,7 +257,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Desktop;
-            label1.Location = new Point(265, 40);
+            label1.Location = new Point(411, 76);
             label1.Name = "label1";
             label1.Size = new Size(263, 37);
             label1.TabIndex = 20;
@@ -256,9 +267,10 @@
             // 
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = SystemColors.Desktop;
-            btnVolver.Location = new Point(12, 12);
+            btnVolver.Location = new Point(14, 14);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(75, 29);
+            btnVolver.Size = new Size(86, 34);
             btnVolver.TabIndex = 19;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -266,9 +278,9 @@
             // 
             // FormEquipoFotografico
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(786, 538);
+            ClientSize = new Size(1114, 690);
             Controls.Add(btnBuscar);
             Controls.Add(btnConsultar);
             Controls.Add(btnEliminar);
@@ -288,6 +300,7 @@
             Controls.Add(lblNombre);
             Controls.Add(label1);
             Controls.Add(btnVolver);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormEquipoFotografico";
             Text = "FormEquipoFotografico";
             ResumeLayout(false);
