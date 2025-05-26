@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace GUI
 {
     public partial class Principal : Form
     {
+        private TelegramBotService _botService = new TelegramBotService();
         public Principal()
         {
             InitializeComponent();
@@ -19,7 +21,11 @@ namespace GUI
 
         private void Principal_Load(object sender, EventArgs e)
         {
-
+            _botService.Iniciar();
+        }
+        private void Principal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _botService.Detener();
         }
 
         private Form formActivo = null;

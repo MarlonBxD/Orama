@@ -1,5 +1,6 @@
 ﻿using Entity;
 using Entity.Dto;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,9 +39,9 @@ namespace DAL
 
                 return "Reserva agregada correctamente";
             }
-            catch (Exception ex)
+            catch (Npgsql.NpgsqlException ex)
             {
-                throw new AppException("Error al agregar reserva", ex);
+                throw new NpgsqlException("Error al agregar reserva", ex);
             }
         }
 
@@ -228,6 +229,58 @@ namespace DAL
             catch (Exception ex)
             {
                 throw new AppException("Error al obtener eventos", ex);
+            }
+        }
+        public List<Reserva> GetByClienteId(int clienteId)
+        {
+            try
+            {
+                var reservas = new List<Reserva>();
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"SELECT
+                                r.id, r.fecha_evento, r.fecha_reserva, r.estado, r.observaciones,
+                                c.id, c.nombre,
+                                e.id, e.tipo,
+                                p.id, p.nombre
+                                FROM reserva r
+                                LEFT JOIN cliente c ON r.cliente_id = c.id
+                                LEFT JOIN evento e ON r.evento_id = e.id
+                                LEFT JOIN paquetedeservicio p ON r.paqueteservicio_id = p.id
+                                WHERE c.id = @clienteId";
+                cmd.Parameters.AddWithValue("@clienteId", clienteId);
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    reservas.Add(new Reserva
+                    {
+                        Id = reader.GetInt32(0),
+                        FechaEvento = reader.GetDateTime(1),
+                        FechaReserva = reader.GetDateTime(2),
+                        EstadoReserva = reader.GetString(4),
+                        Cliente = new ClienteDTO
+                        {
+                            Id = reader.GetInt32(5),
+                            Nombre = reader.GetString(6)
+                        },
+                        Evento = new EventoDTO
+                        {
+                            Id = reader.GetInt32(7),
+                            Tipo = reader.GetString(8)
+                        },
+                        PaqueteDeServicio = new PaqueteDeServicioDTO
+                        {
+                            Id = reader.GetInt32(9),
+                            Nombre = reader.GetString(10)
+                        }
+                    });
+                }
+                return reservas;
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error al obtener reservas por cliente", ex);
             }
         }
     }

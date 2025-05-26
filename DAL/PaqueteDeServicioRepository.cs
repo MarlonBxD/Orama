@@ -23,20 +23,39 @@ namespace DAL
             {
                 using var conn = _conexion.GetConnection();
                 conn.Open();
-                using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO paquetedeservicio (nombre, precio, descripcion, duracion, evento_id)
-                                VALUES (@nombre, @precio, @descripcion, @duracion, @evento_id)";
-                cmd.Parameters.AddWithValue("@nombre", paquete.Nombre);
-                cmd.Parameters.AddWithValue("@precio", paquete.Precio);
-                cmd.Parameters.AddWithValue("@descripcion", paquete.Descripcion);
-                cmd.Parameters.AddWithValue("@duracion", paquete.DuracionPaquete);
-                cmd.ExecuteNonQuery();
+                using var tran = conn.BeginTransaction();
 
-                return "Paquete de servicio agregado correctamente";
+                int paqueteId;
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.Transaction = tran;
+                    cmd.CommandText = @"INSERT INTO paquetedeservicio (nombre, precio, descripcion, duracion)
+                                VALUES (@nombre, @precio, @descripcion, @duracion)
+                                RETURNING id";
+                    cmd.Parameters.AddWithValue("@nombre", paquete.Nombre);
+                    cmd.Parameters.AddWithValue("@precio", paquete.Precio);
+                    cmd.Parameters.AddWithValue("@descripcion", paquete.Descripcion);
+                    cmd.Parameters.AddWithValue("@duracion", paquete.DuracionPaquete);
+                    paqueteId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+                foreach (var item in paquete.productos)
+                {
+                    using var cmd = conn.CreateCommand();
+                    cmd.Transaction = tran;
+                    cmd.CommandText = @"INSERT INTO paquete_producto (id_paquete, id_producto, cantidad_producto)
+                                VALUES (@paqueteId, @productoId, @cantidad)";
+                    cmd.Parameters.AddWithValue("@paqueteId", paqueteId);
+                    cmd.Parameters.AddWithValue("@productoId", item.Id);
+                    cmd.ExecuteNonQuery();
+                }
+
+                tran.Commit();
+                return $"✅ Paquete de servicio agregado correctamente con ID {paqueteId}";
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al agregar paquete de servicio", ex);
+                Console.WriteLine(ex.Message);
+                return $"Error al agregar paquete de servicio  {ex.Message}";
             }
         }
 
@@ -61,9 +80,7 @@ namespace DAL
                         Nombre = reader.IsDBNull(1) ? null : reader.GetString(1),
                         Precio = reader.GetDouble(2),
                         Descripcion = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        DuracionPaquete = reader.GetInt32(4),
-                        IdEvento = reader.GetInt32(5),
-                        TipoEvento = reader.IsDBNull(6) ? null : reader.GetString(6)
+                        DuracionPaquete = reader.GetInt32(4)
                     });
                 }
                 return paquetes;
@@ -71,40 +88,6 @@ namespace DAL
             catch (Exception ex)
             {
                 throw new AppException("Error al obtener paquetes", ex);
-            }
-        }
-
-        public PaqueteDeServicio GetById(int id)
-        {
-            try
-            {
-                PaqueteDeServicio paquete = null;
-                using var conn = _conexion.GetConnection();
-                conn.Open();
-                using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"SELECT p.id, p.nombre, p.precio, p.descripcion, p.duracion, e.id, e.tipo
-                                FROM paquetedeservicio p
-                                LEFT JOIN evento e ON p.evento_id = e.id
-                                WHERE p.id = @id";
-                cmd.Parameters.AddWithValue("@id", id);
-
-                using var reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    paquete = new PaqueteDeServicio
-                    {
-                        Id = reader.GetInt32(0),
-                        Nombre = reader.IsDBNull(1) ? null : reader.GetString(1),
-                        Precio = reader.GetDouble(2),
-                        Descripcion = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        DuracionPaquete = reader.GetInt32(4)
-                    };
-                }
-                return paquete;
-            }
-            catch (Exception ex)
-            {
-                throw new AppException("Error al obtener paquete", ex);
             }
         }
 
@@ -156,35 +139,68 @@ namespace DAL
             }
         }
 
-        public List<Producto> ObtenerProductos(int idPaquete)
+        public PaqueteDeServicioDTO GetById(int paqueteId)
         {
             try
             {
-                List<Producto> productos = new List<Producto>();
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"SELECT id, nombre, descripcion, precio, stock FROM producto WHERE paquetedeservicio_id = @id";
-                cmd.Parameters.AddWithValue("@id", idPaquete);
+                cmd.CommandText = @"SELECT 
+                                        p.id AS paquete_id,
+                                        p.nombre AS paquete_nombre,
+                                        p.precio AS paquete_precio,
+                                        p.descripcion,
+                                        p.duracion,
+
+                                        pr.id AS producto_id,
+                                        pr.nombre AS producto_nombre,
+                                        pr.precio AS producto_precio,
+
+                                        pp.cantidad_producto
+                                    FROM paquetedeservicio p
+                                    JOIN paquete_producto pp ON p.id = pp.id_paquete
+                                    JOIN producto pr ON pp.id_producto = pr.id
+                                    WHERE p.id = @paqueteId;";
+
+                cmd.Parameters.AddWithValue("@paqueteId", paqueteId);
 
                 using var reader = cmd.ExecuteReader();
+                var paquete = new PaqueteDeServicioDTO();
+
                 while (reader.Read())
                 {
-                    productos.Add(new Producto
+                    if (paquete == null)
                     {
-                        Id = reader.GetInt32(0),
-                        Nombre = reader.IsDBNull(1) ? null : reader.GetString(1),
-                        Descripcion = reader.IsDBNull(2) ? null : reader.GetString(2),
-                        Precio = reader.GetDecimal(3),
-                        stock = reader.GetInt32(4)
-                    });
+                        paquete = new PaqueteDeServicioDTO
+                        {
+                            Id = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Precio = reader.GetDouble(2),
+                            Descripcion = reader.GetString(3),
+                            DuracionPaquete = reader.GetInt32(4),
+                            productos = new List<Producto>()
+                        };
+                    }
+
+                    var producto = new Producto
+                    {
+                        Id = reader.GetInt32(5),
+                        Nombre = reader.GetString(6),
+                        Precio = reader.GetDouble(7)
+                    };
+
+                    paquete.productos.Add(producto);
                 }
-                return productos;
+
+                return paquete;
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al obtener productos", ex);
+                throw new Exception("Error al obtener paquete con productos", ex);
             }
         }
+
+
     }
 }

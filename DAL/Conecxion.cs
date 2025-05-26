@@ -29,7 +29,7 @@ namespace DAL
 
         public NpgsqlConnection GetConnection()
         {
-            return connection;
+            return new NpgsqlConnection(connectionString);
         }
 
         public void OpenConnection()

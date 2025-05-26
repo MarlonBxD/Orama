@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Entity.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class ProductoRepository
+    public class ProductoRepository : IProductoRepository
     {
         private readonly Conexion _conexion;
         public ProductoRepository()
@@ -71,7 +72,7 @@ namespace DAL
                     {
                         Id = reader.GetInt32(0),
                         Nombre = reader.GetString(1),
-                        Precio = reader.GetDecimal(2),
+                        Precio = reader.GetDouble(2),
                         Descripcion = reader.GetString(3),
                         stock = reader.GetInt32(5)
                     };
@@ -107,34 +108,58 @@ namespace DAL
                 throw new AppException("Error al actualizar el producto", ex);
             }
         }
-        public Producto GetById(int id) 
+        public Producto ObtenerPorId(int id)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection(); // 🔁 nueva conexión
+                conn.Open();
+
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT id, nombre, precio, descripcion, stock FROM productos WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new Producto
+                    {
+                        Id = reader.GetInt32(reader.GetOrdinal("id")),
+                        Nombre = reader.GetString(reader.GetOrdinal("nombre")),
+                        Precio = reader.GetDouble(reader.GetOrdinal("precio")),
+                        Descripcion = reader.GetString(reader.GetOrdinal("descripcion")),
+                        stock = reader.GetInt32(reader.GetOrdinal("stock"))
+                    };
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"❌ Error al obtener el producto por ID (repo): {ex.Message}", ex);
+            }
+        }
+
+
+
+        public string ActualizarStock(int id, int nuevoStock)
         {
             try
             {
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Producto WHERE id = @id";
+                cmd.CommandText = "UPDATE Producto SET stock = @nuevoStock WHERE id = @id";
+                cmd.Parameters.AddWithValue("@nuevoStock", nuevoStock);
                 cmd.Parameters.AddWithValue("@id", id);
-                using var reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    return new Producto
-                    {
-                        Id = reader.GetInt32(0),
-                        Nombre = reader.GetString(1),
-                        Precio = reader.GetDecimal(2),
-                        Descripcion = reader.GetString(3),
-                        stock = reader.GetInt32(5)
-                    };
-                }
-                return null;
+                cmd.ExecuteNonQuery();
+                return "Stock actualizado correctamente";
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al obtener el producto por ID", ex);
+                return ex.Message;
             }
-        }
 
+        }
     }
 }

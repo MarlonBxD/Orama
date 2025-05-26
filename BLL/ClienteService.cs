@@ -98,14 +98,14 @@ namespace BLL
                 throw new Exception("Error en la lógica de negocio al obtener todos los clientes", ex);
             }
         }
-        
+
         public Cliente GetById(int id)
         {
             try
             {
                 if (id <= 0)
                     throw new Exception("ID de cliente inválido.");
-                    
+
                 return _clienteRepository.GetById(id);
             }
             catch (Exception ex)
@@ -196,11 +196,29 @@ namespace BLL
 
                 clienteSmtp.Send(mensaje);
 
-                return"Correo enviado correctamente";
+                return "Correo enviado correctamente";
             }
             catch (Exception ex)
             {
                 return $"Error al abrir WhatsApp: {ex.Message}";
+            }
+        }
+        public ClienteDTO ObtenerClientePorTelefono(string telefono)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(telefono))
+                    throw new AppException("El teléfono es obligatorio.");
+
+                string soloDigitos = new string(telefono.Where(char.IsDigit).ToArray());
+                if (soloDigitos.Length > 10)
+                    throw new AppException("El teléfono no debe tener más de 10 dígitos.");
+
+                return _clienteRepository.GetByTelefono(telefono);
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error al obtener cliente por teléfono", ex);
             }
         }
 

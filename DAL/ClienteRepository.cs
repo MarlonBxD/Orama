@@ -72,7 +72,6 @@ namespace DAL
                 throw new Exception("Error al obtener clintes", ex);
             }
         }
-
         public Cliente GetById(int id)
         {
             try
@@ -104,7 +103,6 @@ namespace DAL
                 throw new Exception("Error al obtener cliente", ex);
             }
         }
-
         public string Delete(int id)
         {
             try
@@ -123,7 +121,6 @@ namespace DAL
                 throw new AppException("Error al eliminar cliente", ex);
             }
         }
-
         public string Update(Cliente cliente)
         {
             try
@@ -147,7 +144,6 @@ namespace DAL
                 throw new AppException("Error al actualizar cliente", ex);
             }
         }
-
         public List<PagoDto> ObtenerPagos(int id)
         {
             try
@@ -178,7 +174,6 @@ namespace DAL
                 throw new AppException("Error al obtener pagos", ex);
             }
         }
-
         public List<Reserva> ObtenerReservas(int id)
         {
             try
@@ -233,7 +228,6 @@ namespace DAL
                 throw new AppException("Error al obtener reservas", ex);
             }
         }
-
         public List<Despacho> ObtenerDespachos(int id)
         {
             try
@@ -287,8 +281,43 @@ namespace DAL
                 throw new AppException("Error al obtener despachos", ex);
             }
         }
+        public ClienteDTO GetByTelefono(string telefono)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"SELECT id, nombre, apellido, telefono, email, direccion
+                                    FROM cliente
+                                    WHERE telefono = @telefono";
+                cmd.Parameters.AddWithValue("@telefono", telefono);
 
-        
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    var cliente = new ClienteDTO
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.GetString(1),
+                        Apellido = reader.GetString(2),
+                        Telefono = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        Direccion = reader.GetString(5)
+                    };
+                    return cliente;
+                }
+
+                return null; 
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error al obtener cliente por teléfono", ex);
+            }
+        }
+
+
+
 
 
     }

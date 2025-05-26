@@ -46,7 +46,7 @@ namespace DAL
             }
         }
 
-        public List<FotografoDTO> GetAll()
+        public List<Fotografo> GetAll()
         {
             try
             {
@@ -55,12 +55,12 @@ namespace DAL
                 using var cmd = conn.CreateCommand();
                 cmd.CommandText = "SELECT * FROM Fotografo";
                 using var reader = cmd.ExecuteReader();
-                var fotografos = new List<FotografoDTO>();
+                var fotografos = new List<Fotografo>();
                 while (reader.Read())
                 {
-                    var fotografo = new FotografoDTO
+                    var fotografo = new Fotografo
                     {
-                        
+                        Id= reader.GetInt32(0),
                         Nombre = reader.GetString(1),
                         Apellido = reader.GetString(6),
                         Telefono = reader.GetString(7),

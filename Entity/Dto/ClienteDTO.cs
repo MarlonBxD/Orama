@@ -20,12 +20,6 @@ namespace Entity.Dto
             
         }
 
-        public ClienteDTO(int id, string nombre)
-        {
-            Id = id;
-            Nombre = nombre;
-        }
-
         public override string ToString()
         {
             return $"{Nombre} {Apellido}";

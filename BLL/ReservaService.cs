@@ -20,36 +20,34 @@ namespace BLL
 
         public string Agregar(Reserva reserva)
         {
+            if (reserva == null)
+                throw new Exception("La reserva no puede ser nula.");
+
+            if (reserva.FechaEvento == default)
+                throw new Exception("La fecha del evento es obligatoria.");
+
+            if (reserva.FechaReserva == default)
+                throw new Exception("La fecha de la reserva es obligatoria.");
+
+            if (reserva.Cliente == null || reserva.Cliente.Id <= 0)
+                throw new Exception("El cliente es obligatorio y debe tener un ID válido.");
+
+            if (reserva.Evento == null || reserva.Evento.Id <= 0)
+                throw new Exception("El evento es obligatorio y debe tener un ID válido.");
+
+            if (reserva.PaqueteDeServicio == null || reserva.PaqueteDeServicio.Id <= 0)
+                throw new Exception("El paquete de servicio es obligatorio y debe tener un ID válido.");
+
             try
             {
-                if (reserva == null)
-                    throw new AppException("La reserva no puede ser nula.");
-
-                if (reserva.Id <= 0)
-                    throw new AppException("El ID de la reserva es inválido.");
-
-                if (reserva.FechaEvento == default)
-                    throw new AppException("La fecha del evento es obligatoria.");
-
-                if (reserva.FechaReserva == default)
-                    throw new AppException("La fecha de la reserva es obligatoria.");
-
-                if (reserva.Cliente == null || reserva.Cliente.Id <= 0)
-                    throw new AppException("El cliente es obligatorio y debe tener un ID válido.");
-
-                if (reserva.Evento == null || reserva.Evento.Id <= 0)
-                    throw new AppException("El evento es obligatorio y debe tener un ID válido.");
-
-                if (reserva.PaqueteDeServicio == null || reserva.PaqueteDeServicio.Id <= 0)
-                    throw new AppException("El paquete de servicio es obligatorio y debe tener un ID válido.");
-
                 return _reservaRepository.Agregar(reserva);
             }
             catch (Exception ex)
             {
-                throw new AppException("Error en la lógica de negocio al agregar reserva", ex);
+                throw new Exception($"Error inesperado al agregar reserva: {ex.Message}", ex);
             }
         }
+
 
         public string Actualizar(Reserva reserva)
         {
@@ -99,7 +97,7 @@ namespace BLL
             }
         }
 
-        public List<ReservaDTO> ObtenerTodos()
+        public List<ReservaDTO> GetAll()
         {
             try
             {
@@ -110,7 +108,6 @@ namespace BLL
                 throw new AppException("Error en la lógica de negocio al obtener todas las reservas", ex);
             }
         }
-
         public Reserva ObtenerPorId(int id)
         {
             try
@@ -123,6 +120,19 @@ namespace BLL
             catch (Exception ex)
             {
                 throw new AppException("Error en la lógica de negocio al obtener reserva por ID", ex);
+            }
+        }
+        public List<Reserva> ObtenerPorCliente(int clienteId)
+        {
+            try
+            {
+                if (clienteId <= 0)
+                    throw new AppException("El ID del cliente es inválido.");
+                return _reservaRepository.GetByClienteId(clienteId);
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error en la lógica de negocio al obtener reservas por cliente", ex);
             }
         }
 

@@ -13,18 +13,12 @@ namespace Entity.Dto
         public double Precio { get; set; }
         public string Descripcion { get; set; }
         public int DuracionPaquete { get; set; }
-        public int IdEvento { get; set; }
-        public string TipoEvento { get; set; }
+        public List<Producto> productos { get; set; } = new List<Producto>();
 
         public PaqueteDeServicioDTO()
         {
             
         }
 
-        public PaqueteDeServicioDTO(int id, string nombre)
-        {
-            Id = id;
-            Nombre = nombre;
-        }
     }
 }

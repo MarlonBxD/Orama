@@ -35,7 +35,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al agregar paquete de servicio", ex);
+                throw new Exception("Error al agregar paquete de servicio", ex);
             }
         }
 
@@ -51,7 +51,7 @@ namespace BLL
             }
         }
 
-        public PaqueteDeServicio GetById(int id)
+        public PaqueteDeServicioDTO GetById(int id)
         {
             try
             {
@@ -109,20 +109,7 @@ namespace BLL
             }
         }
 
-        public List<Producto> ObtenerProductos(int idPaquete)
-        {
-            try
-            {
-                if (idPaquete <= 0)
-                    throw new ArgumentException("El ID del paquete debe ser mayor que cero.");
-
-                return _repository.ObtenerProductos(idPaquete);
-            }
-            catch (Exception ex)
-            {
-                throw new AppException("Error al obtener productos del paquete de servicio", ex);
-            }
-        }
+        
     }
 
 }
