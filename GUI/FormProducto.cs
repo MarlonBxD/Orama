@@ -17,6 +17,7 @@ namespace GUI
     {
         private readonly ProductoService _productoService = new ProductoService();
         private readonly Action<Form> cambiarFormulario;
+        private List<Producto> listaProductos = new();
 
         public FormProducto(Action<Form> cambiarFormulario)
         {
@@ -37,7 +38,7 @@ namespace GUI
                 {
                     Nombre = txtNombre.Text,
                     Descripcion = txtDescripcion.Text,
-                    Precio = decimal.Parse(txtPrecio.Text),
+                    Precio = double.Parse(txtPrecio.Text),
                     stock = int.Parse(txtStock.Text)
                 };
 
@@ -54,15 +55,24 @@ namespace GUI
         {
             try
             {
-                if (!int.TryParse(txtId.Text, out int idProducto))
+                if (dgv.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Ingrese un ID válido.");
+                    MessageBox.Show("Seleccione un producto para actualizar.");
                     return;
                 }
 
-                string nuevoNombre = txtNombre.Text;
+                int idProducto = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
 
-                _productoService.UpdateName(idProducto, nuevoNombre);
+                _productoService.UpdateName(idProducto, txtNombre.Text.Trim());
+
+                CargarProductos();
+
+                dgv.DataSource = null;
+                dgv.DataSource = listaProductos;
+
+                if (dgv.Columns.Contains("Id"))
+                    dgv.Columns["Id"].Visible = false;
+
                 MessageBox.Show("Nombre del producto actualizado correctamente.");
             }
             catch (Exception ex)
@@ -75,14 +85,29 @@ namespace GUI
         {
             try
             {
-                if (!int.TryParse(txtId.Text, out int idProducto))
+                if (dgv.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Ingrese un ID válido.");
+                    MessageBox.Show("Seleccione un producto para eliminar.");
                     return;
                 }
 
-                _productoService.Eliminar(idProducto);
-                MessageBox.Show("Producto eliminado correctamente.");
+                int idProducto = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
+
+                var confirm = MessageBox.Show("¿Está seguro de eliminar este producto?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+                if (confirm == DialogResult.Yes)
+                {
+                    _productoService.Eliminar(idProducto);
+
+                    CargarProductos();
+
+                    dgv.DataSource = null;
+                    dgv.DataSource = listaProductos;
+
+                    if (dgv.Columns.Contains("Id"))
+                        dgv.Columns["Id"].Visible = false;
+
+                    MessageBox.Show("Producto eliminado correctamente.");
+                }
             }
             catch (Exception ex)
             {
@@ -90,14 +115,59 @@ namespace GUI
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void CargarProductos()
         {
-            //Pendiente método buscar por id
+            listaProductos = _productoService.Obtener();
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private void btnVerEquipos_Click(object sender, EventArgs e)
         {
-            cambiarFormulario(new FormProductoConsulta(cambiarFormulario));
+            dgv.DataSource = null;
+            dgv.DataSource = listaProductos;
+
+            if (dgv.Columns.Contains("Id"))
+                dgv.Columns["Id"].Visible = false;
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv.SelectedRows.Count > 0)
+            {
+                var fila = dgv.SelectedRows[0];
+                txtNombre.Text = fila.Cells["Nombre"].Value?.ToString();
+                txtDescripcion.Text = fila.Cells["Descripcion"].Value?.ToString();
+                txtPrecio.Text = fila.Cells["Precio"].Value?.ToString();
+                txtStock.Text = fila.Cells["stock"].Value?.ToString();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+
+            string textoBuscar = txtBuscar.Text.Trim();
+
+            ActualizarResultados(textoBuscar);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            timer1.Start();
+        }
+
+        private void ActualizarResultados(string filtro)
+        {
+            if (string.IsNullOrWhiteSpace(filtro))
+            {
+                dgv.DataSource = listaProductos;
+            }
+            else
+            {
+                var listaFiltrada = listaProductos.Where(e => e.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                dgv.DataSource = listaFiltrada;
+            }
         }
     }
 }

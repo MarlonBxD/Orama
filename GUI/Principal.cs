@@ -63,5 +63,10 @@ namespace GUI
         {
             CambiarFormulario(new FormProducto(CambiarFormulario));
         }
+
+        private void btnMensajeros_Click(object sender, EventArgs e)
+        {
+            CambiarFormulario(new FormMensajero(CambiarFormulario));
+        }
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
+            btnMensajeros = new Button();
+            button1 = new Button();
             btnProductos = new Button();
             btnEquipoFotografico = new Button();
             btnFotografos = new Button();
@@ -42,6 +44,8 @@
             // 
             panelMenu.AutoScroll = true;
             panelMenu.BackColor = Color.DimGray;
+            panelMenu.Controls.Add(btnMensajeros);
+            panelMenu.Controls.Add(button1);
             panelMenu.Controls.Add(btnProductos);
             panelMenu.Controls.Add(btnEquipoFotografico);
             panelMenu.Controls.Add(btnFotografos);
@@ -53,6 +57,39 @@
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(220, 729);
             panelMenu.TabIndex = 0;
+            // 
+            // btnMensajeros
+            // 
+            btnMensajeros.BackColor = Color.DimGray;
+            btnMensajeros.Dock = DockStyle.Top;
+            btnMensajeros.FlatStyle = FlatStyle.Flat;
+            btnMensajeros.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMensajeros.ForeColor = Color.White;
+            btnMensajeros.Location = new Point(0, 314);
+            btnMensajeros.Margin = new Padding(3, 4, 3, 4);
+            btnMensajeros.Name = "btnMensajeros";
+            btnMensajeros.Size = new Size(220, 44);
+            btnMensajeros.TabIndex = 13;
+            btnMensajeros.Text = "Mensajeros";
+            btnMensajeros.TextAlign = ContentAlignment.MiddleLeft;
+            btnMensajeros.UseVisualStyleBackColor = false;
+            btnMensajeros.Click += btnMensajeros_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.DimGray;
+            button1.Dock = DockStyle.Top;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(0, 270);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(220, 44);
+            button1.TabIndex = 12;
+            button1.Text = "Productos";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
             // 
             // btnProductos
             // 
@@ -168,5 +205,7 @@
         private Panel panelFormHijo;
         private Button btnEquipoFotografico;
         private Button btnProductos;
+        private Button btnMensajeros;
+        private Button button1;
     }
 }
