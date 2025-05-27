@@ -13,6 +13,8 @@ namespace GUI
 {
     public partial class Orama : Form
     {
+        private TelegramBotService _bot = new TelegramBotService();
+
         public Orama()
         {
             InitializeComponent();
@@ -20,7 +22,7 @@ namespace GUI
 
         private void Principal_Load(object sender, EventArgs e)
         {
-
+            _bot.Iniciar();
         }
 
         private Form formActivo = null;
