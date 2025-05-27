@@ -47,6 +47,7 @@
             lblApellido = new Label();
             lblNombre = new Label();
             panelBuscar = new Panel();
+            chkFiltrarPorFecha = new CheckBox();
             dtHasta = new DateTimePicker();
             dtDesde = new DateTimePicker();
             label5 = new Label();
@@ -58,7 +59,6 @@
             label2 = new Label();
             dgv = new DataGridView();
             timer1 = new System.Windows.Forms.Timer(components);
-            chkFiltrarPorFecha = new CheckBox();
             panelCampos.SuspendLayout();
             panelBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
@@ -106,10 +106,10 @@
             btnAsignarCliente.FlatStyle = FlatStyle.Flat;
             btnAsignarCliente.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAsignarCliente.ForeColor = Color.White;
-            btnAsignarCliente.Location = new Point(665, 140);
+            btnAsignarCliente.Location = new Point(509, 155);
             btnAsignarCliente.Margin = new Padding(3, 4, 3, 4);
             btnAsignarCliente.Name = "btnAsignarCliente";
-            btnAsignarCliente.Size = new Size(205, 34);
+            btnAsignarCliente.Size = new Size(182, 34);
             btnAsignarCliente.TabIndex = 30;
             btnAsignarCliente.Text = "Asignar cliente";
             btnAsignarCliente.UseVisualStyleBackColor = false;
@@ -129,10 +129,10 @@
             btnAsignarMensajero.FlatStyle = FlatStyle.Flat;
             btnAsignarMensajero.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAsignarMensajero.ForeColor = Color.White;
-            btnAsignarMensajero.Location = new Point(665, 189);
+            btnAsignarMensajero.Location = new Point(711, 155);
             btnAsignarMensajero.Margin = new Padding(3, 4, 3, 4);
             btnAsignarMensajero.Name = "btnAsignarMensajero";
-            btnAsignarMensajero.Size = new Size(205, 34);
+            btnAsignarMensajero.Size = new Size(182, 34);
             btnAsignarMensajero.TabIndex = 29;
             btnAsignarMensajero.Text = "Asignar mensajero";
             btnAsignarMensajero.UseVisualStyleBackColor = false;
@@ -145,10 +145,10 @@
             btnAsignarPaquete.FlatStyle = FlatStyle.Flat;
             btnAsignarPaquete.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAsignarPaquete.ForeColor = Color.White;
-            btnAsignarPaquete.Location = new Point(665, 238);
+            btnAsignarPaquete.Location = new Point(913, 154);
             btnAsignarPaquete.Margin = new Padding(3, 4, 3, 4);
             btnAsignarPaquete.Name = "btnAsignarPaquete";
-            btnAsignarPaquete.Size = new Size(205, 34);
+            btnAsignarPaquete.Size = new Size(182, 34);
             btnAsignarPaquete.TabIndex = 28;
             btnAsignarPaquete.Text = "Asignar paquete";
             btnAsignarPaquete.UseVisualStyleBackColor = false;
@@ -212,7 +212,7 @@
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEliminar.ForeColor = Color.White;
-            btnEliminar.Location = new Point(420, 233);
+            btnEliminar.Location = new Point(650, 233);
             btnEliminar.Margin = new Padding(3, 4, 3, 4);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(131, 44);
@@ -228,7 +228,7 @@
             btnActualizar.FlatStyle = FlatStyle.Flat;
             btnActualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnActualizar.ForeColor = Color.White;
-            btnActualizar.Location = new Point(245, 233);
+            btnActualizar.Location = new Point(475, 233);
             btnActualizar.Margin = new Padding(3, 4, 3, 4);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(131, 44);
@@ -244,7 +244,7 @@
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(70, 233);
+            btnAgregar.Location = new Point(300, 233);
             btnAgregar.Margin = new Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(131, 44);
@@ -297,6 +297,16 @@
             panelBuscar.Size = new Size(1114, 690);
             panelBuscar.TabIndex = 24;
             panelBuscar.Paint += panelBuscar_Paint;
+            // 
+            // chkFiltrarPorFecha
+            // 
+            chkFiltrarPorFecha.AutoSize = true;
+            chkFiltrarPorFecha.Location = new Point(12, 383);
+            chkFiltrarPorFecha.Name = "chkFiltrarPorFecha";
+            chkFiltrarPorFecha.Size = new Size(133, 24);
+            chkFiltrarPorFecha.TabIndex = 38;
+            chkFiltrarPorFecha.Text = "Filtrar por fecha";
+            chkFiltrarPorFecha.UseVisualStyleBackColor = true;
             // 
             // dtHasta
             // 
@@ -425,16 +435,6 @@
             // 
             timer1.Interval = 500;
             timer1.Tick += timer1_Tick;
-            // 
-            // chkFiltrarPorFecha
-            // 
-            chkFiltrarPorFecha.AutoSize = true;
-            chkFiltrarPorFecha.Location = new Point(12, 383);
-            chkFiltrarPorFecha.Name = "chkFiltrarPorFecha";
-            chkFiltrarPorFecha.Size = new Size(133, 24);
-            chkFiltrarPorFecha.TabIndex = 38;
-            chkFiltrarPorFecha.Text = "Filtrar por fecha";
-            chkFiltrarPorFecha.UseVisualStyleBackColor = true;
             // 
             // FormDespacho1
             // 
