@@ -128,7 +128,14 @@ namespace GUI
 
         private void CargarEquipos()
         {
-            listaEquipos = _equipoService.ObtenerEquiposFotograficos();
+            try
+            {
+                listaEquipos = _equipoService.ObtenerEquiposFotograficos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar equipos fotográficos: {ex.Message}");
+            }
         }
 
         private void btnVerEquipos_Click(object sender, EventArgs e)

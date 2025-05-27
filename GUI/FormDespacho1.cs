@@ -239,7 +239,14 @@ namespace GUI
 
         private void CargarDespachos()
         {
-            listaDespachos = _despachoService.GetAll();
+            try
+            {
+                listaDespachos = _despachoService.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar despachos: {ex.Message}");
+            }
         }
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)

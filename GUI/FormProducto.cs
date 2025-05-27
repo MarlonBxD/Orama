@@ -17,7 +17,7 @@ namespace GUI
     {
         private readonly ProductoService _productoService = new ProductoService();
         private readonly Action<Form> cambiarFormulario;
-        private List<Producto> listaProductos = new();
+        private List<Producto> listaProductos;
 
         public FormProducto(Action<Form> cambiarFormulario)
         {
@@ -117,7 +117,14 @@ namespace GUI
 
         private void CargarProductos()
         {
-            listaProductos = _productoService.Obtener();
+            try
+            {
+                listaProductos = _productoService.Obtener();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar productos: {ex.Message}");
+            }
         }
 
         private void btnVerEquipos_Click(object sender, EventArgs e)
@@ -168,6 +175,11 @@ namespace GUI
 
                 dgv.DataSource = listaFiltrada;
             }
+        }
+
+        private void FormProducto_Load(object sender, EventArgs e)
+        {
+            CargarProductos();
         }
     }
 }

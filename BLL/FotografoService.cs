@@ -30,7 +30,7 @@ namespace BLL
 
             _fotografoRepository.Agregar(fotografo);
         }
-        public List<FotografoDTO> ObtenerFotografos()
+        public List<Fotografo> ObtenerFotografos()
         {
             return _fotografoRepository.GetAll();
         }

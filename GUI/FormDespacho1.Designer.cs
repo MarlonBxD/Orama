@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panelCampos = new Panel();
             label3 = new Label();
             btnAsignarCliente = new Button();
@@ -301,6 +301,7 @@
             // chkFiltrarPorFecha
             // 
             chkFiltrarPorFecha.AutoSize = true;
+            chkFiltrarPorFecha.ForeColor = Color.Black;
             chkFiltrarPorFecha.Location = new Point(12, 383);
             chkFiltrarPorFecha.Name = "chkFiltrarPorFecha";
             chkFiltrarPorFecha.Size = new Size(133, 24);
@@ -310,7 +311,6 @@
             // 
             // dtHasta
             // 
-            dtHasta.Anchor = AnchorStyles.None;
             dtHasta.Format = DateTimePickerFormat.Short;
             dtHasta.Location = new Point(459, 382);
             dtHasta.Name = "dtHasta";
@@ -319,7 +319,6 @@
             // 
             // dtDesde
             // 
-            dtDesde.Anchor = AnchorStyles.None;
             dtDesde.Format = DateTimePickerFormat.Short;
             dtDesde.Location = new Point(177, 382);
             dtDesde.Name = "dtDesde";
@@ -328,8 +327,8 @@
             // 
             // label5
             // 
-            label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
+            label5.ForeColor = Color.Black;
             label5.Location = new Point(465, 357);
             label5.Name = "label5";
             label5.Size = new Size(86, 20);
@@ -338,8 +337,8 @@
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
+            label6.ForeColor = Color.Black;
             label6.Location = new Point(177, 357);
             label6.Name = "label6";
             label6.Size = new Size(97, 20);
@@ -409,24 +408,24 @@
             dgv.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.BackgroundColor = Color.White;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.Black;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11.25F);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Black;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv.EnableHeadersVisualStyles = false;
             dgv.GridColor = Color.LightGray;
             dgv.Location = new Point(0, 415);
             dgv.Name = "dgv";
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = Color.DimGray;
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgv.Size = new Size(1114, 275);
             dgv.TabIndex = 25;
             dgv.CellContentClick += dgv_CellContentClick;

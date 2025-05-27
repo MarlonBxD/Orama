@@ -17,7 +17,7 @@ namespace GUI
     {
         private readonly FotografoService _fotografoService = new FotografoService();
         private readonly Action<Form> cambiarFormulario;
-        private List<Fotografo> listaFotografos = new List<Fotografo>();
+        private List<Fotografo> listaFotografos;
 
         public FormFotografo(Action<Form> cambiarFormulario)
         {

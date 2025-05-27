@@ -31,7 +31,14 @@ namespace BLL
         }
         public List<Producto> Obtener()
         {
-            return _productoRepository.GetAll();
+            try
+            {
+                return _productoRepository.GetAll();
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error en la lógica de producto al obtener todos los productos", ex);
+            }
         }
         public string Eliminar(int id)
         {
