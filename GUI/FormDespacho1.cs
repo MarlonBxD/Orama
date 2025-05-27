@@ -18,6 +18,7 @@ namespace GUI
         private readonly DespachoService _despachoService = new DespachoService();
         private readonly Action<Form> cambiarFormulario;
         private List<DespachoDTO> listaDespachos = new List<DespachoDTO>();
+        List<DespachoDTO> listaFinal;
 
         public FormDespacho1(Action<Form> cambiarFormulario)
         {
@@ -38,6 +39,14 @@ namespace GUI
         private void FormDespacho1_Load(object sender, EventArgs e)
         {
             CargarDespachos();
+
+            cbEstado.Items.Clear();
+            cbEstado.Items.Add("");
+            cbEstado.Items.Add("Pendiente");
+            cbEstado.Items.Add("Entregado");
+            cbEstado.Items.Add("En camino");
+
+            cbEstado.SelectedIndex = 0;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -158,8 +167,35 @@ namespace GUI
 
         private void btnVerDespachos_Click(object sender, EventArgs e)
         {
+            string estadoSeleccionado = cbEstado.SelectedItem?.ToString();
+            DateTime fechaDesde = dtDesde.Value.Date;
+            DateTime fechaHasta = dtHasta.Value.Date;
+
+            if (chkFiltrarPorFecha.Checked && fechaDesde > fechaHasta)
+            {
+                MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool aplicarFiltroEstado = !string.IsNullOrWhiteSpace(estadoSeleccionado);
+            bool aplicarFiltroFechas = chkFiltrarPorFecha.Checked;
+
+            if (aplicarFiltroEstado || aplicarFiltroFechas)
+            {
+                listaFinal = listaDespachos
+                    .Where(d =>
+                        (!aplicarFiltroEstado || d.Estado.Equals(estadoSeleccionado, StringComparison.OrdinalIgnoreCase)) &&
+                        (!aplicarFiltroFechas || (d.FechaDespacho.Date >= fechaDesde && d.FechaDespacho.Date <= fechaHasta))
+                    )
+                    .ToList();
+            }
+            else
+            {
+                listaFinal = listaDespachos;
+            }
+
             dgv.DataSource = null;
-            dgv.DataSource = listaDespachos;
+            dgv.DataSource = listaFinal;
 
             if (dgv.Columns.Contains("Id"))
                 dgv.Columns["Id"].Visible = false;
@@ -238,14 +274,17 @@ namespace GUI
         {
             if (string.IsNullOrWhiteSpace(filtro))
             {
-                dgv.DataSource = listaDespachos;
+                dgv.DataSource = listaFinal;
             }
             else
             {
-                var listaFiltrada = listaDespachos.Where(d => d.NombreCliente.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+                var listaFiltrada = listaFinal.Where(d => d.NombreCliente.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
 
                 dgv.DataSource = listaFiltrada;
             }
+
+            if (dgv.Columns.Contains("Id"))
+                dgv.Columns["Id"].Visible = false;
         }
     }
 }
