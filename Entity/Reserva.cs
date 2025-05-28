@@ -14,8 +14,7 @@ namespace Entity
         public DateTime FechaEvento { get; set; }
         public string EstadoReserva { get; set; }
         public string Observaciones { get; set; }
-        public ClienteDTO Cliente { get; set; }
-        public EventoDTO Evento { get; set; }
+        public Cliente Cliente { get; set; }
         public PaqueteDeServicioDTO PaqueteDeServicio { get; set; }
         //public List<Evento> Eventos { get; set; }
 

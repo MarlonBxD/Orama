@@ -62,7 +62,7 @@ namespace DAL
                         Direccion = reader.GetString(5)
                     };
                     clientes.Add(cliente);
-                    conn.Close();
+                    
                 }
 
                 return clientes;
@@ -182,15 +182,21 @@ namespace DAL
                 conn.Open();
                 using var cmd = conn.CreateCommand();
                 cmd.CommandText = @"SELECT
-                                    r.id, r.fecha_evento, r.fecha_reserva, r.estado, r.observaciones,
-                                    e.id, e.tipo,
-                                    p.id, p.nombre,
-                                    c.id, c.nombre
+                                        r.id AS reserva_id,
+                                        r.fecha_evento,
+                                        r.fecha_reserva,
+                                        r.estado,
+                                        r.observaciones,
+    
+                                        p.id AS paquete_id,
+                                        p.nombre AS paquete_nombre,
+    
+                                        c.id AS cliente_id,
+                                        c.nombre AS cliente_nombre
                                     FROM reserva r
-                                    LEFT JOIN evento e ON r.evento_id = e.id
                                     LEFT JOIN paquetedeservicio p ON r.paqueteservicio_id = p.id
                                     LEFT JOIN cliente c ON r.cliente_id = c.id
-                                    WHERE r.cliente_id = @cliente_id";
+                                    WHERE r.cliente_id = @cliente_id;";
                 cmd.Parameters.AddWithValue("@cliente_id", id);
                 using var reader = cmd.ExecuteReader();
                 var reservas = new List<Reserva>();
@@ -203,20 +209,15 @@ namespace DAL
                         FechaReserva = reader.GetDateTime(2),
                         EstadoReserva = reader.IsDBNull(3) ? null : reader.GetString(3),
                         Observaciones = reader.IsDBNull(4) ? null : reader.GetString(4),
-                        Evento = new EventoDTO
-                        {
-                            Id = reader.GetInt32(5),
-                            Tipo = reader.IsDBNull(6) ? null : reader.GetString(6)
-                        },
                         PaqueteDeServicio = new PaqueteDeServicioDTO
                         {
-                            Id = reader.GetInt32(7),
-                            Nombre = reader.IsDBNull(8) ? null : reader.GetString(8)
+                            Id = reader.GetInt32(5),
+                            Nombre = reader.IsDBNull(6) ? null : reader.GetString(6)
                         },
-                        Cliente = new ClienteDTO
+                        Cliente = new Cliente
                         {
-                            Id = reader.GetInt32(9),
-                            Nombre = reader.GetString(10)
+                            Id = reader.GetInt32(7),
+                            Nombre = reader.GetString(8)
                         }
                     };
                     reservas.Add(reserva);

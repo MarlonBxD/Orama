@@ -64,7 +64,7 @@ namespace DAL
                             c.nombre AS nombre_cliente,
                             m.nombre AS nombre_mensajero
                             FROM despacho d
-                            LEFT JOIN paquetedeservicio p ON d.paquetedeservicio_id = p.id
+                            LEFT JOIN paquetedeservicio p ON d.paquete_servicio_id = p.id
                             LEFT JOIN cliente c ON d.cliente_id = c.id
                             LEFT JOIN mensajero m ON d.mensajero_id = m.id";
 

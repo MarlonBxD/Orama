@@ -63,7 +63,7 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Producto";
+                cmd.CommandText = "SELECT * FROM Productos";
                 using var reader = cmd.ExecuteReader();
                 var productos = new List<Producto>();
                 while (reader.Read())
@@ -74,11 +74,11 @@ namespace DAL
                         Nombre = reader.GetString(1),
                         Precio = reader.GetDouble(2),
                         Descripcion = reader.GetString(3),
-                        stock = reader.GetInt32(5)
+                        stock = reader.GetInt32(4)
                     };
                     productos.Add(producto);
                 }
-                conn.Close();
+                
                 return productos;
             }
             catch (AppException ex)

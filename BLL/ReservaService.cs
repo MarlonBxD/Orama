@@ -29,12 +29,6 @@ namespace BLL
             if (reserva.FechaReserva == default)
                 throw new Exception("La fecha de la reserva es obligatoria.");
 
-            if (reserva.Cliente == null || reserva.Cliente.Id <= 0)
-                throw new Exception("El cliente es obligatorio y debe tener un ID válido.");
-
-            if (reserva.Evento == null || reserva.Evento.Id <= 0)
-                throw new Exception("El evento es obligatorio y debe tener un ID válido.");
-
             if (reserva.PaqueteDeServicio == null || reserva.PaqueteDeServicio.Id <= 0)
                 throw new Exception("El paquete de servicio es obligatorio y debe tener un ID válido.");
 
@@ -67,9 +61,6 @@ namespace BLL
 
                 if (reserva.Cliente == null || reserva.Cliente.Id <= 0)
                     throw new AppException("El cliente es obligatorio y debe tener un ID válido.");
-
-                if (reserva.Evento == null || reserva.Evento.Id <= 0)
-                    throw new AppException("El evento es obligatorio y debe tener un ID válido.");
 
                 if (reserva.PaqueteDeServicio == null || reserva.PaqueteDeServicio.Id <= 0)
                     throw new AppException("El paquete de servicio es obligatorio y debe tener un ID válido.");

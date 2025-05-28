@@ -20,10 +20,10 @@ namespace BLL
         private readonly ReservaService _reservaService = new();
         private readonly PaqueteDeServicioService _paqueteService = new();
 
-        private readonly ConcurrentDictionary<long, ClienteDTO> clientesIdentificados = new();
+        private readonly ConcurrentDictionary<long, Cliente> clientesIdentificados = new();
         private readonly ConcurrentDictionary<long, string> estados = new();
         private readonly ConcurrentDictionary<long, Reserva> reservasEnProceso = new();
-        private readonly ConcurrentDictionary<long, ClienteDTO> clientesEnRegistro = new();
+        private readonly ConcurrentDictionary<long, Cliente> clientesEnRegistro = new();
 
         public void Iniciar()
         {
@@ -80,16 +80,16 @@ namespace BLL
                 switch (estado)
                 {
                     case "esperando_telefono":
-                        if (!Regex.IsMatch(text, @"^\\d{10}$"))
+                        if (!Regex.IsMatch(text, @"^\d{10}$"))
                         {
-                            await bot.SendMessage(chatId, "❗ El número de teléfono debe contener solo dígitos (7 a 15). Inténtalo de nuevo.", cancellationToken: ct);
+                            await bot.SendMessage(chatId, "❗ El número de teléfono debe contener exactamente 10 dígitos. Inténtalo de nuevo.", cancellationToken: ct);
                             return;
                         }
 
                         var cliente = _clienteService.ObtenerClientePorTelefono(text);
                         if (cliente != null)
                         {
-                            clientesIdentificados[chatId] = new ClienteDTO
+                            clientesIdentificados[chatId] = new Cliente
                             {
                                 Id = cliente.Id,
                                 Nombre = cliente.Nombre,
@@ -102,9 +102,10 @@ namespace BLL
                             estados[chatId] = "menu_principal";
                             await bot.SendMessage(chatId, $"👋 Hola {cliente.Nombre}, ¿qué deseas hacer?\n1️⃣ Crear reserva\n2️⃣ Consultar mis reservas", cancellationToken: ct);
                         }
+
                         else
                         {
-                            clientesEnRegistro[chatId] = new ClienteDTO { Telefono = text };
+                            clientesEnRegistro[chatId] = new Cliente { Telefono = text };
                             estados[chatId] = "registrando_nombre";
                             await bot.SendMessage(chatId, "📝 ¿Cuál es tu *nombre*? (Solo letras)", parseMode: ParseMode.Markdown, cancellationToken: ct);
                         }
@@ -155,7 +156,7 @@ namespace BLL
 
                         clientesEnRegistro[chatId].Email = text;
                         var nuevo = clientesEnRegistro[chatId];
-                        _clienteService.Agregar(ClienteMapper.ToEntity(nuevo));
+                        _clienteService.Agregar(nuevo);
                         clientesIdentificados[chatId] = nuevo;
                         estados[chatId] = "menu_principal";
                         clientesEnRegistro.TryRemove(chatId, out _);
@@ -179,7 +180,7 @@ namespace BLL
                         else if (text == "2")
                         {
                             var clienteId = clientesIdentificados[chatId].Id;
-                            var reservas = _reservaService.ObtenerPorCliente(clienteId)?.ToList() ?? new List<Reserva>();
+                            var reservas = _clienteService.ObtenerReservasPorCliente(clienteId)?.ToList() ?? new List<Reserva>();
                             if (reservas.Count == 0)
                             {
                                 await bot.SendMessage(chatId, "📭 No tienes reservas registradas.", cancellationToken: ct);
@@ -215,7 +216,6 @@ namespace BLL
                         }
 
                         reserva.PaqueteDeServicio = paquete;
-                        reserva.Evento = null;
                         _reservaService.Agregar(reserva);
 
                         await bot.SendMessage(chatId,

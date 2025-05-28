@@ -33,7 +33,6 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@estado", reserva.EstadoReserva);
                 cmd.Parameters.AddWithValue("@observaciones", reserva.Observaciones);
                 cmd.Parameters.AddWithValue("@cliente_id", reserva.Cliente.Id);
-                cmd.Parameters.AddWithValue("@evento_id", reserva.Evento.Id);
                 cmd.Parameters.AddWithValue("@paqueteservicio_id", reserva.PaqueteDeServicio.Id);
                 cmd.ExecuteNonQuery();
 
@@ -122,15 +121,10 @@ namespace DAL
                         FechaEvento = reader.GetDateTime(2),
                         EstadoReserva = reader.IsDBNull(3) ? null : reader.GetString(3),
                         Observaciones = reader.IsDBNull(4) ? null : reader.GetString(4),
-                        Cliente = new ClienteDTO
+                        Cliente = new Cliente
                         {
                             Id = reader.GetInt32(5),
                             Nombre = reader.IsDBNull(6) ? null : reader.GetString(6)
-                        },
-                        Evento = new EventoDTO
-                        {
-                            Id = reader.GetInt32(7),
-                            Tipo = reader.IsDBNull(8) ? null : reader.GetString(8)
                         },
                         PaqueteDeServicio = new PaqueteDeServicioDTO
                         {
@@ -169,7 +163,6 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@estado", reserva.EstadoReserva);
                 cmd.Parameters.AddWithValue("@observaciones", reserva.Observaciones);
                 cmd.Parameters.AddWithValue("@cliente_id", reserva.Cliente.Id);
-                cmd.Parameters.AddWithValue("@evento_id", reserva.Evento.Id);
                 cmd.Parameters.AddWithValue("@paqueteservicio_id", reserva.PaqueteDeServicio.Id);
                 cmd.Parameters.AddWithValue("@id", reserva.Id);
                 cmd.ExecuteNonQuery();
@@ -259,15 +252,10 @@ namespace DAL
                         FechaEvento = reader.GetDateTime(1),
                         FechaReserva = reader.GetDateTime(2),
                         EstadoReserva = reader.GetString(4),
-                        Cliente = new ClienteDTO
+                        Cliente = new Cliente
                         {
                             Id = reader.GetInt32(5),
                             Nombre = reader.GetString(6)
-                        },
-                        Evento = new EventoDTO
-                        {
-                            Id = reader.GetInt32(7),
-                            Tipo = reader.GetString(8)
                         },
                         PaqueteDeServicio = new PaqueteDeServicioDTO
                         {

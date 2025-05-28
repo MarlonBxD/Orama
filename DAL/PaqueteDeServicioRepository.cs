@@ -67,9 +67,8 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"SELECT p.id, p.nombre, p.precio, p.descripcion, p.duracion, e.id, e.tipo
-                                FROM paquetedeservicio p
-                                LEFT JOIN evento e ON p.evento_id = e.id";
+                cmd.CommandText = @"SELECT id, nombre, precio, descripcion, duracion
+                                FROM paquetedeservicio";
 
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
