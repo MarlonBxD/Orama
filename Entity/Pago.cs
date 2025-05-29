@@ -8,7 +8,7 @@ namespace Entity
 {
     public class Pago : Transaccion
     {
-        public Cliente Cliente { get; set; }
+        public Cliente cliente { get; set; }
 
     }
 

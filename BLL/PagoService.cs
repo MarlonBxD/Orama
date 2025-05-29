@@ -19,16 +19,27 @@ namespace BLL
         public void AgregarPago(Pago pago)
         {
             if (pago == null)
-                throw new ArgumentNullException(nameof(pago));
+                throw new ArgumentNullException(nameof(pago), "El objeto pago no puede ser nulo.");
 
             if (string.IsNullOrWhiteSpace(pago.MetodoPago))
-                throw new ArgumentException("Método de pago requerido.");
+                throw new ArgumentException("El método de pago es obligatorio.", nameof(pago.MetodoPago));
 
             if (pago.Monto <= 0)
-                throw new ArgumentException("El monto debe ser mayor a cero.");
+                throw new ArgumentException("El monto debe ser mayor a cero.", nameof(pago.Monto));
 
-            _pagoRepository.Agregar(pago);
+            if (pago.cliente == null || pago.cliente.Id <= 0)
+                throw new ArgumentException("El cliente es obligatorio y debe tener un ID válido.");
+
+            try
+            {
+                 _pagoRepository.Agregar(pago);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Ocurrió un error al intentar agregar el pago. {ex.Message}");
+            }
         }
+
         public List<PagoDto> ObtenerPagos()
         {
             return _pagoRepository.GetAll();

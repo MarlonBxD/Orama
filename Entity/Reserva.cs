@@ -16,7 +16,6 @@ namespace Entity
         public string Observaciones { get; set; }
         public Cliente Cliente { get; set; }
         public PaqueteDeServicioDTO PaqueteDeServicio { get; set; }
-        //public List<Evento> Eventos { get; set; }
 
     }
 }

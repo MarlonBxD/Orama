@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Entity;
+using Entity.Dto;
+using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entity;
-using Entity.Dto;
 
 namespace DAL
 {
@@ -110,15 +111,25 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "DELETE FROM cliente WHERE id = @id";
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.ExecuteNonQuery();
 
-                return "Cliente eliminado correctamente";
+                cmd.CommandText = "DELETE FROM cliente WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id); 
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected == 0)
+                    return "No se encontró ningún cliente con ese ID.";
+
+                return "Cliente eliminado correctamente.";
+            }
+            catch (PostgresException pgEx) when (pgEx.SqlState == "23503")
+            {
+                // Clave foránea impide eliminar
+                return "No se puede eliminar el cliente porque tiene reservas asociadas.";
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al eliminar cliente", ex);
+                throw new AppException($"Error al eliminar cliente: {ex.Message}");
             }
         }
         public string Update(Cliente cliente)
@@ -141,7 +152,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al actualizar cliente", ex);
+                throw new Exception($"Error al actualizar cliente {ex.Message}" );
             }
         }
         public List<PagoDto> ObtenerPagos(int id)
@@ -151,10 +162,23 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT id, fecha, monto, descripcion, metodo_pago WHERE cliente_id = @cliente_id";
+
+                cmd.CommandText = @"SELECT 
+                                        p.id, 
+                                        p.fecha, 
+                                        p.monto, 
+                                        p.descripcion, 
+                                        p.metodo_pago,
+                                        c.nombre
+                                    FROM pagos p
+                                    JOIN cliente c ON c.id = p.cliente_id
+                                    WHERE p.cliente_id = @cliente_id";
+
                 cmd.Parameters.AddWithValue("@cliente_id", id);
+
                 using var reader = cmd.ExecuteReader();
                 var pagos = new List<PagoDto>();
+
                 while (reader.Read())
                 {
                     var pago = new PagoDto
@@ -162,11 +186,13 @@ namespace DAL
                         Id = reader.GetInt32(0),
                         Fecha = reader.GetDateTime(1),
                         Monto = reader.GetDecimal(2),
-                        Descripcion = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        MetodoPago = reader.IsDBNull(4) ? null : reader.GetString(4)
+                        Descripcion = reader.GetString(3),
+                        MetodoPago = reader.GetString(4),
+                        nombreCliente = reader.GetString(5)
                     };
                     pagos.Add(pago);
                 }
+
                 return pagos;
             }
             catch (Exception ex)
@@ -207,12 +233,12 @@ namespace DAL
                         Id = reader.GetInt32(0),
                         FechaEvento = reader.GetDateTime(1),
                         FechaReserva = reader.GetDateTime(2),
-                        EstadoReserva = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        Observaciones = reader.IsDBNull(4) ? null : reader.GetString(4),
+                        EstadoReserva = reader.GetString(3),
+                        Observaciones = reader.GetString(4),
                         PaqueteDeServicio = new PaqueteDeServicioDTO
                         {
                             Id = reader.GetInt32(5),
-                            Nombre = reader.IsDBNull(6) ? null : reader.GetString(6)
+                            Nombre = reader.GetString(6)
                         },
                         Cliente = new Cliente
                         {

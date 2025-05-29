@@ -15,28 +15,28 @@ namespace DAL
         {
             _conexion = new Conexion();
         }
-        public string Agregar(Pago pago)
+        public void Agregar(Pago pago)
         {
             try
             {
-                if (pago == null || pago.Descripcion == null || pago.Monto <= 0)
-                    throw new ArgumentException("Datos del pago no válidos");
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO Pagos (fecha, Monto, descripcion, metodo_pago, clinete_id)
-                            VALUES (@fecha, @Monto, @descripcion, @metodo_pago, @clinete_id)";
+                cmd.CommandText = @"
+            INSERT INTO pagos (fecha, monto, descripcion, metodo_pago, cliente_id)
+            VALUES (@fecha, @monto, @descripcion, @metodo_pago, @cliente_id)";
+
                 cmd.Parameters.AddWithValue("@fecha", pago.Fecha);
-                cmd.Parameters.AddWithValue("@Monto", pago.Monto);
+                cmd.Parameters.AddWithValue("@monto", pago.Monto);
                 cmd.Parameters.AddWithValue("@descripcion", pago.Descripcion);
                 cmd.Parameters.AddWithValue("@metodo_pago", pago.MetodoPago);
-                cmd.Parameters.AddWithValue("@clinete_id", pago.Cliente.Id);
+                cmd.Parameters.AddWithValue("@cliente_id", pago.cliente.Id);
+
                 cmd.ExecuteNonQuery();
-                return "Pago agregado correctamente";
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception($"Error en la base de datos {ex.Message}" );
             }
         }
         public List<PagoDto> GetAll()

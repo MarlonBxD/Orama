@@ -50,7 +50,7 @@ namespace BLL
 
             }
         }
-        public FotografoDTO ObtenerFotografoPorId(int id)
+        public Fotografo ObtenerFotografoPorId(int id)
         {
             if (id <= 0)
                 throw new ArgumentException("El ID del fotógrafo debe ser mayor que cero.");
@@ -71,7 +71,7 @@ namespace BLL
                 throw new ArgumentException("El teléfono del fotógrafo es obligatorio.");
             return _fotografoRepository.Update(fotografo);
         }
-        public FotografoDTO ObtenerFotografoPorNombre(string nombre)
+        public Fotografo ObtenerFotografoPorNombre(string nombre)
         {
             if (string.IsNullOrWhiteSpace(nombre))
                 throw new ArgumentException("El nombre del fotógrafo es obligatorio.");

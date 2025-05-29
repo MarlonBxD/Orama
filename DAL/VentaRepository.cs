@@ -28,10 +28,9 @@ namespace DAL
                     using (var cmdVenta = conn.CreateCommand())
                     {
                         cmdVenta.Transaction = transaction;
-                        cmdVenta.CommandText = @"
-                    INSERT INTO ventas (fecha, total, cliente_id)
-                    VALUES (@fecha, @total, @cliente_id)
-                    RETURNING id;";
+                        cmdVenta.CommandText = @"INSERT INTO ventas (fecha, total, cliente_id)
+                                                VALUES (@fecha, @total, @cliente_id)
+                                                RETURNING id;";
                         cmdVenta.Parameters.AddWithValue("@fecha", venta.Fecha);
                         cmdVenta.Parameters.AddWithValue("@total", venta.Total);
                         cmdVenta.Parameters.AddWithValue("@cliente_id", venta.ClienteId);
@@ -49,16 +48,15 @@ namespace DAL
                             throw new Exception("El detalle de venta no tiene producto asignado.");
 
                         int productoId = detalle.producto?.Id ?? detalle.ProductoId;
-                        int? paqueteId = detalle.PaqueteServicio?.Id; // puede ser null
+                        int? paqueteId = detalle.PaqueteServicio?.Id; 
                         double precioUnitario = detalle.producto?.Precio ?? detalle.PrecioUnitario;
 
                         using var cmdDetalle = conn.CreateCommand();
                         cmdDetalle.Transaction = transaction;
 
-                        cmdDetalle.CommandText = @"
-                    INSERT INTO detalle_venta 
-                    (venta_id, producto_id, paquete_id, cantidad, descuento, precio_unitario, subtotal)
-                    VALUES (@venta_id, @producto_id, @paquete_id, @cantidad, @descuento, @precio_unitario, @subtotal);";
+                        cmdDetalle.CommandText = @"INSERT INTO detalle_venta 
+                                                    (venta_id, producto_id, paquete_id, cantidad, descuento, precio_unitario, subtotal)
+                                                    VALUES (@venta_id, @producto_id, @paquete_id, @cantidad, @descuento, @precio_unitario, @subtotal);";
 
                         cmdDetalle.Parameters.AddWithValue("@venta_id", venta.Id);
                         cmdDetalle.Parameters.AddWithValue("@producto_id", productoId);
@@ -85,8 +83,6 @@ namespace DAL
                 throw new Exception("❌ Error al conectar con la base de datos: " + ex.Message, ex);
             }
         }
-
-
         public List<Venta> ObtenerVentasPorCliente(int clienteId)
         {
             var lista = new List<Venta>();

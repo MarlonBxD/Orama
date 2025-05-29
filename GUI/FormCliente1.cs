@@ -33,6 +33,13 @@ namespace GUI
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) ||
+                    string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                    string.IsNullOrWhiteSpace(txtDireccion.Text))
+                {
+                    MessageBox.Show("Todos los campos son obligatorios.");
+                    return;
+                }
                 Cliente cliente = new Cliente
                 {
                     Nombre = txtNombre.Text,
@@ -176,9 +183,10 @@ namespace GUI
         private void FormCliente1_Load(object sender, EventArgs e)
         {
             CargarClientes();
+            cargarTabla();
         }
 
-        private void btnVerClientes_Click(object sender, EventArgs e)
+        private void cargarTabla()
         {
             dgv.DataSource = null;
             dgv.DataSource = listaClientes;
@@ -218,6 +226,11 @@ namespace GUI
                 int idCliente = Convert.ToInt32(dgv.SelectedRows[0].Cells["Id"].Value);
 
                 var despachos = _clienteService.ObtenerDespachosPorCliente(idCliente);
+                if(despachos == null || despachos.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron despachos para el cliente seleccionado.");
+                    return;
+                }
 
                 dgv.DataSource = despachos;
             }

@@ -44,7 +44,6 @@ namespace BLL
                 throw new Exception("Error en la lógica de negocio al agregar cliente", ex);
             }
         }
-
         public string Actualizar(Cliente cliente)
         {
             try
@@ -71,7 +70,6 @@ namespace BLL
                 throw new Exception("Error en la lógica de negocio al actualizar cliente", ex);
             }
         }
-
         public string Delete(int id)
         {
             try
@@ -86,7 +84,6 @@ namespace BLL
                 throw new AppException("Error en la lógica de negocio al eliminar cliente", ex);
             }
         }
-
         public List<Cliente> GetAll()
         {
             try
@@ -98,7 +95,6 @@ namespace BLL
                 throw new Exception("Error en la lógica de negocio al obtener todos los clientes", ex);
             }
         }
-
         public Cliente GetById(int id)
         {
             try
@@ -113,7 +109,6 @@ namespace BLL
                 throw new Exception("Error en la lógica de negocio al obtener cliente por ID", ex);
             }
         }
-
         public List<Reserva> ObtenerReservasPorCliente(int idCliente)
         {
             try
@@ -128,7 +123,6 @@ namespace BLL
                 throw new AppException("Error al obtener reservas del cliente", ex);
             }
         }
-
         public List<Despacho> ObtenerDespachosPorCliente(int idCliente)
         {
             try
@@ -143,7 +137,6 @@ namespace BLL
                 throw new AppException("Error al obtener despachos del cliente", ex);
             }
         }
-
         public List<PagoDto> ObtenerPagosPorCliente(int idCliente)
         {
             try
@@ -156,26 +149,6 @@ namespace BLL
             catch (Exception ex)
             {
                 throw new AppException("Error al obtener pagos del cliente", ex);
-            }
-        }
-        public string EnviarMensajeWhatsApp(string numeroTelefono, string mensaje)
-        {
-            numeroTelefono = "57" + numeroTelefono;
-            string mensajeCodificado = WebUtility.UrlEncode(mensaje);
-            string url = $"https://wa.me/{numeroTelefono}?text={mensajeCodificado}";
-
-            try
-            {
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = url,
-                    UseShellExecute = true
-                });
-                return "WhatsApp abierto correctamente";
-            }
-            catch (Exception ex)
-            {
-                return $"Error al abrir WhatsApp: {ex.Message}";
             }
         }
         public string EnviarCorreo(string destinatario, string asunto, string cuerpo)

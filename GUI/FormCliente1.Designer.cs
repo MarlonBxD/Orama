@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panelBuscar = new Panel();
-            btnVerClientes = new Button();
             btnDespachos = new Button();
             btnReservas = new Button();
             btnPagos = new Button();
@@ -64,7 +63,6 @@
             // panelBuscar
             // 
             panelBuscar.BackColor = Color.White;
-            panelBuscar.Controls.Add(btnVerClientes);
             panelBuscar.Controls.Add(btnDespachos);
             panelBuscar.Controls.Add(btnReservas);
             panelBuscar.Controls.Add(btnPagos);
@@ -77,22 +75,6 @@
             panelBuscar.Size = new Size(1114, 690);
             panelBuscar.TabIndex = 22;
             // 
-            // btnVerClientes
-            // 
-            btnVerClientes.Anchor = AnchorStyles.Top;
-            btnVerClientes.BackColor = Color.DimGray;
-            btnVerClientes.FlatStyle = FlatStyle.Flat;
-            btnVerClientes.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVerClientes.ForeColor = Color.White;
-            btnVerClientes.Location = new Point(317, 314);
-            btnVerClientes.Margin = new Padding(3, 4, 3, 4);
-            btnVerClientes.Name = "btnVerClientes";
-            btnVerClientes.Size = new Size(142, 34);
-            btnVerClientes.TabIndex = 31;
-            btnVerClientes.Text = "Ver clientes";
-            btnVerClientes.UseVisualStyleBackColor = false;
-            btnVerClientes.Click += btnVerClientes_Click;
-            // 
             // btnDespachos
             // 
             btnDespachos.Anchor = AnchorStyles.Top;
@@ -103,7 +85,7 @@
             btnDespachos.Location = new Point(468, 314);
             btnDespachos.Margin = new Padding(3, 4, 3, 4);
             btnDespachos.Name = "btnDespachos";
-            btnDespachos.Size = new Size(205, 34);
+            btnDespachos.Size = new Size(205, 47);
             btnDespachos.TabIndex = 30;
             btnDespachos.Text = "Despachos del cliente";
             btnDespachos.UseVisualStyleBackColor = false;
@@ -119,7 +101,7 @@
             btnReservas.Location = new Point(682, 314);
             btnReservas.Margin = new Padding(3, 4, 3, 4);
             btnReservas.Name = "btnReservas";
-            btnReservas.Size = new Size(205, 34);
+            btnReservas.Size = new Size(205, 47);
             btnReservas.TabIndex = 29;
             btnReservas.Text = "Reservas del cliente";
             btnReservas.UseVisualStyleBackColor = false;
@@ -135,7 +117,7 @@
             btnPagos.Location = new Point(896, 314);
             btnPagos.Margin = new Padding(3, 4, 3, 4);
             btnPagos.Name = "btnPagos";
-            btnPagos.Size = new Size(205, 34);
+            btnPagos.Size = new Size(205, 47);
             btnPagos.TabIndex = 28;
             btnPagos.Text = "Pagos del cliente";
             btnPagos.UseVisualStyleBackColor = false;
@@ -146,7 +128,7 @@
             txtBuscar.BackColor = Color.DimGray;
             txtBuscar.BorderStyle = BorderStyle.None;
             txtBuscar.ForeColor = Color.White;
-            txtBuscar.Location = new Point(86, 320);
+            txtBuscar.Location = new Point(101, 326);
             txtBuscar.Margin = new Padding(3, 4, 3, 4);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(204, 20);
@@ -160,7 +142,7 @@
             label2.ForeColor = SystemColors.Desktop;
             label2.Location = new Point(12, 316);
             label2.Name = "label2";
-            label2.Size = new Size(68, 25);
+            label2.Size = new Size(83, 32);
             label2.TabIndex = 26;
             label2.Text = "Buscar";
             // 
@@ -169,25 +151,26 @@
             dgv.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.BackgroundColor = Color.White;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Black;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Black;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv.EnableHeadersVisualStyles = false;
             dgv.GridColor = Color.LightGray;
-            dgv.Location = new Point(0, 352);
+            dgv.Location = new Point(0, 368);
             dgv.Name = "dgv";
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.DimGray;
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dgv.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            dgv.Size = new Size(1114, 338);
+            dgv.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dgv.Size = new Size(1114, 322);
             dgv.TabIndex = 25;
             dgv.CellClick += dgv_CellClick;
             // 
@@ -271,7 +254,7 @@
             label1.ForeColor = SystemColors.Desktop;
             label1.Location = new Point(472, 15);
             label1.Name = "label1";
-            label1.Size = new Size(119, 37);
+            label1.Size = new Size(146, 46);
             label1.TabIndex = 34;
             label1.Text = "Clientes";
             // 
@@ -346,7 +329,7 @@
             lblDireccion.ForeColor = SystemColors.Desktop;
             lblDireccion.Location = new Point(755, 85);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(92, 25);
+            lblDireccion.Size = new Size(114, 32);
             lblDireccion.TabIndex = 27;
             lblDireccion.Text = "Dirección";
             // 
@@ -370,7 +353,7 @@
             lblTelefono.ForeColor = SystemColors.Desktop;
             lblTelefono.Location = new Point(401, 157);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(84, 25);
+            lblTelefono.Size = new Size(107, 32);
             lblTelefono.TabIndex = 22;
             lblTelefono.Text = "Teléfono";
             // 
@@ -382,7 +365,7 @@
             lblEmail.ForeColor = SystemColors.Desktop;
             lblEmail.Location = new Point(401, 86);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(58, 25);
+            lblEmail.Size = new Size(71, 32);
             lblEmail.TabIndex = 21;
             lblEmail.Text = "Email";
             // 
@@ -394,7 +377,7 @@
             lblApellido.ForeColor = SystemColors.Desktop;
             lblApellido.Location = new Point(51, 157);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(82, 25);
+            lblApellido.Size = new Size(102, 32);
             lblApellido.TabIndex = 20;
             lblApellido.Text = "Apellido";
             // 
@@ -406,7 +389,7 @@
             lblNombre.ForeColor = SystemColors.Desktop;
             lblNombre.Location = new Point(50, 86);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(81, 25);
+            lblNombre.Size = new Size(102, 32);
             lblNombre.TabIndex = 19;
             lblNombre.Text = "Nombre";
             // 
@@ -453,7 +436,6 @@
         private TextBox txtBuscar;
         private Label label2;
         private DataGridView dgv;
-        private Button btnVerClientes;
         private TextBox txtDireccion;
         private TextBox txtTelefono;
         private TextBox txtApellido;

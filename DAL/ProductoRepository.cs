@@ -45,7 +45,7 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "DELETE FROM Producto WHERE id = @id";
+                cmd.CommandText = "DELETE FROM Productos WHERE id = @id";
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -112,7 +112,7 @@ namespace DAL
         {
             try
             {
-                using var conn = _conexion.GetConnection(); // 🔁 nueva conexión
+                using var conn = _conexion.GetConnection(); 
                 conn.Open();
 
                 using var cmd = conn.CreateCommand();
@@ -139,9 +139,6 @@ namespace DAL
                 throw new Exception($"❌ Error al obtener el producto por ID (repo): {ex.Message}", ex);
             }
         }
-
-
-
         public string ActualizarStock(int id, int nuevoStock)
         {
             try

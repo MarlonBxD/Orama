@@ -22,20 +22,20 @@ namespace BLL
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(paquete.Nombre))
-                    throw new ArgumentException("El nombre es obligatorio.");
+                //if (string.IsNullOrWhiteSpace(paquete.Nombre))
+                //    throw new ArgumentException("El nombre es obligatorio.");
 
-                if (paquete.Precio <= 0)
-                    throw new ArgumentException("El precio debe ser mayor que cero.");
+                //if (paquete.Precio <= 0)
+                //    throw new ArgumentException("El precio debe ser mayor que cero.");
 
-                if (paquete.DuracionPaquete <= 0)
-                    throw new ArgumentException("La duración debe ser mayor que cero.");
+                //if (paquete.DuracionPaquete <= 0)
+                //    throw new ArgumentException("La duración debe ser mayor que cero.");
 
                 return _repository.Agregar(paquete);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al agregar paquete de servicio", ex);
+                throw new Exception($"Error al agregar paquete de servicio {ex.Message}");
             }
         }
 

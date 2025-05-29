@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panelCampos = new Panel();
             txtEspecialidad = new TextBox();
             txtTelefono = new TextBox();
@@ -88,7 +88,7 @@
             txtEspecialidad.BackColor = Color.DimGray;
             txtEspecialidad.BorderStyle = BorderStyle.None;
             txtEspecialidad.ForeColor = Color.White;
-            txtEspecialidad.Location = new Point(869, 86);
+            txtEspecialidad.Location = new Point(870, 96);
             txtEspecialidad.Margin = new Padding(3, 4, 3, 4);
             txtEspecialidad.Name = "txtEspecialidad";
             txtEspecialidad.Size = new Size(204, 20);
@@ -138,7 +138,7 @@
             label1.ForeColor = SystemColors.Desktop;
             label1.Location = new Point(451, 15);
             label1.Name = "label1";
-            label1.Size = new Size(158, 37);
+            label1.Size = new Size(195, 46);
             label1.TabIndex = 34;
             label1.Text = "Fotógrafos";
             // 
@@ -211,9 +211,9 @@
             lblEspecialidad.AutoSize = true;
             lblEspecialidad.Font = new Font("Segoe UI", 14.25F);
             lblEspecialidad.ForeColor = SystemColors.Desktop;
-            lblEspecialidad.Location = new Point(745, 81);
+            lblEspecialidad.Location = new Point(710, 86);
             lblEspecialidad.Name = "lblEspecialidad";
-            lblEspecialidad.Size = new Size(117, 25);
+            lblEspecialidad.Size = new Size(144, 32);
             lblEspecialidad.TabIndex = 27;
             lblEspecialidad.Text = "Especialidad";
             // 
@@ -223,7 +223,7 @@
             txtEmail.BackColor = Color.DimGray;
             txtEmail.BorderStyle = BorderStyle.None;
             txtEmail.ForeColor = Color.White;
-            txtEmail.Location = new Point(502, 86);
+            txtEmail.Location = new Point(468, 92);
             txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(204, 20);
@@ -237,7 +237,7 @@
             lblTelefono.ForeColor = SystemColors.Desktop;
             lblTelefono.Location = new Point(391, 153);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(84, 25);
+            lblTelefono.Size = new Size(107, 32);
             lblTelefono.TabIndex = 22;
             lblTelefono.Text = "Teléfono";
             // 
@@ -249,7 +249,7 @@
             lblEmail.ForeColor = SystemColors.Desktop;
             lblEmail.Location = new Point(391, 82);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(58, 25);
+            lblEmail.Size = new Size(71, 32);
             lblEmail.TabIndex = 21;
             lblEmail.Text = "Email";
             // 
@@ -261,7 +261,7 @@
             lblApellido.ForeColor = SystemColors.Desktop;
             lblApellido.Location = new Point(41, 153);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(82, 25);
+            lblApellido.Size = new Size(102, 32);
             lblApellido.TabIndex = 20;
             lblApellido.Text = "Apellido";
             // 
@@ -273,7 +273,7 @@
             lblNombre.ForeColor = SystemColors.Desktop;
             lblNombre.Location = new Point(40, 82);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(81, 25);
+            lblNombre.Size = new Size(102, 32);
             lblNombre.TabIndex = 19;
             lblNombre.Text = "Nombre";
             // 
@@ -300,7 +300,7 @@
             btnVerFotografos.Location = new Point(333, 311);
             btnVerFotografos.Margin = new Padding(3, 4, 3, 4);
             btnVerFotografos.Name = "btnVerFotografos";
-            btnVerFotografos.Size = new Size(142, 34);
+            btnVerFotografos.Size = new Size(142, 52);
             btnVerFotografos.TabIndex = 31;
             btnVerFotografos.Text = "Ver fotógrafos";
             btnVerFotografos.UseVisualStyleBackColor = false;
@@ -311,7 +311,7 @@
             txtBuscar.BackColor = Color.DimGray;
             txtBuscar.BorderStyle = BorderStyle.None;
             txtBuscar.ForeColor = Color.White;
-            txtBuscar.Location = new Point(108, 320);
+            txtBuscar.Location = new Point(123, 328);
             txtBuscar.Margin = new Padding(3, 4, 3, 4);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(204, 20);
@@ -325,7 +325,7 @@
             label2.ForeColor = SystemColors.Desktop;
             label2.Location = new Point(34, 316);
             label2.Name = "label2";
-            label2.Size = new Size(68, 25);
+            label2.Size = new Size(83, 32);
             label2.TabIndex = 26;
             label2.Text = "Buscar";
             // 
@@ -334,25 +334,26 @@
             dgv.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.BackgroundColor = Color.White;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Black;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Black;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv.EnableHeadersVisualStyles = false;
             dgv.GridColor = Color.LightGray;
-            dgv.Location = new Point(0, 347);
+            dgv.Location = new Point(0, 370);
             dgv.Name = "dgv";
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.DimGray;
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dgv.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            dgv.Size = new Size(1114, 340);
+            dgv.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dgv.Size = new Size(1114, 317);
             dgv.TabIndex = 25;
             dgv.CellContentClick += dgv_CellContentClick;
             // 

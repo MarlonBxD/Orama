@@ -156,12 +156,21 @@ namespace GUI
             try
             {
                 listaFotografos = _fotografoService.ObtenerFotografos();
+                dgv.DataSource = null;
+                dgv.DataSource = listaFotografos;
+
+                if (dgv.Columns.Contains("Id"))
+                    dgv.Columns["Id"].Visible = false;
+
+                if (dgv.Columns.Contains("NombreCompleto"))
+                    dgv.Columns["NombreCompleto"].Visible = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar fotografos {ex.Message}");
+                MessageBox.Show($"Error al cargar fotógrafos: {ex.Message}");
             }
         }
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -195,14 +204,15 @@ namespace GUI
 
         private void btnVerFotografos_Click(object sender, EventArgs e)
         {
-            dgv.DataSource = null;
-            dgv.DataSource = listaFotografos;
-
-            if (dgv.Columns.Contains("Id"))
-                dgv.Columns["Id"].Visible = false;
-
-            if (dgv.Columns.Contains("NombreCompleto"))
-                dgv.Columns["NombreCompleto"].Visible = false;
+            CargarFotografos();
+        }
+        private void LimpiarFormulario()
+        {
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtEspecialidad.Text = string.Empty;
         }
     }
 }

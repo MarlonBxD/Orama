@@ -19,9 +19,6 @@ namespace DAL
         {
             try
             {
-                if (fotografo == null || string.IsNullOrEmpty(fotografo.Nombre) || string.IsNullOrEmpty(fotografo.Telefono))
-                    throw new ArgumentException("Datos del fotografo no válidos");
-
                 using var conn = _conexion.GetConnection();
                 conn.Open();
 
@@ -32,7 +29,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Apellido", fotografo.Apellido);
                 cmd.Parameters.AddWithValue("@Telefono", fotografo.Telefono);
                 cmd.Parameters.AddWithValue("@Email", fotografo.Email);
-                cmd.Parameters.AddWithValue("@Especialidad", fotografo.Especialidad); // corregido
+                cmd.Parameters.AddWithValue("@Especialidad", fotografo.Especialidad); 
 
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -45,7 +42,6 @@ namespace DAL
                 return ex.Message;
             }
         }
-
         public List<Fotografo> GetAll()
         {
             try
@@ -53,28 +49,29 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Fotografo";
+                cmd.CommandText = "SELECT id, nombre, apellido, telefono, especialidad FROM fotografo";
+
                 using var reader = cmd.ExecuteReader();
                 var fotografos = new List<Fotografo>();
+
                 while (reader.Read())
                 {
                     var fotografo = new Fotografo
                     {
-                        Id= reader.GetInt32(0),
+                        Id = reader.GetInt32(0),
                         Nombre = reader.GetString(1),
-                        Apellido = reader.GetString(6),
-                        Telefono = reader.GetString(7),
-                        Especialidad = reader.GetString(2)
+                        Apellido = reader.GetString(2),
+                        Telefono = reader.GetString(3),
+                        Especialidad = reader.GetString(4)
                     };
                     fotografos.Add(fotografo);
                 }
-                conn.Close();
-                return fotografos;
 
+                return fotografos;
             }
             catch (Exception ex)
             {
-                return null;    
+                throw new ApplicationException("Error al obtener la lista de fotógrafos", ex);
             }
         }
         public string Delete(int id)
@@ -119,29 +116,41 @@ namespace DAL
                 return ex.Message;
             }
         }
-        public FotografoDTO GetById(int id)
+        public Fotografo GetById(int id)
         {
-            using var conn = _conexion.GetConnection();
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Fotografo WHERE id = @id";
-            cmd.Parameters.AddWithValue("@id", id);
-            using var reader = cmd.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                var fotografo = new FotografoDTO
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"SELECT id, nombre, apellido, telefono, especialidad 
+                                    FROM fotografo 
+                                    WHERE id = @id";
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    Nombre = reader.GetString(1),
-                    Apellido = reader.GetString(6),
-                    Telefono = reader.GetString(7),
-                    Especialidad = reader.GetString(2)
-                };
-                conn.Close();
-                return fotografo;
+                    return new Fotografo
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.GetString(1),
+                        Apellido = reader.GetString(2),
+                        Telefono = reader.GetString(3),
+                        Especialidad = reader.GetString(4)
+                    };
+                }
+
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al obtener el fotógrafo por ID", ex);
+            }
         }
-        public FotografoDTO GetByName(string name)
+
+        public Fotografo GetByName(string name)
         {
             using var conn = _conexion.GetConnection();
             conn.Open();
@@ -151,7 +160,7 @@ namespace DAL
             using var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                var fotografo = new FotografoDTO
+                var fotografo = new Fotografo
                 {
                     Nombre = reader.GetString(1),
                     Apellido = reader.GetString(6),

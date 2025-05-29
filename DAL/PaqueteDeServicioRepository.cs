@@ -46,6 +46,7 @@ namespace DAL
                                 VALUES (@paqueteId, @productoId, @cantidad)";
                     cmd.Parameters.AddWithValue("@paqueteId", paqueteId);
                     cmd.Parameters.AddWithValue("@productoId", item.Id);
+                    cmd.Parameters.AddWithValue("@cantidad", item.stock);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -58,7 +59,6 @@ namespace DAL
                 return $"Error al agregar paquete de servicio  {ex.Message}";
             }
         }
-
         public List<PaqueteDeServicioDTO> GetAll()
         {
             try
@@ -76,9 +76,9 @@ namespace DAL
                     paquetes.Add(new PaqueteDeServicioDTO
                     {
                         Id = reader.GetInt32(0),
-                        Nombre = reader.IsDBNull(1) ? null : reader.GetString(1),
+                        Nombre = reader.GetString(1),
                         Precio = reader.GetDouble(2),
-                        Descripcion = reader.IsDBNull(3) ? null : reader.GetString(3),
+                        Descripcion = reader.GetString(3),
                         DuracionPaquete = reader.GetInt32(4)
                     });
                 }
@@ -89,7 +89,6 @@ namespace DAL
                 throw new AppException("Error al obtener paquetes", ex);
             }
         }
-
         public string Update(PaqueteDeServicio paquete)
         {
             try
@@ -98,12 +97,12 @@ namespace DAL
                 conn.Open();
                 using var cmd = conn.CreateCommand();
                 cmd.CommandText = @"UPDATE paquetedeservicio SET
-                                nombre = @nombre,
-                                precio = @precio,
-                                descripcion = @descripcion,
-                                duracion = @duracion,
-                                evento_id = @evento_id
-                                WHERE id = @id";
+                                        nombre = @nombre,
+                                        precio = @precio,
+                                        descripcion = @descripcion,
+                                        duracion = @duracion,
+                                        evento_id = @evento_id
+                                        WHERE id = @id";
                 cmd.Parameters.AddWithValue("@nombre", paquete.Nombre);
                 cmd.Parameters.AddWithValue("@precio", paquete.Precio);
                 cmd.Parameters.AddWithValue("@descripcion", paquete.Descripcion);
@@ -118,7 +117,6 @@ namespace DAL
                 throw new AppException("Error al actualizar paquete de servicio", ex);
             }
         }
-
         public string Delete(int id)
         {
             try
@@ -137,7 +135,6 @@ namespace DAL
                 throw new AppException("Error al eliminar paquete de servicio", ex);
             }
         }
-
         public PaqueteDeServicioDTO GetById(int paqueteId)
         {
             try

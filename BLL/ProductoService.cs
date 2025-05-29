@@ -67,5 +67,15 @@ namespace BLL
                 return $"Error al actualizar el nomnre {ex.Message}";
             }
         }
+        public Producto GetById(int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("El ID del producto debe ser mayor que cero.");
+            var producto = _productoRepository.ObtenerPorId(id);
+            if (producto == null)
+                throw new KeyNotFoundException($"Producto con ID {id} no encontrado.");
+            return producto;
+
+        }
     }
 }

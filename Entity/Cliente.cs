@@ -10,9 +10,9 @@ namespace Entity
     {
         public string Direccion { get; set; } = string.Empty; 
         public string NombreCompleto { get; private set; }
-        //public List<Pago> Pagos { get; set; }
-        //public List<Reserva> Reservas { get; set; }
-        //public List<Despacho> Despachos { get; set; } = new List<Despacho>();
+        public List<Pago> Pagos { get; set; }
+        public List<Reserva> Reservas { get; set; }
+        public List<Despacho> Despachos { get; set; }
 
         public Cliente()
         {
