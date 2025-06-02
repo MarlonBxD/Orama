@@ -50,6 +50,9 @@ namespace GUI
                 };
 
                 _clienteService.Agregar(cliente);
+                CargarClientes();
+                cargarTabla();
+
                 MessageBox.Show("Cliente agregado correctamente");
             }
             catch (Exception ex)
@@ -120,6 +123,7 @@ namespace GUI
                 _clienteService.Delete(idCliente);
 
                 CargarClientes();
+                cargarTabla();
 
                 dgv.DataSource = null;
                 dgv.DataSource = listaClientes;

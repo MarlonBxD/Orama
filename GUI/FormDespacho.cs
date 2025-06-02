@@ -140,11 +140,11 @@ namespace GUI
                 {
                     FechaDespacho = dtpFecha.Value,
                     Estado = cbEstados.Text,
-                    Cliente = new ClienteDTO
+                    Cliente = new Cliente
                     {
                         Id = clienteSeleccionado.Id
                     },
-                    Mensajero = new MensajeroDTO
+                    Mensajero = new Mensajero
                     {
                         Id = mensajeroSeleccionado.Id
                     },

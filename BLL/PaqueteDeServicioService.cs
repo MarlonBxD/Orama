@@ -22,14 +22,14 @@ namespace BLL
         {
             try
             {
-                //if (string.IsNullOrWhiteSpace(paquete.Nombre))
-                //    throw new ArgumentException("El nombre es obligatorio.");
+                if (string.IsNullOrWhiteSpace(paquete.Nombre))
+                    throw new ArgumentException("El nombre es obligatorio.");
 
-                //if (paquete.Precio <= 0)
-                //    throw new ArgumentException("El precio debe ser mayor que cero.");
+                if (paquete.Precio <= 0)
+                    throw new ArgumentException("El precio debe ser mayor que cero.");
 
-                //if (paquete.DuracionPaquete <= 0)
-                //    throw new ArgumentException("La duración debe ser mayor que cero.");
+                if (paquete.DuracionPaquete <= 0)
+                    throw new ArgumentException("La duración debe ser mayor que cero.");
 
                 return _repository.Agregar(paquete);
             }
@@ -39,7 +39,7 @@ namespace BLL
             }
         }
 
-        public List<PaqueteDeServicioDTO> GetAll()
+        public List<PaqueteDeServicio> GetAll()
         {
             try
             {
@@ -48,6 +48,18 @@ namespace BLL
             catch (Exception ex)
             {
                 throw new AppException("Error al obtener paquetes de servicio", ex);
+            }
+        }
+
+        public List<PaqueteDeServicioDTO> GetAllDTO()
+        {
+            try
+            {
+                return _repository.GetAllDTO();
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error al obtener paquetes de servicio DTO", ex);
             }
         }
 

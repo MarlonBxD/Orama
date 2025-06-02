@@ -44,6 +44,10 @@ namespace GUI
                 };
 
                 _equipoService.Agregar(equipo);
+                CargarEquipos();
+                CargarTabla();
+                LIAR();
+
                 MessageBox.Show("Equipo fotográfico agregado correctamente.");
             }
             catch (Exception ex)
@@ -110,6 +114,7 @@ namespace GUI
                     _equipoService.EliminarEquipoFotografico(idEquipo);
 
                     CargarEquipos();
+                    CargarTabla();
 
                     dgv.DataSource = null;
                     dgv.DataSource = listaEquipos;
@@ -137,19 +142,23 @@ namespace GUI
                 MessageBox.Show($"Error al cargar equipos fotográficos: {ex.Message}");
             }
         }
-
-        private void btnVerEquipos_Click(object sender, EventArgs e)
+        private void CargarTabla()
         {
             dgv.DataSource = null;
             dgv.DataSource = listaEquipos;
-
             if (dgv.Columns.Contains("Id"))
                 dgv.Columns["Id"].Visible = false;
         }
 
+        private void btnVerEquipos_Click(object sender, EventArgs e)
+        {
+            CargarTabla();
+        }
+
         private void FormEquipoFotografico_Load(object sender, EventArgs e)
         {
-            CargarEquipos();
+            CargarEquipos();  
+            CargarTabla();    
         }
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -193,6 +202,15 @@ namespace GUI
 
                 dgv.DataSource = listaFiltrada;
             }
+        }
+        private void LIAR()
+        {
+            txtMarca.Clear();
+            txtModelo.Clear();
+            txtTipo.Clear();
+            txtEstado.Clear();
+            txtCantidad.Clear();
+            txtBuscar.Clear();
         }
     }
 }

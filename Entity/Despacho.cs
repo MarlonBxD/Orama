@@ -15,9 +15,9 @@ namespace Entity
         public string Estado { get; set; }
         public int NumeroPaquetes { get; set; }
 
-        public PaqueteDeServicioDTO PaqueteDeServicio { get; set; }
-        public ClienteDTO Cliente { get; set; }
-        public MensajeroDTO Mensajero { get; set; } 
+        public PaqueteDeServicio PaqueteDeServicio { get; set; }
+        public Cliente Cliente { get; set; }
+        public Mensajero Mensajero { get; set; } 
 
     }
 

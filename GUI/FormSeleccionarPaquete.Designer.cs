@@ -64,6 +64,7 @@
             dgv.GridColor = Color.LightGray;
             dgv.Location = new Point(-1, 49);
             dgv.Name = "dgv";
+            dgv.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = Color.White;
             dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = Color.DimGray;
@@ -94,7 +95,7 @@
             label1.ForeColor = SystemColors.Desktop;
             label1.Location = new Point(12, 6);
             label1.Name = "label1";
-            label1.Size = new Size(276, 37);
+            label1.Size = new Size(340, 46);
             label1.TabIndex = 35;
             label1.Text = "Seleccionar paquete";
             // 
@@ -116,6 +117,7 @@
             dataGridView1.GridColor = Color.LightGray;
             dataGridView1.Location = new Point(0, 50);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = Color.DimGray;
@@ -123,7 +125,6 @@
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.Size = new Size(784, 360);
             dataGridView1.TabIndex = 32;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // btnVerClientes
             // 

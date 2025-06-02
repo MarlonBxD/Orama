@@ -59,7 +59,37 @@ namespace DAL
                 return $"Error al agregar paquete de servicio  {ex.Message}";
             }
         }
-        public List<PaqueteDeServicioDTO> GetAll()
+        public List<PaqueteDeServicio> GetAll()
+        {
+            try
+            {
+                var paquetes = new List<PaqueteDeServicio>();
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"SELECT id, nombre, precio, descripcion, duracion
+                                FROM paquetedeservicio";
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    paquetes.Add(new PaqueteDeServicio
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.GetString(1),
+                        Precio = reader.GetDouble(2),
+                        Descripcion = reader.GetString(3),
+                        DuracionPaquete = reader.GetInt32(4)
+                    });
+                }
+                return paquetes;
+            }
+            catch (Exception ex)
+            {
+                throw new AppException($"Error al obtener paquetes {ex.Message}");
+            }
+        }
+        public List<PaqueteDeServicioDTO> GetAllDTO()
         {
             try
             {

@@ -67,12 +67,12 @@ namespace GUI
             }
         }
 
-        public ClienteDTO ClienteSeleccionado { get; private set; }
+        public Cliente ClienteSeleccionado { get; private set; }
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentRow != null)
             {
-                ClienteSeleccionado = (ClienteDTO)dgv.CurrentRow.DataBoundItem;
+                ClienteSeleccionado = (Cliente)dgv.CurrentRow.DataBoundItem;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

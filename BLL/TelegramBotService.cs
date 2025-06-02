@@ -208,7 +208,7 @@ namespace BLL
                         var reserva = reservasEnProceso[chatId];
                         reserva.FechaEvento = fecha;
 
-                        var paquete = _paqueteService.GetAll().FirstOrDefault();
+                        var paquete = _paqueteService.GetAllDTO().FirstOrDefault();
                         if (paquete == null)
                         {
                             await bot.SendMessage(chatId, "❗ No hay paquetes disponibles. Contacta al administrador.", cancellationToken: ct);

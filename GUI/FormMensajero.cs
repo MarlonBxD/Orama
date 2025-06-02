@@ -122,22 +122,25 @@ namespace GUI
                 MessageBox.Show($"Error al eliminar mensajero: {ex.Message}");
             }
         }
-
-        private void btnVerClientes_Click(object sender, EventArgs e)
+        private void CargarTabla()
         {
             dgv.DataSource = null;
             dgv.DataSource = listaMensajeros;
-
             if (dgv.Columns.Contains("Id"))
                 dgv.Columns["Id"].Visible = false;
-
             if (dgv.Columns.Contains("NombreCompleto"))
                 dgv.Columns["NombreCompleto"].Visible = false;
+        }
+
+        private void btnVerClientes_Click(object sender, EventArgs e)
+        {
+            CargarTabla();
         }
 
         private void FormMensajero_Load(object sender, EventArgs e)
         {
             CargarMensajeros();
+            CargarTabla();
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)

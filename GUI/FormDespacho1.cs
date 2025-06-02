@@ -39,6 +39,12 @@ namespace GUI
         private void FormDespacho1_Load(object sender, EventArgs e)
         {
             CargarDespachos();
+            listaFinal = new List<DespachoDTO>(listaDespachos);
+            dgv.DataSource = null;
+            dgv.DataSource = listaFinal;
+
+            if (dgv.Columns.Contains("Id"))
+                dgv.Columns["Id"].Visible = false;
 
             cbEstado.Items.Clear();
             cbEstado.Items.Add("");
@@ -201,7 +207,7 @@ namespace GUI
                 dgv.Columns["Id"].Visible = false;
         }
 
-        private ClienteDTO clienteSeleccionado;
+        private Cliente clienteSeleccionado;
         private void btnAsignarCliente_Click(object sender, EventArgs e)
         {
             using (var formBuscarCliente = new FormSeleccionarCliente())
@@ -213,7 +219,7 @@ namespace GUI
             }
         }
 
-        private MensajeroDTO mensajeroSeleccionado;
+        private Mensajero mensajeroSeleccionado;
         private void btnAsignarMensajero_Click(object sender, EventArgs e)
         {
             using (var formSeleccionarMensajero = new FormSeleccionarMensajero())
@@ -225,7 +231,7 @@ namespace GUI
             }
         }
 
-        private PaqueteDeServicioDTO paqueteSeleccionado;
+        private PaqueteDeServicio paqueteSeleccionado;
         private void btnAsignarPaquete_Click(object sender, EventArgs e)
         {
             using (var formSeleccionarPaquete = new FormSeleccionarPaquete())

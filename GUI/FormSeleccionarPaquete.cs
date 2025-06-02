@@ -16,16 +16,11 @@ namespace GUI
     public partial class FormSeleccionarPaquete : Form
     {
         private readonly PaqueteDeServicioService _paqueteService = new PaqueteDeServicioService();
-        private List<PaqueteDeServicioDTO> listaPaquetes = new List<PaqueteDeServicioDTO>();
+        private List<PaqueteDeServicio> listaPaquetes = new List<PaqueteDeServicio>();
 
         public FormSeleccionarPaquete()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -34,12 +29,12 @@ namespace GUI
             timer1.Start();
         }
 
-        public PaqueteDeServicioDTO PaqueteSeleccionado { get; private set; }
+        public PaqueteDeServicio PaqueteSeleccionado { get; private set; }
         private void btnVerClientes_Click(object sender, EventArgs e)
         {
-            if (dgv.CurrentRow != null)
+            if (dataGridView1.CurrentRow != null)
             {
-                PaqueteSeleccionado = (PaqueteDeServicioDTO)dgv.CurrentRow.DataBoundItem;
+                PaqueteSeleccionado = (PaqueteDeServicio)dataGridView1.CurrentRow.DataBoundItem;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -47,13 +42,24 @@ namespace GUI
 
         private void FormSeleccionarPaquete_Load(object sender, EventArgs e)
         {
-            listaPaquetes = _paqueteService.GetAll();
+            try
+            {
+                listaPaquetes = _paqueteService.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar paquetes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            dgv.DataSource = null;
-            dgv.DataSource = listaPaquetes;
+            dataGridView1.Columns.Clear();
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = listaPaquetes;
 
-            if (dgv.Columns.Contains("Id"))
-                dgv.Columns["Id"].Visible = false;
+
+            if (dataGridView1.Columns.Contains("Id"))
+                dataGridView1.Columns["Id"].Visible = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

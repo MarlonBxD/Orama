@@ -67,12 +67,12 @@ namespace GUI
             }
         }
 
-        public MensajeroDTO MensajeroSeleccionado { get; private set; }
+        public Mensajero MensajeroSeleccionado { get; private set; }
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentRow != null)
             {
-                MensajeroSeleccionado = (MensajeroDTO)dgv.CurrentRow.DataBoundItem;
+                MensajeroSeleccionado = (Mensajero)dgv.CurrentRow.DataBoundItem;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

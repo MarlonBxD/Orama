@@ -27,14 +27,14 @@ namespace DAL
                 using var cmd = conn.CreateCommand();
 
                 cmd.CommandText = @"INSERT INTO despacho (fechadespacho, estado, numero_paquetes, 
-                                                      paquetedeservicio_id, cliente_id, mensajero_id)
-                                VALUES (@fechadespacho, @estado, @numeropaquetes, 
-                                        @paquetedeservicio_id, @cliente_id, @mensajero_id)";
+                                                      paquete_servicio_id, cliente_id, mensajero_id)
+                                VALUES (@fechadespacho, @estado, @numero_paquetes, 
+                                        @paquete_servicio_id, @cliente_id, @mensajero_id)";
 
                 cmd.Parameters.AddWithValue("@fechadespacho", despacho.FechaDespacho);
                 cmd.Parameters.AddWithValue("@estado", despacho.Estado);
-                cmd.Parameters.AddWithValue("@numeropaquetes", despacho.NumeroPaquetes);
-                cmd.Parameters.AddWithValue("@paquetedeservicio_id", despacho.PaqueteDeServicio.Id);
+                cmd.Parameters.AddWithValue("@numero_paquetes", despacho.NumeroPaquetes);
+                cmd.Parameters.AddWithValue("@paquete_servicio_id", despacho.PaqueteDeServicio.Id);
                 cmd.Parameters.AddWithValue("@cliente_id", despacho.Cliente.Id);
                 cmd.Parameters.AddWithValue("@mensajero_id", despacho.Mensajero.Id);
 
@@ -44,7 +44,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al agregar despacho", ex);
+                throw new AppException($"Error al agregar despacho {ex.Message}");
             }
         }
 
@@ -58,15 +58,14 @@ namespace DAL
                 conn.Open();
                 using var cmd = conn.CreateCommand();
 
-                cmd.CommandText = @"SELECT 
-                            d.id, d.fechadespacho, d.estado, d.numero_paquetes,
-                            p.nombre AS nombre_paquete,
-                            c.nombre AS nombre_cliente,
-                            m.nombre AS nombre_mensajero
-                            FROM despacho d
-                            LEFT JOIN paquetedeservicio p ON d.paquete_servicio_id = p.id
-                            LEFT JOIN cliente c ON d.cliente_id = c.id
-                            LEFT JOIN mensajero m ON d.mensajero_id = m.id";
+                cmd.CommandText = @"SELECT d.id, d.fechadespacho, d.estado, d.numero_paquetes,
+                                            p.nombre AS nombre_paquete,
+                                            c.nombre AS nombre_cliente,
+                                            m.nombre AS nombre_mensajero
+                                            FROM despacho d
+                                            LEFT JOIN paquetedeservicio p ON d.paquete_servicio_id = p.id
+                                            LEFT JOIN cliente c ON d.cliente_id = c.id
+                                            LEFT JOIN mensajero m ON d.mensajero_id = m.id";
 
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -77,9 +76,9 @@ namespace DAL
                         FechaDespacho = reader.GetDateTime(1),
                         Estado = reader.GetString(2),
                         NumeroPaquetes = reader.GetInt32(3),
-                        NombrePaquete = reader.IsDBNull(4) ? null : reader.GetString(4),
-                        NombreCliente = reader.IsDBNull(5) ? null : reader.GetString(5),
-                        NombreMensajero = reader.IsDBNull(6) ? null : reader.GetString(6)
+                        NombrePaquete = reader.GetString(4),
+                        NombreCliente = reader.GetString(5),
+                        NombreMensajero = reader.GetString(6)
                     });
                 }
 
@@ -124,17 +123,17 @@ namespace DAL
                         FechaDespacho = reader.GetDateTime(1),
                         Estado = reader.GetString(2),
                         NumeroPaquetes = reader.GetInt32(3),
-                        PaqueteDeServicio = new PaqueteDeServicioDTO
+                        PaqueteDeServicio = new PaqueteDeServicio
                         {
                             Id = reader.GetInt32(4),
                             Nombre = reader.GetString(5)
                         },
-                        Cliente = new ClienteDTO
+                        Cliente = new Cliente
                         {
                             Id = reader.GetInt32(6),
                             Nombre = reader.GetString(7)
                         },
-                        Mensajero = new MensajeroDTO
+                        Mensajero = new Mensajero
                         {
                             Id = reader.GetInt32(8),
                             Nombre = reader.GetString(9)

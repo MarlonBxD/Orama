@@ -284,17 +284,17 @@ namespace DAL
                         FechaDespacho = reader.GetDateTime(1),
                         Estado = reader.IsDBNull(2) ? null : reader.GetString(2),
                         NumeroPaquetes = reader.GetInt32(3),
-                        PaqueteDeServicio = new PaqueteDeServicioDTO
+                        PaqueteDeServicio = new PaqueteDeServicio
                         {
                             Id = reader.GetInt32(4),
                             Nombre = reader.IsDBNull(5) ? null : reader.GetString(5)
                         },
-                        Mensajero = new MensajeroDTO
+                        Mensajero = new Mensajero
                         {
                             Id = reader.GetInt32(6),
                             Nombre = reader.IsDBNull(7) ? null : reader.GetString(7)
                         },
-                        Cliente = new ClienteDTO
+                        Cliente = new Cliente
                         {
                             Id = reader.GetInt32(8),
                             Nombre = reader.IsDBNull(9) ? null : reader.GetString(9)

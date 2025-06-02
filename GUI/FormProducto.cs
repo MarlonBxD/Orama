@@ -129,11 +129,7 @@ namespace GUI
 
         private void btnVerEquipos_Click(object sender, EventArgs e)
         {
-            dgv.DataSource = null;
-            dgv.DataSource = listaProductos;
-
-            if (dgv.Columns.Contains("Id"))
-                dgv.Columns["Id"].Visible = false;
+            CargarTabla();
         }
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -179,7 +175,22 @@ namespace GUI
 
         private void FormProducto_Load(object sender, EventArgs e)
         {
-            CargarProductos();
+            CargarTabla();
         }
+
+        private void CargarTabla()
+        {
+            try
+            {
+                listaProductos = _productoService.Obtener();
+                dgv.DataSource = listaProductos;
+                if (dgv.Columns.Contains("Id"))
+                    dgv.Columns["Id"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar productos: {ex.Message}");
+            }
+        }   
     }
 }

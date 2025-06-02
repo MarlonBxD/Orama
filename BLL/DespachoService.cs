@@ -44,7 +44,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al agregar el despacho", ex);
+                throw new AppException($"Error al agregar el despacho {ex.Message}" );
             }
         }
 
