@@ -12,10 +12,12 @@ namespace BLL
     public class PaqueteDeServicioService
     {
         private readonly PaqueteDeServicioRepository _repository;
+        private readonly ProductoRepository _productoRepo;
 
         public PaqueteDeServicioService()
         {
             _repository = new PaqueteDeServicioRepository();
+            _productoRepo = new ProductoRepository();
         }
 
         public string Agregar(PaqueteDeServicio paquete)
@@ -121,7 +123,39 @@ namespace BLL
             }
         }
 
+        public void DescontarPaqueteDeServicio(PaqueteDeServicio paquete, int cantidad)
+        {
+            try
+            {
+                
+                _repository.ActualizarStock(paquete.Id, paquete.stock - cantidad);
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error al descontar paquete de servicio", ex);
+            }
+        }
+
+        public void DescontarProductosDelPaquete(int paqueteId, int cantidadVendida)
+        {
+            var productos = _repository.ObtenerProductosPorPaquete(paqueteId);
+
+            foreach (var (productoId, cantidadPorPaquete) in productos)
+            {
+                int stockActual = _productoRepo.ObtenerStock(productoId);
+                int cantidadTotal = cantidadPorPaquete * cantidadVendida;
+
+                if (stockActual < cantidadTotal)
+                {
+                    throw new Exception($"Stock insuficiente para el producto ID {productoId}");
+                }
+
+                _productoRepo.ActualizarStock(productoId, stockActual - cantidadTotal);
+            }
+        }
         
+
+
     }
 
 }

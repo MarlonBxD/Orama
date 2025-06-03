@@ -1,5 +1,6 @@
-﻿using Entity.Dto;
-using Entity;
+﻿using Entity;
+using Entity.Dto;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace DAL
     public class PaqueteDeServicioRepository
     {
         private readonly Conexion _conexion;
+        private readonly ProductoRepository productoRepository;
 
         public PaqueteDeServicioRepository()
         {
             _conexion = new Conexion();
+            productoRepository = new ProductoRepository();
         }
 
         public string Agregar(PaqueteDeServicio paquete)
@@ -97,8 +100,9 @@ namespace DAL
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"SELECT id, nombre, precio, descripcion, duracion
-                                FROM paquetedeservicio";
+                cmd.CommandText = @"
+            SELECT id, nombre, precio, descripcion, duracion
+            FROM paquetedeservicio";
 
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -108,17 +112,18 @@ namespace DAL
                         Id = reader.GetInt32(0),
                         Nombre = reader.GetString(1),
                         Precio = reader.GetDouble(2),
-                        Descripcion = reader.GetString(3),
-                        DuracionPaquete = reader.GetInt32(4)
+                        Descripcion = reader.IsDBNull(3) ? "" : reader.GetString(3),
+                        DuracionPaquete = reader.GetString(4)
                     });
                 }
                 return paquetes;
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al obtener paquetes", ex);
+                throw new Exception($"Error al obtener paquetes {ex.Message}");
             }
         }
+
         public string Update(PaqueteDeServicio paquete)
         {
             try
@@ -165,6 +170,47 @@ namespace DAL
                 throw new AppException("Error al eliminar paquete de servicio", ex);
             }
         }
+        public void DeleteProductosPaquete(int id)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"DELETE FROM paquete_producto WHERE id_paquete = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error al eliminar productos del paquete", ex);
+            }
+        }
+        public int stock_paquetes(int id)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"DELETE stock FROM paquetedeservicio WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery(); 
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return Convert.ToInt32(reader["stock"]);
+                }
+                else
+                {
+                    throw new Exception($"Paquete con ID {id} no encontrado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Error al eliminar paquete de servicio", ex);
+            }
+        }
         public PaqueteDeServicioDTO GetById(int paqueteId)
         {
             try
@@ -204,7 +250,7 @@ namespace DAL
                             Nombre = reader.GetString(1),
                             Precio = reader.GetDouble(2),
                             Descripcion = reader.GetString(3),
-                            DuracionPaquete = reader.GetInt32(4),
+                            DuracionPaquete = reader.GetString(4),
                             productos = new List<Producto>()
                         };
                     }
@@ -225,6 +271,86 @@ namespace DAL
             {
                 throw new Exception("Error al obtener paquete con productos", ex);
             }
+        }
+        public void Descontar_productos(PaqueteDeServicio paquete)
+        {
+            foreach (var item in paquete.productos)
+            {
+                var stockActual = productoRepository.ObtenerStock(item.Id);
+                var nuevoStock = stockActual - item.stock;
+                productoRepository.ActualizarStock(item.Id, nuevoStock);
+            }
+        }
+        public void ActualizarStock(int id, int nuevoStock)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"UPDATE PaqueteDeServicio
+                                    SET stock = @nuevoStock
+                                    WHERE id = @id";
+
+                cmd.Parameters.AddWithValue("@nuevoStock", nuevoStock);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                int filasAfectadas = cmd.ExecuteNonQuery();
+
+                if (filasAfectadas == 0)
+                {
+                    throw new Exception($"❌ No se encontró el paquete con ID {id} para actualizar stock.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"❌ Error al actualizar el stock del paquete (ID {id}): {ex.Message}", ex);
+            }
+        }
+        public void Descontar_stock(PaqueteDeServicio? paqueteservi)
+        {
+            try
+            {
+                var paquetes = GetById(paqueteservi.Id);
+                if (paquetes == null)
+                {
+                    throw new Exception("Paquete no encontrado");
+                }
+                var stockActual = stock_paquetes(paqueteservi.Id);
+                var nuevoStock = stockActual - paqueteservi.stock;
+                ActualizarStock(paqueteservi.Id, nuevoStock);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al descontar stock de productos del paquete", ex);
+            }
+        }
+
+        public List<(int ProductoId, int Cantidad)> ObtenerProductosPorPaquete(int paqueteId)
+        {
+            var lista = new List<(int, int)>();
+
+            using var conn = _conexion.GetConnection();
+            conn.Open();
+
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = @"
+            SELECT id_producto, cantidad_producto 
+            FROM paquete_producto 
+            WHERE id_paquete = @id";
+            cmd.Parameters.AddWithValue("@id", paqueteId);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int productoId = reader.GetInt32(0);
+                int cantidad = reader.GetInt32(1);
+                lista.Add((productoId, cantidad));
+            }
+
+            return lista;
         }
 
 

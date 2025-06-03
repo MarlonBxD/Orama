@@ -12,8 +12,9 @@ namespace Entity
         public int VentaId { get; set; }
         public int ProductoId { get; set; }
         public int Cantidad { get; set; }
+        public int? PaqueteServicioId { get; set; }
         public double PrecioUnitario { get; set; }
-        public double Descuento { get; set; }
+        public int Descuento { get; set; }
         public double Subtotal => (Cantidad * PrecioUnitario) - Descuento;
 
         public PaqueteDeServicio PaqueteServicio { get; set; }

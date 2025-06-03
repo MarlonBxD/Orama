@@ -19,6 +19,7 @@ namespace BLL
         private readonly ClienteService _clienteService = new();
         private readonly ReservaService _reservaService = new();
         private readonly PaqueteDeServicioService _paqueteService = new();
+        private readonly EventoService _eventoService = new();
 
         private readonly ConcurrentDictionary<long, Cliente> clientesIdentificados = new();
         private readonly ConcurrentDictionary<long, string> estados = new();
@@ -148,7 +149,7 @@ namespace BLL
                         return;
 
                     case "registrando_email":
-                        if (!Regex.IsMatch(text, @"^[\\w.-]+@[\\w-]+\\.[a-zA-Z]{2,}$"))
+                        if (!Regex.IsMatch(text, @"^[\w.-]+@[\w-]+\.[a-zA-Z]{2,}$"))
                         {
                             await bot.SendMessage(chatId, "❗ El email no tiene un formato válido. Inténtalo de nuevo.", cancellationToken: ct);
                             return;
@@ -216,7 +217,22 @@ namespace BLL
                         }
 
                         reserva.PaqueteDeServicio = paquete;
-                        _reservaService.Agregar(reserva);
+
+                        // Guardar reserva y obtener el ID
+                        int reservaId = _reservaService.Agregar(reserva);
+                        reserva.Id = reservaId;
+
+                        // Crear y guardar el evento asociado a la reserva
+                        var evento = new Evento
+                        {
+                            Tipo = paquete.Nombre,
+                            Fecha = reserva.FechaEvento,
+                            Ubicacion = "Por definir", 
+                            Reserva = reserva,
+                            Bebe = null 
+                        };
+
+                        _eventoService.Agregar(evento);
 
                         await bot.SendMessage(chatId,
                             $"✅ *Reserva registrada con éxito:*\n📅 {fecha:yyyy-MM-dd HH:mm}\n📦 Paquete: {paquete.Nombre}",
@@ -229,6 +245,7 @@ namespace BLL
                         estados[chatId] = "menu_principal";
                         reservasEnProceso.TryRemove(chatId, out _);
                         return;
+
                 }
             }
             catch (Exception ex)

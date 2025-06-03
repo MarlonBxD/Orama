@@ -128,13 +128,13 @@ namespace BLL
             try
             {
                 if (idCliente <= 0)
-                    throw new AppException("ID de cliente inválido.");
+                    throw new Exception("ID de cliente inválido.");
 
                 return _clienteRepository.ObtenerDespachos(idCliente);
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al obtener despachos del cliente", ex);
+                throw new Exception($"Error al obtener despachos del cliente {ex.Message}");
             }
         }
         public List<PagoDto> ObtenerPagosPorCliente(int idCliente)

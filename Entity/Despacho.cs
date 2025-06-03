@@ -19,6 +19,10 @@ namespace Entity
         public Cliente Cliente { get; set; }
         public Mensajero Mensajero { get; set; } 
 
+        public string nombrePaqueteDeServicio => PaqueteDeServicio?.Nombre ?? string.Empty;
+        public string nombreCliente => Cliente?.NombreCompleto?? string.Empty;
+        public string nombreMensajero => Mensajero?.Nombre + " " + Mensajero?.Apellido;
+
     }
 
-}
+}   

@@ -10,40 +10,38 @@ namespace BLL
 {
     public class VentaService
     {
+        private readonly PaqueteDeServicioService _paqueteService;
         private readonly IVentaRepository _ventaRepo;
         private readonly IProductoRepository _productoRepo;
         private readonly IMovimientoInventarioRepository _movimientoRepo;
 
         public VentaService(IVentaRepository ventaRepo, IProductoRepository productoRepo, IMovimientoInventarioRepository movimientoRepo)
         {
+            _paqueteService = new PaqueteDeServicioService();
             _ventaRepo = ventaRepo;
             _productoRepo = productoRepo;
             _movimientoRepo = movimientoRepo;
+
         }
+
 
         public void RegistrarVenta(Venta venta)
         {
             foreach (var detalle in venta.Detalles)
             {
-                var producto = _productoRepo.ObtenerPorId(detalle.ProductoId);
-                if (producto.stock < detalle.Cantidad)
+                if (detalle.PaqueteServicio == null)
                 {
-                    throw new Exception($"No hay suficiente stock para el producto {producto.Nombre}");
+                    throw new Exception("El detalle de venta debe tener un Paquete de Servicio asociado.");
                 }
+                _paqueteService.DescontarProductosDelPaquete(detalle.PaqueteServicio.Id, detalle.Cantidad);
 
-                _productoRepo.ActualizarStock(producto.Id, producto.stock - detalle.Cantidad);
-
-                _movimientoRepo.RegistrarMovimiento(new MovimientoInventario
-                {
-                    ProductoId = producto.Id,
-                    Cantidad = detalle.Cantidad,
-                    TipoMovimiento = "SALIDA",
-                    Motivo = "Venta"
-                });
+                _paqueteService.DescontarPaqueteDeServicio(detalle.PaqueteServicio, detalle.Cantidad);
             }
 
             venta.Total = venta.Detalles.Sum(d => d.Subtotal);
             _ventaRepo.RegistrarVenta(venta);
         }
+
+
     }
 }

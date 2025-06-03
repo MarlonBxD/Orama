@@ -18,7 +18,7 @@ namespace BLL
             _reservaRepository = new ReservaRepository();
         }
 
-        public string Agregar(Reserva reserva)
+        public int Agregar(Reserva reserva)
         {
             if (reserva == null)
                 throw new Exception("La reserva no puede ser nula.");

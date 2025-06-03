@@ -237,6 +237,15 @@ namespace GUI
                 }
 
                 dgv.DataSource = despachos;
+
+                dgv.Columns["PaqueteDeServicio"].Visible = false;
+                dgv.Columns["Cliente"].Visible = false;
+                dgv.Columns["Mensajero"].Visible = false;
+                dgv.Columns["Id"].Visible = false;
+                dgv.Columns["nombrePaqueteDeServicio"].HeaderText = "Paquete de Servicio";
+                dgv.Columns["nombreCliente"].Visible = false;
+                dgv.Columns["nombreMensajero"].HeaderText = "Mensajero";
+
             }
             catch (Exception ex)
             {

@@ -25,12 +25,11 @@ namespace DAL
                 conn.Open();
                 using var cmd = conn.CreateCommand();
 
-                cmd.CommandText = "INSERT INTO evento (tipo, fecha, ubicacion, reserva_id, bebe_id) VALUES (@tipo, @fecha, @ubicacion, @reserva_id, @bebe_id)";
+                cmd.CommandText = "INSERT INTO evento (tipo, fecha, ubicacion, reserva_id) VALUES (@tipo, @fecha, @ubicacion, @reserva_id)";
                 cmd.Parameters.AddWithValue("@tipo", evento.Tipo);
                 cmd.Parameters.AddWithValue("@fecha", evento.Fecha);
                 cmd.Parameters.AddWithValue("@ubicacion", evento.Ubicacion);
                 cmd.Parameters.AddWithValue("@reserva_id", evento.Reserva.Id);
-                cmd.Parameters.AddWithValue("@bebe_id", (Object?)evento.Bebe?.Id ?? DBNull.Value);
 
                 cmd.ExecuteNonQuery();
 
@@ -97,7 +96,7 @@ namespace DAL
                         Tipo = reader.IsDBNull(1) ? null : reader.GetString(1),
                         Fecha = reader.GetDateTime(2),
                         Ubicacion = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        Reserva = new ReservaDTO { Id = reader.GetInt32(4) },
+                        Reserva = new Reserva { Id = reader.GetInt32(4) },
                         Bebe = reader.IsDBNull(5) ? null : new Bebe { Id = reader.GetInt32(5) }
                     };
                 }

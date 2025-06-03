@@ -24,7 +24,6 @@ namespace DAL
                 using var transaction = conn.BeginTransaction();
                 try
                 {
-                    // Insertar venta y obtener ID
                     using (var cmdVenta = conn.CreateCommand())
                     {
                         cmdVenta.Transaction = transaction;
@@ -37,17 +36,14 @@ namespace DAL
 
                         venta.Id = Convert.ToInt32(cmdVenta.ExecuteScalar());
                     }
-
-                    // Insertar detalles de la venta
                     foreach (var detalle in venta.Detalles)
                     {
-                        // Validaciones previas
                         if (detalle == null)
                             throw new Exception("Uno de los detalles de venta está vacío.");
                         if (detalle.ProductoId <= 0 && detalle.producto == null)
                             throw new Exception("El detalle de venta no tiene producto asignado.");
 
-                        int productoId = detalle.producto?.Id ?? detalle.ProductoId;
+                        int? productoId = detalle.ProductoId;
                         int? paqueteId = detalle.PaqueteServicio?.Id; 
                         double precioUnitario = detalle.producto?.Precio ?? detalle.PrecioUnitario;
 
@@ -70,17 +66,17 @@ namespace DAL
                     }
 
                     transaction.Commit();
-                    return "✅ Venta registrada correctamente";
+                    return "Venta registrada correctamente";
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    throw new Exception("❌ Error al registrar la venta en la base de datos: " + ex.Message, ex);
+                    throw new Exception("Error al registrar la venta en la base de datos: " + ex.Message);
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("❌ Error al conectar con la base de datos: " + ex.Message, ex);
+                throw new Exception("Error al conectar con la base de datos: " + ex.Message);
             }
         }
         public List<Venta> ObtenerVentasPorCliente(int clienteId)

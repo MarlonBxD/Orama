@@ -22,26 +22,26 @@ namespace BLL
         {
             try
             {
-                if (evento == null)
-                    throw new AppException("El evento no puede ser nulo.");
+                //if (evento == null)
+                //    throw new AppException("El evento no puede ser nulo.");
 
-                if (string.IsNullOrWhiteSpace(evento.Tipo))
-                    throw new AppException("El tipo del evento es obligatorio.");
+                //if (string.IsNullOrWhiteSpace(evento.Tipo))
+                //    throw new AppException("El tipo del evento es obligatorio.");
 
-                if (evento.Fecha == default)
-                    throw new AppException("La fecha del evento es obligatoria.");
+                //if (evento.Fecha == default)
+                //    throw new AppException("La fecha del evento es obligatoria.");
 
-                if (string.IsNullOrWhiteSpace(evento.Ubicacion))
-                    throw new AppException("La ubicación del evento es obligatoria.");
+                //if (string.IsNullOrWhiteSpace(evento.Ubicacion))
+                //    throw new AppException("La ubicación del evento es obligatoria.");
 
-                if (evento.Reserva == null || evento.Reserva.Id <= 0)
-                    throw new AppException("La reserva asociada es obligatoria y debe tener un ID válido.");
+                //if (evento.Reserva == null || evento.Reserva.Id <= 0)
+                //    throw new AppException("La reserva asociada es obligatoria y debe tener un ID válido.");
 
                 return _eventoRepository.Agregar(evento);
             }
             catch (Exception ex)
             {
-                throw new AppException("Error en la lógica de negocio al agregar evento", ex);
+                throw new Exception($"Error en la lógica de negocio al agregar evento {ex.Message}");
             }
         }
 

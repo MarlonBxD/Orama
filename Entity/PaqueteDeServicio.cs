@@ -15,6 +15,8 @@ namespace Entity
         public string Descripcion { get; set; } = string.Empty;
         public int DuracionPaquete { get; set; }
         public List<Producto> productos { get; set; } = new List<Producto>();
+        public int stock {  get; set; }
+        
 
     }
 

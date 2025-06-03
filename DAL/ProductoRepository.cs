@@ -1,5 +1,6 @@
 ﻿using Entity;
 using Entity.Interfaces;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -136,27 +137,55 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception($"❌ Error al obtener el producto por ID (repo): {ex.Message}", ex);
+                throw new Exception($" Error al obtener el producto por ID (repo): {ex.Message}", ex);
             }
         }
-        public string ActualizarStock(int id, int nuevoStock)
+        public string ActualizarStock(int productoId, int nuevoStock)
         {
             try
             {
                 using var conn = _conexion.GetConnection();
                 conn.Open();
+
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = "UPDATE Producto SET stock = @nuevoStock WHERE id = @id";
-                cmd.Parameters.AddWithValue("@nuevoStock", nuevoStock);
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.CommandText = "UPDATE productos SET stock = @stock WHERE id = @id";
+                cmd.Parameters.AddWithValue("@stock", nuevoStock);
+                cmd.Parameters.AddWithValue("@id", productoId);
                 cmd.ExecuteNonQuery();
                 return "Stock actualizado correctamente";
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception($"Error al actualizar el stock del producto (ID: {productoId}): {ex.Message}", ex);
             }
-
         }
+        public int ObtenerStock(int id)
+        {
+            try
+            {
+                using var conn = _conexion.GetConnection();
+                conn.Open();
+
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT stock FROM productos WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return Convert.ToInt32(reader["stock"]);
+                }
+                else
+                {
+                    throw new Exception($"Producto con ID {id} no encontrado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al obtener el stock del producto (ID: {id}): {ex.Message}", ex);
+            }
+        }
+
+        
     }
 }

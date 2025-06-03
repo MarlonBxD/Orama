@@ -9,6 +9,6 @@ namespace Entity.Interfaces
     public interface IProductoRepository
     {
         Producto ObtenerPorId(int id);
-        string ActualizarStock(int productoId, int nuevaCantidad);
+        string ActualizarStock(int productoId, int nuevoStock);
     }
 }

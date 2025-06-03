@@ -261,53 +261,60 @@ namespace DAL
             {
                 using var conn = _conexion.GetConnection();
                 conn.Open();
+
                 using var cmd = conn.CreateCommand();
                 cmd.CommandText = @"SELECT
-                                    d.id, d.fechadespacho, d.estado, d.numero_paquetes,
-                                    p.id, p.nombre,
-                                    m.id, m.nombre,
-                                    c.id, c.nombre
-                                    FROM despacho d
-                                    LEFT JOIN paquetedeservicio p ON d.paquete_servicio_id = p.id
-                                    LEFT JOIN mensajero m ON d.mensajero_id = m.id
-                                    LEFT JOIN cliente c ON d.cliente_id = c.id
-                                    WHERE d.cliente_id = @cliente_id";
+                                    d.id AS despacho_id, d.fechadespacho, d.estado, d.numero_paquetes,
+                                    p.id AS paquete_id, p.nombre AS paquete_nombre,
+                                    m.id AS mensajero_id, m.nombre AS mensajero_nombre,
+                                    c.id AS cliente_id, c.nombre AS cliente_nombre
+                                FROM despacho d
+                                LEFT JOIN paquetedeservicio p ON d.paquete_servicio_id = p.id
+                                LEFT JOIN mensajero m ON d.mensajero_id = m.id
+                                LEFT JOIN cliente c ON d.cliente_id = c.id
+                                WHERE d.cliente_id = @cliente_id";
 
                 cmd.Parameters.AddWithValue("@cliente_id", id);
+
                 using var reader = cmd.ExecuteReader();
                 var despachos = new List<Despacho>();
+
                 while (reader.Read())
                 {
                     var despacho = new Despacho
                     {
-                        Id = reader.GetInt32(0),
-                        FechaDespacho = reader.GetDateTime(1),
-                        Estado = reader.IsDBNull(2) ? null : reader.GetString(2),
-                        NumeroPaquetes = reader.GetInt32(3),
+                        Id = reader.GetInt32(reader.GetOrdinal("despacho_id")),
+                        FechaDespacho = reader.GetDateTime(reader.GetOrdinal("fechadespacho")),
+                        Estado = reader.GetString(reader.GetOrdinal("estado")),
+                        NumeroPaquetes = reader.GetInt32(reader.GetOrdinal("numero_paquetes")),
                         PaqueteDeServicio = new PaqueteDeServicio
                         {
-                            Id = reader.GetInt32(4),
-                            Nombre = reader.IsDBNull(5) ? null : reader.GetString(5)
+                            Id = reader.GetInt32(reader.GetOrdinal("paquete_id")),
+                            Nombre = reader.GetString(reader.GetOrdinal("paquete_nombre"))
                         },
                         Mensajero = new Mensajero
                         {
-                            Id = reader.GetInt32(6),
-                            Nombre = reader.IsDBNull(7) ? null : reader.GetString(7)
+                            Id = reader.GetInt32(reader.GetOrdinal("mensajero_id")),
+                            Nombre = reader.GetString(reader.GetOrdinal("mensajero_nombre"))
                         },
                         Cliente = new Cliente
                         {
-                            Id = reader.GetInt32(8),
-                            Nombre = reader.IsDBNull(9) ? null : reader.GetString(9)
+                            Id = reader.GetInt32(reader.GetOrdinal("cliente_id")),
+                            Nombre = reader.GetString(reader.GetOrdinal("cliente_nombre"))
                         }
                     };
+
+                    despachos.Add(despacho);
                 }
+
                 return despachos;
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al obtener despachos", ex);
+                throw new Exception($"Error al obtener despachos: {ex.Message}", ex);
             }
         }
+
         public ClienteDTO GetByTelefono(string telefono)
         {
             try

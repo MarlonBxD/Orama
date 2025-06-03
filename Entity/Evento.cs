@@ -13,7 +13,7 @@ namespace Entity
         public string Tipo { get; set; }
         public DateTime Fecha { get; set; }
         public string Ubicacion { get; set; }
-        public ReservaDTO Reserva { get; set; }
+        public Reserva Reserva { get; set; }
         public Bebe? Bebe { get; set; }
 
         //public List<PaqueteDeServicio> PaqueteDeServicios { get; set; } = new();

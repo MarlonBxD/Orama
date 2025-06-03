@@ -12,7 +12,7 @@ namespace Entity.Dto
         public string Nombre { get; set; }
         public double Precio { get; set; }
         public string Descripcion { get; set; }
-        public int DuracionPaquete { get; set; }
+        public string DuracionPaquete { get; set; }
         public List<Producto> productos { get; set; } = new List<Producto>();
 
         public PaqueteDeServicioDTO()

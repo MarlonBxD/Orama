@@ -18,31 +18,35 @@ namespace DAL
             _conexion = new Conexion();
         }
 
-        public string Agregar(Reserva reserva)
+        public int Agregar(Reserva reserva)
         {
             try
             {
                 using var conn = _conexion.GetConnection();
                 conn.Open();
                 using var cmd = conn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO reserva (id, fecha_evento, fecha_reserva, estado, observaciones, cliente_id, evento_id, paqueteservicio_id)
-                                    VALUES (@id, @fecha_evento, @fecha_reserva, @estado, @observaciones, @cliente_id, @evento_id, @paqueteservicio_id)";
-                cmd.Parameters.AddWithValue("@id", reserva.Id);
-                cmd.Parameters.AddWithValue("@fecha_evento", reserva.FechaEvento);
-                cmd.Parameters.AddWithValue("@fecha_reserva", reserva.FechaReserva);
-                cmd.Parameters.AddWithValue("@estado", reserva.EstadoReserva);
-                cmd.Parameters.AddWithValue("@observaciones", reserva.Observaciones);
+
+                cmd.CommandText = @"INSERT INTO reserva (cliente_id, paqueteservicio_id, fecha_reserva, fecha_evento, estado, observaciones)
+                                    VALUES (@cliente_id, @paqueteservicio_id, @fecha_reserva, @fecha_evento, @estado, @observaciones)
+                                    RETURNING id;";
+
                 cmd.Parameters.AddWithValue("@cliente_id", reserva.Cliente.Id);
                 cmd.Parameters.AddWithValue("@paqueteservicio_id", reserva.PaqueteDeServicio.Id);
-                cmd.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@fecha_reserva", reserva.FechaReserva);
+                cmd.Parameters.AddWithValue("@fecha_evento", reserva.FechaEvento);
+                cmd.Parameters.AddWithValue("@estado", reserva.EstadoReserva);
+                cmd.Parameters.AddWithValue("@observaciones", reserva.Observaciones ?? "");
 
-                return "Reserva agregada correctamente";
+                int reservaId = (int)cmd.ExecuteScalar();
+                reserva.Id = reservaId;
+                return reservaId;
             }
-            catch (Npgsql.NpgsqlException ex)
+            catch (Exception ex)
             {
-                throw new NpgsqlException("Error al agregar reserva", ex);
+                throw new AppException($"Error al agregar reserva {ex.Message}");
             }
         }
+
 
         public List<ReservaDTO> GetAll()
         {
