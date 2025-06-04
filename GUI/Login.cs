@@ -1,4 +1,4 @@
-﻿using DAL;
+﻿using BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +20,7 @@ namespace GUI
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            var repo = new UsuarioRepository();
+            var service = new UsuarioService();
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtContraseña.Text.Trim();
 
@@ -30,7 +30,7 @@ namespace GUI
                 return;
             }
 
-            var user = repo.ValidarCredenciales(usuario, contrasena);
+            var user = service.ValidarCredenciales(usuario, contrasena);
 
             if (user != null)
             {

@@ -82,5 +82,17 @@ namespace BLL
                 throw new Exception($"Error al cargar los Usuarios { ex.Message }");
             }
         }
+
+        public Usuario ValidarCredenciales(string usuario, string contraseña)
+        {
+            try
+            {
+                return _usuarioRepository.ValidarCredenciales(usuario, contraseña);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al validar credenciales {ex.Message}");
+            }
+        }
     }
 }
