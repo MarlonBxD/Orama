@@ -55,7 +55,7 @@
             panelMenu.Location = new Point(0, 0);
             panelMenu.Margin = new Padding(3, 4, 3, 4);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(220, 729);
+            panelMenu.Size = new Size(247, 729);
             panelMenu.TabIndex = 0;
             // 
             // btnMensajeros
@@ -68,7 +68,7 @@
             btnMensajeros.Location = new Point(0, 314);
             btnMensajeros.Margin = new Padding(3, 4, 3, 4);
             btnMensajeros.Name = "btnMensajeros";
-            btnMensajeros.Size = new Size(220, 44);
+            btnMensajeros.Size = new Size(247, 44);
             btnMensajeros.TabIndex = 13;
             btnMensajeros.Text = "Mensajeros";
             btnMensajeros.TextAlign = ContentAlignment.MiddleLeft;
@@ -85,7 +85,7 @@
             btnDespachos.Location = new Point(0, 270);
             btnDespachos.Margin = new Padding(3, 4, 3, 4);
             btnDespachos.Name = "btnDespachos";
-            btnDespachos.Size = new Size(220, 44);
+            btnDespachos.Size = new Size(247, 44);
             btnDespachos.TabIndex = 12;
             btnDespachos.Text = "Despachos";
             btnDespachos.TextAlign = ContentAlignment.MiddleLeft;
@@ -102,7 +102,7 @@
             btnProductos.Location = new Point(0, 226);
             btnProductos.Margin = new Padding(3, 4, 3, 4);
             btnProductos.Name = "btnProductos";
-            btnProductos.Size = new Size(220, 44);
+            btnProductos.Size = new Size(247, 44);
             btnProductos.TabIndex = 11;
             btnProductos.Text = "Productos";
             btnProductos.TextAlign = ContentAlignment.MiddleLeft;
@@ -118,7 +118,7 @@
             btnEquipoFotografico.Location = new Point(0, 182);
             btnEquipoFotografico.Margin = new Padding(3, 4, 3, 4);
             btnEquipoFotografico.Name = "btnEquipoFotografico";
-            btnEquipoFotografico.Size = new Size(220, 44);
+            btnEquipoFotografico.Size = new Size(247, 44);
             btnEquipoFotografico.TabIndex = 7;
             btnEquipoFotografico.Text = "Equipo Fotográfico";
             btnEquipoFotografico.TextAlign = ContentAlignment.MiddleLeft;
@@ -135,7 +135,7 @@
             btnFotografos.Location = new Point(0, 138);
             btnFotografos.Margin = new Padding(3, 4, 3, 4);
             btnFotografos.Name = "btnFotografos";
-            btnFotografos.Size = new Size(220, 44);
+            btnFotografos.Size = new Size(247, 44);
             btnFotografos.TabIndex = 5;
             btnFotografos.Text = "Fotografos";
             btnFotografos.TextAlign = ContentAlignment.MiddleLeft;
@@ -152,7 +152,7 @@
             btnClientes.Location = new Point(0, 94);
             btnClientes.Margin = new Padding(3, 4, 3, 4);
             btnClientes.Name = "btnClientes";
-            btnClientes.Size = new Size(220, 44);
+            btnClientes.Size = new Size(247, 44);
             btnClientes.TabIndex = 1;
             btnClientes.Text = "Clientes";
             btnClientes.TextAlign = ContentAlignment.MiddleLeft;
@@ -161,11 +161,13 @@
             // 
             // panel1
             // 
+            panel1.BackgroundImage = Properties.Resources.logoOramaRecortado;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(220, 94);
+            panel1.Size = new Size(247, 94);
             panel1.TabIndex = 0;
             // 
             // panelFormHijo
@@ -173,10 +175,10 @@
             panelFormHijo.BackColor = Color.WhiteSmoke;
             panelFormHijo.Dock = DockStyle.Fill;
             panelFormHijo.ForeColor = Color.Transparent;
-            panelFormHijo.Location = new Point(220, 0);
+            panelFormHijo.Location = new Point(247, 0);
             panelFormHijo.Margin = new Padding(3, 4, 3, 4);
             panelFormHijo.Name = "panelFormHijo";
-            panelFormHijo.Size = new Size(1130, 729);
+            panelFormHijo.Size = new Size(1103, 729);
             panelFormHijo.TabIndex = 1;
             // 
             // Orama

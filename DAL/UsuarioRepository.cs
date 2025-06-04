@@ -137,5 +137,46 @@ namespace DAL
             }
         }
 
+        public Usuario ValidarCredenciales(string usuario, string contrasena)
+        {
+            try
+            {
+                using var connection = conn.GetConnection();
+                connection.Open();
+
+                string query = @"SELECT id, nombre, apellido, telefono, email, direccion, usuario, contraseña, tipo 
+                         FROM usuarios 
+                         WHERE usuario = @Usuario AND contraseña = @Contrasena;";
+
+                using var cmd = new NpgsqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@Usuario", usuario);
+                cmd.Parameters.AddWithValue("@Contrasena", contrasena);
+
+                using var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new Usuario
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.GetString(1),
+                        Apellido = reader.GetString(2),
+                        Telefono = reader.GetString(3),
+                        Email = reader.IsDBNull(4) ? null : reader.GetString(4),
+                        Direccion = reader.GetString(5),
+                        nombreUsuario = reader.GetString(6),
+                        Contrasena = reader.GetString(7),
+                        tipoUsuario = reader.GetString(8)
+                    };
+                }
+
+                return null; // No se encontró
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al validar credenciales: {ex.Message}");
+            }
+        }
+
+
     }
 }
