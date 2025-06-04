@@ -169,7 +169,7 @@ namespace DAL
                     };
                 }
 
-                return null; // No se encontró
+                return null;
             }
             catch (Exception ex)
             {
