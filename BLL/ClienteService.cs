@@ -114,13 +114,13 @@ namespace BLL
             try
             {
                 if (idCliente <= 0)
-                    throw new AppException("ID de cliente inválido.");
+                    throw new Exception("ID de cliente inválido.");
 
                 return _clienteRepository.ObtenerReservas(idCliente);
             }
             catch (Exception ex)
             {
-                throw new AppException("Error al obtener reservas del cliente", ex);
+                throw new AppException($"Error al obtener reservas del cliente {ex.Message}");
             }
         }
         public List<Despacho> ObtenerDespachosPorCliente(int idCliente)
